@@ -1,5 +1,5 @@
 "use client";
-import { Spacer } from "@nextui-org/react";
+import { Spacer, User } from "@nextui-org/react";
 import React from "react";
 import {
   Table,
@@ -13,7 +13,7 @@ import {
 function Page() {
   return (
     <div className="">
-      <h1 className="text-[50px] text-primary ">
+      <h1 className="text-[50px] text-primary font-bold">
         Project Proposal: Inspection Management System
       </h1>
       <Spacer y={4} />
@@ -136,36 +136,85 @@ function Page() {
         <TableHeader>
           <TableColumn>RESOURCE</TableColumn>
           <TableColumn>QUANTITY</TableColumn>
-          <TableColumn>DURATION / MONTH</TableColumn>
-          <TableColumn>COST / MONTH</TableColumn>
+          <TableColumn>COST / HOUR (in Rs. )</TableColumn>
+          <TableColumn>ESTIMATED HOURS</TableColumn>
         </TableHeader>
         <TableBody>
           <TableRow key="1">
-            <TableCell>Frontend Developer</TableCell>
+            <TableCell>
+              <User name="Designer" />
+            </TableCell>
             <TableCell>1</TableCell>
-            <TableCell>1</TableCell>
-            <TableCell>30K</TableCell>
+            <TableCell>240</TableCell>
+            <TableCell>80 - 120</TableCell>
           </TableRow>
           <TableRow key="2">
-            <TableCell>Backend Developer</TableCell>
+            <TableCell>
+              <User name="Frontend Developer" />
+            </TableCell>
             <TableCell>1</TableCell>
-            <TableCell>1.5</TableCell>
-            <TableCell>35K</TableCell>
+            <TableCell>400</TableCell>
+            <TableCell>160 - 200</TableCell>
           </TableRow>
           <TableRow key="3">
-            <TableCell>Flutter Developer</TableCell>
+            <TableCell>
+              <User name="Backend Developer" />
+            </TableCell>
             <TableCell>1</TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>30K</TableCell>
+            <TableCell>400</TableCell>
+            <TableCell>250 - 320</TableCell>
           </TableRow>
           <TableRow key="4">
-            <TableCell>Project Manager</TableCell>
+            <TableCell>
+              <User name="Flutter Developer" />
+            </TableCell>
             <TableCell>1</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell>25K</TableCell>
+            <TableCell>400</TableCell>
+            <TableCell>300 - 340</TableCell>
+          </TableRow>
+          <TableRow key="5">
+            <TableCell>
+              <User name="Project Manager" />
+            </TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>320</TableCell>
+            <TableCell>150 - 180</TableCell>
+          </TableRow>
+          <TableRow key="6">
+            <TableCell>
+              <User name="Quality Analyst" />
+            </TableCell>
+            <TableCell>1</TableCell>
+            <TableCell>320</TableCell>
+            <TableCell>160 - 200</TableCell>
           </TableRow>
         </TableBody>
       </Table>
+      <Spacer y={4} />
+
+      <h3 className="text-[30px] text-primary bg-gray-100">
+        Included Services{" "}
+      </h3>
+      <Spacer y={2} />
+      <ul>
+        <li>1. Basic Documentation</li>
+        <li>2. Basic Software Training</li>
+        <li>3. Basic Technical Support</li>
+      </ul>
+      <Spacer y={4} />
+      <Spacer y={4} />
+
+      <h3 className="text-[30px] text-primary bg-gray-100">Exclusions </h3>
+      <Spacer y={2} />
+      <ul>
+        <li>1. Server Hosting</li>
+        <li>2. Cyber Security</li>
+        <li>3. SEO & Content Optimization </li>
+        <li>4. Maintenance & Support</li>
+        <li>5. Advanced Documentation</li>
+        <li>6. Advance Software Training</li>
+        <li>7. Advanced Graphic Elements</li>
+      </ul>
       <Spacer y={4} />
     </div>
   );
