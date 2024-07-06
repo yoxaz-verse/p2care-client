@@ -14,7 +14,7 @@ function Page() {
   return (
     <div className="">
       <h1 className="text-[50px] text-primary font-bold">
-        Project Proposal: Inspection Management System
+        Project Quotoation: Inspection Management System
       </h1>
       <Spacer y={4} />
       <h3 className="text-[30px] text-primary bg-gray-100">
@@ -214,6 +214,7 @@ function Page() {
         <li>5. Advanced Documentation</li>
         <li>6. Advance Software Training</li>
         <li>7. Advanced Graphic Elements</li>
+        <li>8. Devops Engineer</li>
       </ul>
       <Spacer y={4} />
     </div>
