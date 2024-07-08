@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { bannerBackground, doctor } from "@/Content/assets";
+import { bannerBackground, doctor, smallArrowIcon } from "@/Content/assets";
 import { motion, useAnimate } from "framer-motion";
 import {
   isDesktop,
@@ -10,6 +10,8 @@ import {
 } from "@/Utils/screenSize";
 import Image from "next/image";
 import Points from "./points";
+import { pointsLeft, pointsRight } from "@/Content/Home/banner";
+import CtaButton from "../Buttons/ctaButton";
 function Banner() {
   const [scope, animate] = useAnimate();
   const [isRendered, setIsRendered] = useState<boolean>(false);
@@ -28,7 +30,7 @@ function Banner() {
             ? -300
             : isLargeDesktop()
             ? -500
-            : -700,
+            : -500,
           0,
         ],
       },
@@ -47,8 +49,8 @@ function Banner() {
           : isDesktop()
           ? -30
           : isLargeDesktop()
-          ? -50
-          : -50,
+          ? -75
+          : -75,
       },
       {
         duration: 0.5,
@@ -84,25 +86,139 @@ function Banner() {
           isRendered ? 100 : 0
         }`}
       />
-      <motion.div
-        initial={{
-          opacity: 0,
-        }}
-        animate={{
-          opacity: 1,
-          x: isMobile()
-            ? 0
-            : isTablet()
-            ? 100
-            : isDesktop()
-            ? 200
-            : isLargeDesktop()
-            ? 300
-            : 300,
-        }}
-      >
-        <Points point="Quick Points To Show" />
-      </motion.div>
+      <div className="flex">
+        <motion.div
+          className="flex flex-col gap-5"
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: [0, 1],
+            x: isMobile()
+              ? 0
+              : isTablet()
+              ? 180
+              : isDesktop()
+              ? 300
+              : isLargeDesktop()
+              ? 450
+              : 450,
+            y: isMobile()
+              ? 0
+              : isTablet()
+              ? -50
+              : isDesktop()
+              ? -70
+              : isLargeDesktop()
+              ? -90
+              : 0,
+          }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            delay: 0.5,
+          }}
+        >
+          {pointsRight.map((point, index) => (
+            <motion.div
+              key={index}
+              animate={{
+                x: isMobile()
+                  ? 0
+                  : isTablet()
+                  ? index * 10
+                  : isDesktop()
+                  ? index * 15
+                  : isLargeDesktop()
+                  ? index * 20
+                  : index * 20,
+                opacity: [0, 1],
+              }}
+              transition={{
+                duration: 1,
+                type: "spring",
+                delay: (index + 1) * 0.5,
+              }}
+            >
+              <Points
+                point={point.point}
+                icon={point.icon}
+                background={point.background}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+        <motion.div
+          className="flex flex-col gap-5"
+          initial={{
+            opacity: 0,
+          }}
+          animate={{
+            opacity: [0, 1],
+            x: isMobile()
+              ? 0
+              : isTablet()
+              ? -180
+              : isDesktop()
+              ? -300
+              : isLargeDesktop()
+              ? -450
+              : -450,
+            y: isMobile()
+              ? 0
+              : isTablet()
+              ? -50
+              : isDesktop()
+              ? -70
+              : isLargeDesktop()
+              ? -90
+              : 0,
+          }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            delay: 0.5,
+          }}
+        >
+          {pointsLeft.map((point, index) => (
+            <motion.div
+              key={index}
+              animate={{
+                x: isMobile()
+                  ? 0
+                  : isTablet()
+                  ? index * -10
+                  : isDesktop()
+                  ? index * -15
+                  : isLargeDesktop()
+                  ? index * -20
+                  : index * -20,
+                opacity: [0, 1],
+              }}
+              transition={{
+                duration: 1,
+                type: "spring",
+                delay: (index + 1) * 0.5,
+              }}
+            >
+              <Points
+                point={point.point}
+                icon={point.icon}
+                background={point.background}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+      <div className="flex w-full justify-between px-14  ">
+        <h4 className="text-white font-[500] max-w-64">
+          If you are seeking a user-friendly and innovative way to manage
+          medical records, P2Care is the ideal solution.
+        </h4>
+        <div className="mt-auto">
+          <CtaButton />
+        </div>
+      </div>
     </section>
   );
 }

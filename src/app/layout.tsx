@@ -22,7 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className="custom text-foreground bg-background">
           <Providers>
-            {/* <Header /> */}
+            <Header />
             <Spacer y={5} />
             <div className="max-w-[90vw] md:max-w-[95vw] 2xl:max-w-[1440px] mx-auto">
               {children}

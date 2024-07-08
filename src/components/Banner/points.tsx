@@ -5,12 +5,15 @@ import React, { ReactNode } from "react";
 interface IPointsProps {
   point?: string;
   icon?: ReactNode;
+  background?: string;
 }
 
 function Points(props: IPointsProps) {
   return (
-    <div className="flex gap-5 items-center bg-white">
-      <div className="p-4 rounded-full bg-accent">
+    <div className="flex gap-5 items-center text-white">
+      <div
+        className={`p-4 rounded-full bg-${props.background ?? "background"}`}
+      >
         <Image
           src={bandaidIcon}
           width={20}
