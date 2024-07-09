@@ -1,6 +1,8 @@
 import { navbar } from "@nextui-org/react";
 import type { Config } from "tailwindcss";
 const { nextui } = require("@nextui-org/react");
+const { colors } = require("tailwindcss/defaultTheme");
+
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,15 +18,15 @@ const config: Config = {
     nextui({
       themes: {
         light: {
-          layout: {}, // light theme layout tokens
-          colors: {}, // light theme colors
+          layout: {},
+          colors: {},
         },
         dark: {
-          layout: {}, // dark theme layout tokens
-          colors: {}, // dark theme colors
+          layout: {},
+          colors: {},
         },
         custom: {
-          extend: "light", // <- inherit default values from light theme
+          extend: "light",
           layout: {
             header: {
               maxWidth: "1440px",
@@ -64,6 +66,10 @@ const config: Config = {
               foreground: "#ffffff",
             },
             focus: "#F182F6",
+          },
+          linearGradientColors: {
+            'primary-gradient': 'linear-gradient(to right, #3F8EFC, #F45B69)',
+            'secondary-gradient': 'linear-gradient(to right, #8ED2CF, #3F8EFC)',
           },
         },
       },

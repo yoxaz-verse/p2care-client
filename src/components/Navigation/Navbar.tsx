@@ -29,7 +29,7 @@ export default function Header() {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className="max-w-[95vw] 2xl:max-w-[1440px] mx-auto"
+      className="max-w-[95vw] bg-white 2xl:max-w-[1440px] mx-auto"
       isBordered
     >
       <NavbarContent>
@@ -81,8 +81,8 @@ export default function Header() {
                 index === 2
                   ? "primary"
                   : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
+                    ? "danger"
+                    : "foreground"
               }
               className="w-full"
               href="#"

@@ -2,15 +2,16 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import BlackArrowButton from "../Buttons/blackArrowButton";
-import { Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody, image } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import { femaleDoctor01 } from "@/Content/assets";
 
-interface ICategoryCardProps {
+
+export interface ICategoryCardProps {
   heading?: string;
   subHeading?: string;
   background?: string;
-  image?: string;
+  image: string;
+  hover?: string;
   cta?: string;
 }
 
@@ -22,21 +23,20 @@ function CategoryCard(props: ICategoryCardProps) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <Card
-        className={`relative w-full bg-${
-          isHovered ? "primary" : "secondary"
-        } rounded-[20px] h-[400px]  
+      <Card isPressable
+        className={`relative w-full ${isHovered ? `${props.background}` : `${props.hover}`
+          } rounded-2xl h-[40vh]  
         
         `}
       >
-        <CardBody className="flex flex-col justify-between p-6">
+        <CardBody className={`flex flex-col justify-between p-6`}>
           <div>
-            <h3 className="font-[600] text-[32px]">Doctors</h3>
-            <p className="font-[400] text-[16px]">Connect within 60 seconds</p>
+            <h3 className="font-[600] text-3xl">{props.heading}</h3>
+            <p className="font-[400] text-xl">{props.subHeading}</p>
           </div>
           <Image
             className="absolute bottom-0 right-2 h-[80%] w-auto"
-            src={femaleDoctor01}
+            src={props.image}
             alt="doctors"
             width={1000}
             height={1000}
@@ -44,7 +44,7 @@ function CategoryCard(props: ICategoryCardProps) {
           <BlackArrowButton />
         </CardBody>
       </Card>
-    </motion.div>
+    </motion.div >
   );
 }
 
