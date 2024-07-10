@@ -4,6 +4,7 @@ import "./globals.css";
 import Providers from "./providers";
 import Header from "@/components/Navigation/Navbar";
 import { Spacer } from "@nextui-org/react";
+import Footer from "@/components/Footer";
 
 const inter = Quicksand({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
           <Providers>
             <Header />
             <Spacer y={5} />
-            <div className="max-w-[90vw] md:max-w-[95vw] 2xl:max-w-[1440px] mx-auto">
+            <div className="max-w-[90vw] md:max-w-[95vw] 2xl:max-w-screen mx-auto">
               {children}
             </div>
           </Providers>

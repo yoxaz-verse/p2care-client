@@ -1,8 +1,9 @@
 import { ICategoryCardProps } from "@/components/Cards/categoryCard"
 import { HomeHeaderProps } from "@/components/Header/HomeHeader"
 import { ServiceProps } from "@/components/Cards/ServicesCard"
-import { femaleDoctor01, femaleDoctor02, mainDoctos, mainDoctos1, mainDoctos2, mainDoctos3, maleDoctor01, maleFemaleDoctor01 } from "../assets"
+import { blogs1, femaleDoctor01, femaleDoctor02, mainDoctos, mainDoctos1, mainDoctos2, mainDoctos3, maleDoctor01, maleFemaleDoctor01 } from "../assets"
 import { DoctorCardProps } from "@/components/Cards/DoctorCard"
+import { BlogCardProps } from "@/components/Cards/BlogCard"
 
 export const content: ICategoryCardProps[] = [
   {
@@ -98,5 +99,23 @@ export const HeaderHeading: HomeHeaderProps[] = [
   },
   {
     header: "Blogs"
+  }
+]
+
+export const BlogContent: BlogCardProps[] = [
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description: "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future."
+  },
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description: "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future."
+  },
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description: "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future."
   }
 ]
