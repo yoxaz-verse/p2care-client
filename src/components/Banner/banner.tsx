@@ -25,12 +25,12 @@ function Banner() {
           isMobile()
             ? -50
             : isTablet()
-            ? -100
-            : isDesktop()
-            ? -300
-            : isLargeDesktop()
-            ? -500
-            : -500,
+              ? -100
+              : isDesktop()
+                ? -300
+                : isLargeDesktop()
+                  ? -500
+                  : -500,
           0,
         ],
       },
@@ -45,12 +45,12 @@ function Banner() {
         y: isMobile()
           ? -10
           : isTablet()
-          ? -20
-          : isDesktop()
-          ? -30
-          : isLargeDesktop()
-          ? -75
-          : -75,
+            ? -20
+            : isDesktop()
+              ? -30
+              : isLargeDesktop()
+                ? -75
+                : -75,
       },
       {
         duration: 0.5,
@@ -67,7 +67,7 @@ function Banner() {
     <section
       ref={scope}
       className="relative bg-cover bg-center h-[700px] flex flex-col items-center align-middle rounded-[30px] lg:rounded-[70px]"
-      style={{ backgroundImage: `url(${bannerBackground})` }}
+      style={{ backgroundImage: `` }}
     >
       <motion.h1
         initial={{
@@ -82,9 +82,8 @@ function Banner() {
         alt="P2Care Logo"
         width={1000}
         height={1000}
-        className={`max-w-max h-[600px] absolute bottom-0 transition delay-500 duration-1000 ease-in-out opacity-${
-          isRendered ? 100 : 0
-        }`}
+        className={`max-w-max h-[600px] absolute bottom-0 transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
+          }`}
       />
       <div className="flex">
         <motion.div
@@ -97,21 +96,21 @@ function Banner() {
             x: isMobile()
               ? 0
               : isTablet()
-              ? 180
-              : isDesktop()
-              ? 300
-              : isLargeDesktop()
-              ? 450
-              : 450,
+                ? 180
+                : isDesktop()
+                  ? 300
+                  : isLargeDesktop()
+                    ? 450
+                    : 450,
             y: isMobile()
               ? 0
               : isTablet()
-              ? -50
-              : isDesktop()
-              ? -70
-              : isLargeDesktop()
-              ? -90
-              : 0,
+                ? -50
+                : isDesktop()
+                  ? -70
+                  : isLargeDesktop()
+                    ? -90
+                    : 0,
           }}
           transition={{
             duration: 1,
@@ -126,12 +125,12 @@ function Banner() {
                 x: isMobile()
                   ? 0
                   : isTablet()
-                  ? index * 10
-                  : isDesktop()
-                  ? index * 15
-                  : isLargeDesktop()
-                  ? index * 20
-                  : index * 20,
+                    ? index * 10
+                    : isDesktop()
+                      ? index * 15
+                      : isLargeDesktop()
+                        ? index * 20
+                        : index * 20,
                 opacity: [0, 1],
               }}
               transition={{
@@ -158,21 +157,21 @@ function Banner() {
             x: isMobile()
               ? 0
               : isTablet()
-              ? -180
-              : isDesktop()
-              ? -300
-              : isLargeDesktop()
-              ? -450
-              : -450,
+                ? -180
+                : isDesktop()
+                  ? -300
+                  : isLargeDesktop()
+                    ? -450
+                    : -450,
             y: isMobile()
               ? 0
               : isTablet()
-              ? -50
-              : isDesktop()
-              ? -70
-              : isLargeDesktop()
-              ? -90
-              : 0,
+                ? -50
+                : isDesktop()
+                  ? -70
+                  : isLargeDesktop()
+                    ? -90
+                    : 0,
           }}
           transition={{
             duration: 1,
@@ -187,12 +186,12 @@ function Banner() {
                 x: isMobile()
                   ? 0
                   : isTablet()
-                  ? index * -10
-                  : isDesktop()
-                  ? index * -15
-                  : isLargeDesktop()
-                  ? index * -20
-                  : index * -20,
+                    ? index * -10
+                    : isDesktop()
+                      ? index * -15
+                      : isLargeDesktop()
+                        ? index * -20
+                        : index * -20,
                 opacity: [0, 1],
               }}
               transition={{

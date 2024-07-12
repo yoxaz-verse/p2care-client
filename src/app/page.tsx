@@ -24,7 +24,7 @@ import HomeHeader from "@/components/Header/HomeHeader";
 import ServiceCard, { ServiceProps } from "@/components/Cards/ServicesCard";
 import GalleryCard from "@/components/Cards/GalleryCard";
 import BlogCard, { BlogCardProps } from "@/components/Cards/BlogCard";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Navigation/Footer";
 
 export default function Home() {
   return (

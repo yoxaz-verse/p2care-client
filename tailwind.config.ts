@@ -65,6 +65,10 @@ const config: Config = {
               DEFAULT: "#202020",
               foreground: "#ffffff",
             },
+            grey: {
+              DEFAULT: "#90A4AE",
+              foreground: "#000000",
+            },
             focus: "#F182F6",
           },
           linearGradientColors: {

@@ -6,34 +6,36 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 export const DoctorListCard: React.FC<any> = () => {
   return (
     <>
-      <Card className="flex flex-row justify-around w-full h-[25vh]">
-        <CardBody className="flex flex-row overflow-hidden justify-between">
-          <div className="flex gap-4 flex-row h-full">
-            <img src={maleDoctorCard} className="rounded-full" />
-            <div className="flex justify-around flex-col">
-              <div className="flex flex-row items-center justify-around">
-                <h1 className="font-extrabold text-md md:text-4xl">Dr Manish Sharma</h1>
-                <Chip variant="dot" color="danger" className="text-xl md:text-2xl text-red-500 font-bold border-none">General Physician</Chip>
+      <Card className="flex flex-row justify-around w-full h-[110px] md:h-[270px]">
+        <CardBody className="flex flex-row justify-between">
+          <div className="flex flex-row h-full gap-2 md:gap-4">
+            <img src={maleDoctorCard} className="w-[57px] h-[57px] h-full md:w-[220px] md:h-[220px] rounded-full" />
+            <div className="flex flex-col h-full  justify-around">
+              <div className="flex  w-full items-center gap-[1rem] flex-row">
+                <h1 className="text-[10px] md:text-3xl font-extrabold">Dr Manish Sharma</h1>
+                <div className="flex flex-row gap-2 md:gap-4 items-center">
+                  <div className="w-1 md:w-2 h-1 md:h-2 bg-red-500 rounded-full" />
+                  <p className="font-extrabold text-[10px] md:text-lg text-red-500">General Phyiscian</p>
+                </div>
               </div>
-              <Chip variant="dot" color="primary" className="text-lg md:text-xl text-blue-500 font-extrabold border-none">
-                MA,MPhill ,MBBS
-              </Chip>
-              <div className="flex flex-row gap-4 w-1/2 md:w-full items-center font-bold text-gray-500">
-                <FaMapMarkerAlt size={20} className="fill-gray-500" />
-                <h1 className="font-bold md:font-extrabold text-md md:text-xl">Marine Drive, Mumbai (MH)</h1>
+              <div className="flex flex-row gap-2 md:gap-4 items-center">
+                <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                <p className="font-extrabold text-[10px] md:text-lg text-blue-500">MA, MPhil, MBBS</p>
               </div>
-              <h1 className="p-[.3rem]  w-1/2 font-extrabold text-center rounded-xl text-white bg-[#8ED2CF]">
-                15 Years of Experince
-              </h1>
+              <div className="flex text-gray-400 items-center flex-row gap-2 md:gap-4">
+                <FaMapMarkerAlt />
+                <h1 className="text-[10px] md:text-lg font-extrabold">Marine Drive, Mumbai (MH)</h1>
+              </div>
+              <p className="text-[10px] md:text-xl p-0 md:p-2 bg-[#8ED2CF] text-white text-center font-bold rounded-full w-2/3">15 years experinced</p>
             </div>
           </div>
-          <div className="flex flex-col text-center justify-around items-end h-full">
-            <h1 className="text-2xl md:text-6xl font-extrabold">₹ 649</h1>
-            <h1 className="text-red-400 line-through  font-bold text-2xl md:text-3xl">₹ 649</h1>
-            <h1 className="text-lg md:text-xl text-right">Consultation fee at clinic</h1>
-            <div className="flex flex-row w-full justify-around items-center gap-2 md:gap-4">
-              <h1 className="text-gray-600">Know More</h1>
-              <Button radius="full" className="text-lg font-bold" color="primary">Consult Now</Button>
+          <div className="flex flex-col text-center justify-around h-full items-end">
+            <h1 className="text-xl md:text-5xl font-extrabold">₹ 649</h1>
+            <h1 className="text-red-400 line-through  font-bold text-sm md:text-3xl">₹ 649</h1>
+            <h1 className="text-[5px] md:text-lg text-[#3C4959] text-right">Consultation fee at clinic</h1>
+            <div className="flex flex-row justify-around items-center gap-2 md:gap-4">
+              <h1 className="text-gray-600 text-[8px]  md:text-sm">Know More</h1>
+              <button className="text-[7px] bg-blue-500 px-[2px] md:px-[25px] py-[0px] md:py-[10px] rounded-full md:text-lg text-white font-bold">Consult Now</button>
             </div>
           </div>
         </CardBody>
