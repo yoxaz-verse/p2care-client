@@ -11,6 +11,7 @@ export const bannerSales: string = "/assets/images/home/banner.svg";
 export const femaleDoctor01: string = "/assets/images/doctors/female01.png";
 export const femaleDoctor02: string = "/assets/images/doctors/female02.png";
 export const maleDoctor01: string = "/assets/images/doctors/male01.png";
+export const maleDoctorCard: string = "/assets/images/doctors/doctor-1.jpeg";
 export const maleFemaleDoctor01: string =
   "/assets/images/doctors/male-female01.png";
 export const mainDoctos: string = "/assets/images/doctors/doctor-photo.png";

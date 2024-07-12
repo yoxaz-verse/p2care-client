@@ -7,13 +7,10 @@ interface AuthLayoutProps {
   src: string;
 }
 
-const AuthLayout: React.FC<AuthLayoutProps> = ({ children, src }) => {
+const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
   return (
     <div className='flex flex-col md:flex-row justify-center items-center'>
-      <Image src={src} alt="Authentication" className="h-1/4 w-full" />
-      <div className="flex flex-col items-center gap-4 p-4 w-[60%]">
-        {children}
-      </div>
+      {children}
     </div>
   );
 }
