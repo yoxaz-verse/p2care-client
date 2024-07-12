@@ -40,3 +40,8 @@ export const personIcon: string = "/assets/icons/profile/person.png";
 export const emailIcon: string = "/assets/icons/profile/email.png";
 export const phoneIcon: string = "/assets/icons/profile/phone.png";
 export const editIcon: string = "/assets/icons/profile/edit.png";
+
+// development images
+export const serviceXRay: string = "/assets/development/service/x-ray.png";
+export const serviceDigitalXRay: string =
+  "/assets/development/service/digital-x-ray.png";

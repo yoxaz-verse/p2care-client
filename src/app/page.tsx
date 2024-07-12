@@ -21,10 +21,12 @@ import {
 } from "@/Content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
-import ServiceCard, { ServiceProps } from "@/components/Cards/ServicesCard";
 import GalleryCard from "@/components/Cards/GalleryCard";
 import BlogCard, { BlogCardProps } from "@/components/Cards/BlogCard";
 import Footer from "@/components/Navigation/Footer";
+import DepartmentCard, {
+  DepartmentCardProps,
+} from "@/components/Cards/DepartmentCard";
 
 export default function Home() {
   return (
@@ -80,8 +82,8 @@ export default function Home() {
           subHeading={HeaderHeading[1].subHeading}
         />
         <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
-          {CausesArr.map((d: ServiceProps, index: number) => {
-            return <ServiceCard key={index} cause={d.cause} />;
+          {CausesArr.map((d: DepartmentCardProps, index: number) => {
+            return <DepartmentCard key={index} cause={d.cause} />;
           })}
         </div>
       </section>
