@@ -1,4 +1,4 @@
-import { logo, smallArrowIcon } from "@/Content/assets";
+import { logo, smallArrowIcon } from "@/content/assets";
 import { Button, Divider, Image } from "@nextui-org/react";
 import { FaFacebook } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";

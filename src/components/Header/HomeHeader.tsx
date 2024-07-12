@@ -1,4 +1,4 @@
-import { smallArrowDarkIcon } from "@/Content/assets";
+import { smallArrowDarkIcon } from "@/content/assets";
 import { Button, Image } from "@nextui-org/react";
 
 export interface HomeHeaderProps {
