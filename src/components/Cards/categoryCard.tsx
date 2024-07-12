@@ -32,7 +32,7 @@ function CategoryCard(props: ICategoryCardProps) {
         <CardBody className={`flex flex-col justify-between p-6`}>
           <div>
             <h3 className="font-[600] text-3xl">{props.heading}</h3>
-            <p className="font-[400] text-xl">{props.subHeading}</p>
+            <p className="font-[400] text-2xl">{props.subHeading}</p>
           </div>
           <Image
             className="absolute bottom-0 right-2 h-[80%] w-auto"
