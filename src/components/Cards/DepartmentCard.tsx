@@ -1,12 +1,11 @@
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Link from "next/link";
 
-export interface ServiceProps {
-  cause?: string
+export interface DepartmentCardProps {
+  cause?: string;
 }
 
-
-export default function ServiceCard({ cause }: ServiceProps) {
+export default function DepartmentCard({ cause }: DepartmentCardProps) {
   return (
     <Card className="shadow-xl h-[30vh] rounded-xl">
       <CardBody className="flex flex-col gap-4 justify-center items-center">
@@ -19,5 +18,5 @@ export default function ServiceCard({ cause }: ServiceProps) {
         </Link>
       </CardFooter>
     </Card>
-  )
+  );
 }

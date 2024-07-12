@@ -1,14 +1,31 @@
-export const home = "/";
-export const hospital = "/hospital/";
-export const doctor = "/doctor/";
-export const department = "/department/";
-export const service = "/service/";
-export const contactUs = "/contact-us/";
-export const aboutUs = "/about-us/";
-export const login = "/signin/";
-export const register = "/signup/";
-export const forgotPassword = "/forgot-password/";
-export const resetPassword = "/reset-password/";
-export const otp = "/otp/";
-export const profile = "/profile/";
-export const profileEdit = "/profile/edit/";
+const home = "/";
+const hospital = "/hospital/";
+const doctor = "/doctor/";
+const department = "/department/";
+const service = "/service/";
+const contactUs = "/contact-us/";
+const aboutUs = "/about-us/";
+const login = "/signin/";
+const register = "/signup/";
+const forgotPassword = "/forgot-password/";
+const resetPassword = "/reset-password/";
+const otp = "/otp/";
+const profile = "/profile/";
+const profileEdit = "/profile/edit/";
+
+export const navigationRoutes = {
+  home,
+  hospital,
+  doctor,
+  department,
+  service,
+  contactUs,
+  aboutUs,
+  login,
+  register,
+  forgotPassword,
+  resetPassword,
+  otp,
+  profile,
+  profileEdit,
+};

@@ -69,6 +69,9 @@ const config: Config = {
               DEFAULT: "#90A4AE",
               foreground: "#000000",
             },
+            bodyText: {
+              DEFAULT: "#3C4959",
+            },
             focus: "#F182F6",
           },
           linearGradientColors: {
