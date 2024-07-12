@@ -30,3 +30,9 @@ export const blogs1: string = "/assets/images/blogs/blogs1.jpeg";
 //arrow icons
 export const smallArrowIcon: string = "/assets/icons/arrows/small.png";
 export const smallArrowDarkIcon: string = "/assets/icons/arrows/small-dark.png";
+
+//profile icons
+export const personIcon: string = "/assets/icons/profile/person.png";
+export const emailIcon: string = "/assets/icons/profile/email.png";
+export const phoneIcon: string = "/assets/icons/profile/phone.png";
+export const editIcon: string = "/assets/icons/profile/edit.png";
