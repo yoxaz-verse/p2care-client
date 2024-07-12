@@ -4,19 +4,19 @@ export const pointsRight = [
   {
     point: "Quick Points To Show",
     icon: bandaidIcon,
-    background: "accent",
+    background: "white",
   },
 
   {
     point: "Quick Points To Show",
     icon: bandaidIcon,
-    background: "accent",
+    background: "white",
   },
 
   {
     point: "Quick Points To Show",
     icon: bandaidIcon,
-    background: "accent",
+    background: "white",
   },
 ];
 

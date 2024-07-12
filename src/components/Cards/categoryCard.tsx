@@ -5,7 +5,6 @@ import BlackArrowButton from "../Buttons/blackArrowButton";
 import { Card, CardBody, image } from "@nextui-org/react";
 import { motion } from "framer-motion";
 
-
 export interface ICategoryCardProps {
   heading?: string;
   subHeading?: string;
@@ -23,9 +22,10 @@ function CategoryCard(props: ICategoryCardProps) {
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
     >
-      <Card isPressable
-        className={`relative w-full ${isHovered ? `${props.background}` : `${props.hover}`
-          } rounded-2xl h-[40vh]  
+      <Card
+        className={`relative w-full ${
+          isHovered ? `${props.background}` : `${props.hover}`
+        } rounded-2xl h-[400px]  
         
         `}
       >
@@ -44,7 +44,7 @@ function CategoryCard(props: ICategoryCardProps) {
           <BlackArrowButton />
         </CardBody>
       </Card>
-    </motion.div >
+    </motion.div>
   );
 }
 
