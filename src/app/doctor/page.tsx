@@ -9,8 +9,8 @@ export default function DoctorPage() {
       <div className="flex flex-col">
         <div className="flex flex-col md:flex-row justify-between  w-full p-[2rem]">
           <h1 className="text-2xl md:text-4xl font-bold text-[#3F8EFC]">Doctors Near You</h1>
-          <div className="flex flex-row w-full  gap-4">
-            <Input className="border rounded-xl border-gray-400" placeholder="Search By Doctor Name, Speciality etc" />
+          <div className="flex flex-row w-full md:w-2/3  gap-4">
+            <Input className="rounded-xl border-gray-400" placeholder="Search By Doctor Name, Speciality etc" />
             <Button className="bg-blue-500 rounded-full" isIconOnly>
               <FaSearch className="fill-white" />
             </Button>
