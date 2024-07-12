@@ -11,7 +11,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { logo } from "@/Content/assets";
+import { logo } from "@/content/assets";
 import Image from "next/image";
 
 export default function Header() {
@@ -81,8 +81,8 @@ export default function Header() {
                 index === 2
                   ? "primary"
                   : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
+                  ? "danger"
+                  : "foreground"
               }
               className="w-full"
               href="#"

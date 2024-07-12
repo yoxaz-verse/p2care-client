@@ -9,7 +9,7 @@ function DoctorDetails() {
       <Spacer y={2} />
       <ColourCard height="h-[200px]" />
       <Spacer y={2} />
-      <div className="grid grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
         <ColourCard colour="bg-green-200" height="h-[200px]" />
         <ColourCard colour="bg-green-200" height="h-[200px]" />
       </div>

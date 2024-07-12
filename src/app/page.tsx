@@ -5,7 +5,7 @@ import {
   HeaderHeading,
   CausesArr,
   BlogContent,
-} from "@/Content/Home/home-page-content";
+} from "@/content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
@@ -18,13 +18,13 @@ import {
   apollo2,
   doctors,
   department,
-} from "@/Content/assets";
+} from "@/content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
 import ServiceCard, { ServiceProps } from "@/components/Cards/ServicesCard";
 import GalleryCard from "@/components/Cards/GalleryCard";
 import BlogCard, { BlogCardProps } from "@/components/Cards/BlogCard";
-import Footer from "@/components/Footer";
+import Footer from "@/components/Navigation/Footer";
 
 export default function Home() {
   return (

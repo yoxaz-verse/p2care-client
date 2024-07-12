@@ -1,0 +1,14 @@
+export const home = "/";
+export const hospital = "/hospital/";
+export const doctor = "/doctor/";
+export const department = "/department/";
+export const service = "/service/";
+export const contactUs = "/contact-us/";
+export const aboutUs = "/about-us/";
+export const login = "/signin/";
+export const register = "/signup/";
+export const forgotPassword = "/forgot-password/";
+export const resetPassword = "/reset-password/";
+export const otp = "/otp/";
+export const profile = "/profile/";
+export const profileEdit = "/profile/edit/";
