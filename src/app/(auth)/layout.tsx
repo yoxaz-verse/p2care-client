@@ -7,7 +7,7 @@ interface AuthLayoutProps {
   src: string;
 }
 
-const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className='flex flex-col md:flex-row justify-center items-center'>
       {children}
@@ -15,4 +15,4 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
   );
 }
 
-export default AuthLayout;
+

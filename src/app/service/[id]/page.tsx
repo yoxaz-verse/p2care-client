@@ -1,8 +1,8 @@
 import ColourCard from "@/components/Development/colourCard";
 import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
-import { serviceXRay } from "@/content/assets";
-import { lorem150 } from "@/content/dummyText";
+import { serviceXRay } from "@/Content/assets";
+import { lorem150 } from "@/Content/dummyText";
 import { Spacer } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";

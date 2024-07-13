@@ -1,21 +1,48 @@
+"use client";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
-import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export interface DepartmentCardProps {
-  cause?: string;
+  title: string;
+  redirect: string;
+  icon: string;
 }
 
-export default function DepartmentCard({ cause }: DepartmentCardProps) {
+export default function DepartmentCard(props: DepartmentCardProps) {
+  const router = useRouter();
+  const handleNavigation = () => {
+    router.push(props.redirect);
+  };
   return (
-    <Card className="shadow-xl h-[30vh] rounded-xl">
-      <CardBody className="flex flex-col gap-4 justify-center items-center">
-        <div className="rounded-full bg-[#E8FCFF] w-[10rem] h-[10rem]" />
+    <Card
+      onPress={() => {
+        handleNavigation();
+      }}
+      isPressable
+      className="h-[300px] w-[220px] rounded-[20px] hover:bg-secondary-200 hover:cursor-pointer"
+    >
+      <CardBody className="flex justify-center items-center">
+        <div className=" w-[110px] h-[110px] lg:w-[150px] lg:h-[150px] bg-secondary-200 flex justify-center items-center rounded-full">
+          <Image
+            src={props.icon}
+            alt={props.title}
+            className="rounded-full w-[50px] h-[50px] lg:w-[75px] lg:h-[75px]"
+            width={1000}
+            height={1000}
+          />
+        </div>
       </CardBody>
       <CardFooter className="flex flex-col gap-2">
-        <h1 className="font-bold text-center">{cause}</h1>
-        <Link href="/" className="text-primary font-bold uppercase">
-          <h1>Consult Now</h1>
-        </Link>
+        <h4
+          className={`font-[600] text-[${props.title && props.title.length > 27 ? 11 : 15
+            }px] lg:text-[${props.title && props.title.length > 27 ? 16 : 20}px] text-center`}
+        >
+          {props.title}
+        </h4>
+        <p className="text-primary font-[600] text-[10px] lg:text-[15px] uppercase">
+          Consult Now
+        </p>
       </CardFooter>
     </Card>
   );
