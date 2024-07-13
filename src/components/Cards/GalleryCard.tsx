@@ -1,4 +1,4 @@
-import { apollo, apollo2, smallArrowIcon } from "@/Content/assets";
+import { apollo, apollo2, smallArrowIcon } from "@/content/assets";
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 import "../../app/globals.css";
 
@@ -35,7 +35,7 @@ export default function GalleryCard({
         <CardFooter className="absolute bg-white/30 bottom-0 z-10 items-start">
           <Button className="flex w-1/2 p-[1rem] rounded-2xl bg-white text-black">
             <h1 className="text-xl font-bold">View Hospital</h1>
-            <Image src={smallArrowIcon} className="w-full" />
+            <Image src={smallArrowIcon} className="w-full" alt="smallArrow" />
           </Button>
         </CardFooter>
       </Card>

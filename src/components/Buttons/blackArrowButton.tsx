@@ -1,4 +1,4 @@
-import { smallArrowDarkIcon } from "@/Content/assets";
+import { smallArrowDarkIcon } from "@/content/assets";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
@@ -10,8 +10,9 @@ interface IBlackArrowButtonProps {
 function BlackArrowButton(props: IBlackArrowButtonProps) {
   return (
     <Button
-      className={`rounded-full bg-dark min-w-max max-w-${props.isFullWidth ? "full" : "max"
-        } p-4 `}
+      className={`rounded-full bg-dark min-w-max max-w-${
+        props.isFullWidth ? "full" : "max"
+      } p-4 `}
     >
       <Image
         src={smallArrowDarkIcon}

@@ -1,4 +1,4 @@
-import { apolloDoc } from "@/Content/assets";
+import { apolloDoc } from "@/content/assets";
 import { Button, Card } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
@@ -26,12 +26,16 @@ function DoctorDetailCard() {
         <h1 className="font-bold text-[12px]">Marine Drive, Mumbai (MH)</h1>
       </div>
       <div className="flex flex-row items-center gap-2 justify-self-end">
-        <h1 className="text-red-400 text-md md:text-lg line-through font-semibold">Rs 649</h1>
+        <h1 className="text-red-400 text-md md:text-lg line-through font-semibold">
+          Rs 649
+        </h1>
         <h1 className="text-xl md:text-2xl font-bold">Rs 649</h1>
       </div>
       <div className="flex flex-row items-center gap-4 justify-self-end">
         <h1 className="text-[10px]">Know More</h1>
-        <Button color="primary" radius="full">Consult Now</Button>
+        <Button color="primary" radius="full">
+          Consult Now
+        </Button>
       </div>
     </Card>
   );

@@ -1,6 +1,6 @@
 import ProfileCard from "@/components/Cards/ProfileCard";
 import ColourCard from "@/components/Development/colourCard";
-import { editIcon, emailIcon, personIcon, phoneIcon } from "@/Content/assets";
+import { editIcon, emailIcon, personIcon, phoneIcon } from "@/content/assets";
 import { Avatar } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";

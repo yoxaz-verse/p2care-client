@@ -1,4 +1,4 @@
-import { bandaidIcon } from "@/Content/assets";
+import { bandaidIcon } from "@/content/assets";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 

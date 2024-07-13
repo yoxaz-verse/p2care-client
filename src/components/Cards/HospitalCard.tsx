@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardBody, Spacer } from "@nextui-org/react";
-import { apolloLogo, apolloDoc } from "@/Content/assets";
+import { apolloLogo, apolloDoc } from "@/content/assets";
 import { HiLocationMarker } from "react-icons/hi";
 import { CiClock2 } from "react-icons/ci";
 

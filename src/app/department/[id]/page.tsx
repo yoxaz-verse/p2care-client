@@ -4,8 +4,8 @@ import HospitalCard from "@/components/Cards/HospitalCard";
 import ColourCard from "@/components/Development/colourCard";
 import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
-import { departmentFever, pediatrics } from "@/Content/assets";
-import { lorem100 } from "@/Content/dummyText";
+import { departmentFever, pediatrics } from "@/content/assets";
+import { lorem100 } from "@/content/dummyText";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import Image from "next/image";
@@ -37,9 +37,7 @@ function Details() {
       <Spacer y={3} />
       <div className="grid grid-cols-1  gap-5">
         {Array.from({ length: 3 }).map((_, index) => (
-          <HospitalCard
-            key={index}
-          />
+          <HospitalCard key={index} />
         ))}
       </div>
       <div className="flex flex-col">
@@ -58,7 +56,7 @@ function Details() {
           ))}
         </div>
       </div>
-    </section >
+    </section>
   );
 }
 

@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { doctor, doctors, maleDoctorCard } from "@/Content/assets";
+import { doctor, doctors, maleDoctorCard } from "@/content/assets";
 import { Button, Card, CardBody, Chip, Image } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 

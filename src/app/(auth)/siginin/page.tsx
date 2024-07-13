@@ -1,4 +1,4 @@
-import { logo, signin } from "@/Content/assets";
+import { logo, signin } from "@/content/assets";
 import AuthLayout from "../layout";
 import { Button, Input } from "@nextui-org/react";
 
@@ -9,7 +9,6 @@ async function signup() {
 export default function SignIn() {
   return (
     <>
-
       <>
         <img src={logo} className="w-1/4" />
         <form action={signup} className="flex w-full h-full flex-col gap-4">
