@@ -1,6 +1,6 @@
 import { ICategoryCardProps } from "@/components/Cards/categoryCard"
 import { HomeHeaderProps } from "@/components/Header/HomeHeader"
-import { ServiceProps } from "@/components/Cards/ServicesCard"
+import { ServiceCardProps } from "@/components/Cards/ServiceCard"
 import { blogs1, femaleDoctor01, femaleDoctor02, mainDoctos, mainDoctos1, mainDoctos2, mainDoctos3, maleDoctor01, maleFemaleDoctor01 } from "../assets"
 import { DoctorCardProps } from "@/components/Cards/DoctorCard"
 import { BlogCardProps } from "@/components/Cards/BlogCard"
@@ -64,7 +64,7 @@ export const Doctors: DoctorCardProps[] = [
   }
 ]
 
-export const CausesArr: ServiceProps[] = [
+export const CausesArr: any[] = [
   {
     cause: "Period doubts or Pregnancy"
   },

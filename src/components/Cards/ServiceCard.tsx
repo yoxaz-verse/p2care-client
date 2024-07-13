@@ -3,7 +3,7 @@ import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import React from "react";
-interface ServiceCardProps {
+export interface ServiceCardProps {
   title: string;
   image: string;
   redirect: string;
