@@ -28,6 +28,7 @@ export const apollo2: string = "/assets/images/hospitals/hospital2.jpeg";
 export const apolloLogo: string = "/assets/images/hospitals/apollologo.png";
 //department icons
 export const department: string = "/assets/images/Department/department.png";
+export const pediatrics: string = "/assets/images/Department/pediatrics.png";
 //blogs icons
 export const blogs1: string = "/assets/images/blogs/blogs1.jpeg";
 
@@ -45,3 +46,5 @@ export const editIcon: string = "/assets/icons/profile/edit.png";
 export const serviceXRay: string = "/assets/development/service/x-ray.png";
 export const serviceDigitalXRay: string =
   "/assets/development/service/digital-x-ray.png";
+export const departmentFever: string =
+  "/assets/development/department/fever.png";

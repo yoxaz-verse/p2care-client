@@ -27,6 +27,7 @@ import Footer from "@/components/Navigation/Footer";
 import DepartmentCard, {
   DepartmentCardProps,
 } from "@/components/Cards/DepartmentCard";
+import { navigationRoutes } from "@/core/navigationRoutes";
 
 export default function Home() {
   return (
@@ -83,7 +84,14 @@ export default function Home() {
         />
         <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
           {CausesArr.map((d: DepartmentCardProps, index: number) => {
-            return <DepartmentCard key={index} cause={d.cause} />;
+            return (
+              <DepartmentCard
+                key={index}
+                title={d.title}
+                icon="test"
+                redirect={navigationRoutes.department + "department-id"}
+              />
+            );
           })}
         </div>
       </section>
