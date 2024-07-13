@@ -1,3 +1,4 @@
+import DoctorDetailCard from "@/components/Cards/DoctorDetailCard";
 import ColourCard from "@/components/Development/colourCard";
 import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
@@ -25,7 +26,7 @@ function Details() {
       <Spacer y={3} />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {Array.from({ length: 6 }).map((_, index) => (
-          <ColourCard key={index} height="h-[300px]"></ColourCard>
+          <DoctorDetailCard key={index}></DoctorDetailCard>
         ))}
       </div>
       <Spacer y={3} />

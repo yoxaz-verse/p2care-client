@@ -15,7 +15,6 @@ export interface ICategoryCardProps {
 }
 
 function CategoryCard(props: ICategoryCardProps) {
-  // get the items from the props also give default values
   const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
     <motion.div

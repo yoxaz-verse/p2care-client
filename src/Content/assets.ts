@@ -26,6 +26,7 @@ export const bandaidIcon: string = "/assets/icons/hospital/bandaid.png";
 export const apollo: string = "/assets/images/hospitals/hospital1.jpeg";
 export const apollo2: string = "/assets/images/hospitals/hospital2.jpeg";
 export const apolloLogo: string = "/assets/images/hospitals/apollologo.png";
+export const hospitalLogo: string = "/assets/images/hospitals/apollologo.png";
 //department icons
 export const department: string = "/assets/images/Department/department.png";
 export const pediatrics: string = "/assets/images/Department/pediatrics.png";
