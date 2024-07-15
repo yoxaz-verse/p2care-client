@@ -29,8 +29,12 @@ export default function DoctorCard({ name, type, image }: DoctorCardProps) {
           }}
           className="absolute z-10 bottom-1 flex flex-col text-white m-2   items-start"
         >
-          <p className="font-bold">{name}</p>
-          <h4 className="font-medium text-large">{type}</h4>
+          <p className="font-[700] text-[11px] lg:font-[700] lg:[24px]">
+            {name}
+          </p>
+          <h4 className="font-[700] text-[11px] lg:font-[400] lg:text-[16px]">
+            {type}
+          </h4>
         </CardFooter>
       </Card>
     </>
