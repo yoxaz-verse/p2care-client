@@ -88,9 +88,9 @@ function Banner() {
           transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
             }`}
         />
-        <div className={`flex ${isMobile() || isTablet() ? "gap-2" : ""}`}>
+        <div className={`flex gap-2`}>
           <motion.div
-            className="flex flex-col gap-1 lg:gap-5"
+            className="flex flex-col gap-2 lg:gap-5"
             initial={{
               opacity: 0,
             }}
@@ -151,7 +151,7 @@ function Banner() {
             ))}
           </motion.div>
           <motion.div
-            className={`flex flex-col  gap-1 lg:gap-5  ${isMobile() || isTablet() ? "me-3" : ""
+            className={`flex flex-col  gap-2 lg:gap-5  mr-2
               }`}
             initial={{
               opacity: 0,

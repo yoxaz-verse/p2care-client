@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from "framer-motion";
 function CtaButton() {
   return (
     <motion.div className="flex gap-3 justify-start items-center w-full">
-      <Button className="rounded-full bg-secondary font-bold px-12">Enquire Now</Button>
+      <Button className="rounded-full bg-secondary font-bold px-2 md:px-12">Enquire Now</Button>
       <AnimatePresence>
         <motion.div
           key="arrow"
