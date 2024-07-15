@@ -36,11 +36,11 @@ export const DoctorListCard: React.FC<any> = () => {
               </div>
               <div className="flex  items-center flex-row gap-2 md:gap-4">
                 <FaMapMarkerAlt className="fill-gray-500" />
-                <h3 className="text-[10px] md:text-md text-gray font-extrabold">
+                <h3 className="text-sm md:text-md text-gray font-extrabold">
                   Marine Drive, Mumbai (MH)
                 </h3>
               </div>
-              <p className="text-[10px] md:text-md p-0 md:p-2 bg-[#8ED2CF] text-white text-center font-bold rounded-full w-2/3">
+              <p className="text-sm md:text-md p-0 md:p-2 bg-[#8ED2CF] text-white text-center font-bold rounded-full w-2/3">
                 15 years experinced
               </p>
             </div>

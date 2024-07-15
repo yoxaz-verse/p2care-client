@@ -6,7 +6,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 function DoctorDetailCard() {
   return (
-    <Card className="grid w-full h-[300px] grid-cols-auto justify-between p-5 w-full hover:cursor-pointer hover:bg-primary-100">
+    <Card className="grid w-full h-[200px] md:h-[300px] grid-cols-auto justify-between p-5 w-full hover:cursor-pointer hover:bg-primary-100">
       <div className="flex gap-5">
         <Image
           src={apolloDoc}
@@ -21,18 +21,18 @@ function DoctorDetailCard() {
           <p className="text-sm md:text-md">17 Years Exp</p>
         </div>
       </div>
-      <div className="flex flex-row gap-2 items-center text-gray-500">
-        <FaMapMarkerAlt size={20} />
-        <h1 className="font-bold text-sm md:text-md">Marine Drive, Mumbai (MH)</h1>
+      <div className="flex flex-row gap-2 text-sm md:text-md  items-center text-gray-500">
+        <FaMapMarkerAlt />
+        <h1 className="font-bold">Marine Drive, Mumbai (MH)</h1>
       </div>
       <div className="flex flex-row items-center gap-2 justify-self-end">
-        <h1 className="text-red-400 text-md line-through font-semibold">
+        <h1 className="text-red-400 text-md md:text-lg line-through font-semibold">
           Rs 649
         </h1>
-        <h1 className="text-md md:text-md font-bold">Rs 649</h1>
+        <h1 className="text-md md:text-lg font-bold">Rs 649</h1>
       </div>
       <div className="flex flex-row items-center gap-2 md:gap-4 justify-self-end">
-        <h1 className="text-sm md:text-sm">Know More</h1>
+        <h1 className="text-sm">Know More</h1>
         <button color="primary" className="text-sm  p-2 rounded-full text-white bg-primary md:text-md">
           Consult Now
         </button>

@@ -95,8 +95,8 @@ function Details() {
     <HospitalCard2 />
     <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-xl w-full">
       <div className="flex flex-col p-[1rem] w-full">
-        <h3 className="text-lg font-semibold">About Apollo Spectra Hospital</h3>
-        <p className="text-[20px]">
+        <h3 className="text-md md:text-lg font-semibold">About Apollo Spectra Hospital</h3>
+        <p className="text-md md:text-lg">
           Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidata
           Sorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
@@ -107,19 +107,19 @@ function Details() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 p-[1rem]">
         <div className="flex flex-col items-start">
-          <h3 className="text-[24px] font-semibold">Address</h3>
+          <h3 className="text-md md:text-lg font-semibold">Address</h3>
           <p className="flex flex-wrap">
             Bombay Hospital, 12, Vitthaldas Thackersey Marg, near Liberty cinema, New Marine Lines, Marine Lines, Mumbai, Maharashtra 400020
             <span className="underline text-primary">Get Directions</span>
           </p>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-[24px] font-semibold">Timings</h3>
+          <h3 className="text-md md:text-lg  font-semibold">Timings</h3>
           <h4>09:00 AM</h4>
           <h4>Photos</h4>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-[24px] font-semibold">Modes of Payment</h3>
+          <h3 className="text-md md:text-lg font-semibold">Modes of Payment</h3>
           <h3 className="flex flex-row">
             Credit Card | Cash | Online Payment | Debit Card
           </h3>
@@ -145,7 +145,7 @@ function Details() {
         <DoctorListCard key={index} />
       ))}
     </div>
-    <div className="flex flex-col shadow-xl p-[1rem]">
+    <div className="flex flex-col shadow-xl gap-2 p-[1rem]">
       <h3 className="text-[12px] md:text-[24px]  font-bold">Common Questions and Answers</h3>
       {questions.map((q: any, index: any) => {
         return (

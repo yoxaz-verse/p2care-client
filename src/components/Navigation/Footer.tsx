@@ -9,10 +9,10 @@ export default function Footer() {
     <>
       <div className="flex flex-col  p-[2rem] w-full">
         <div className="flex flex-row justify-around items-center rounded-2xl h-[20vh] bg-primary">
-          <h3 className="text-[18px] md:text-4xl xl:text-5xl font-bold text-white">
+          <h3 className="text-md md:text-lg font-bold text-white">
             Have any enquiry
           </h3>
-          <Button className="bg-white text-black p-[1rem] flex rounded-3xl">
+          <Button className="bg-white text-black p-[.5rem] md:p-[1rem] flex rounded-3xl">
             <h3 className="font-bold">Get Started</h3>
             <Image src={smallArrowIcon} />
           </Button>

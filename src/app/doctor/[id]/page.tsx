@@ -9,7 +9,7 @@ function DoctorDetails() {
     <section>
       <DoctorListCard />
       <Spacer y={2} />
-      <div className="h-[200px] gap-2 w-full md:w-1/2 flex flex-col">
+      <div className="h-[100px] md:h-[200px] gap-2 w-full md:w-1/2 flex flex-col">
         <h3 className="font-bold text-md md:text-lg text-start">
           Information
         </h3>
@@ -23,7 +23,7 @@ function DoctorDetails() {
       </div>
       <Spacer y={2} />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-        <div className="h-[200px]">
+        <div className="h-[100px] md:h-[200px]">
           <h3 className="font-bold text-md md:text-lg">Contact Details</h3>
           <div className="flex flex-col text-md text-gray gap-2">
             <h3>Phone: +91 343 434 34 34</h3>
@@ -32,7 +32,7 @@ function DoctorDetails() {
             </h3>
           </div>
         </div>
-        <div className="h-[200px]">
+        <div className="h-[100px] md:h-[200px]">
           <h3 className="font-bold text-md md:text-lg">Visiting Time</h3>
           <div className="flex flex-col text-gray text-md gap-2">
             <h3>9:00 AM to 1:00PM</h3>

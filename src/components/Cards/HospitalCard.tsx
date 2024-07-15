@@ -69,7 +69,7 @@ const HospitalCard = () => {
         </div>
         <div className="flex flex-row justify-between w-full">
           <div className="flex gap-2 md:gap-4 text-sm md:text-md font-bold  items-center flex-row">
-            <CiClock2 size={30} />
+            <CiClock2 />
             <h3>MON-SUN 9:00AM-9:00PM</h3>
           </div>
           <div className="flex flex-row items-center gap-2">

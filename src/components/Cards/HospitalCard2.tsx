@@ -45,7 +45,7 @@ function HospitalCard2() {
           <div className="justify-self-start md:justify-self-end">
             <Button
               radius="full"
-              className="flex flex-row gap-2 text-[16px] md:text-[24px] px-[.5rem] md:px-[1rem]"
+              className="flex flex-row gap-2 text-md px-[.5rem] md:px-[1rem]"
               color="primary"
             >
               <IoMdCall />
