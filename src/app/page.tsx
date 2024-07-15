@@ -12,7 +12,6 @@ import CategoryCard, {
 } from "@/components/Cards/categoryCard";
 import { Spacer, Image } from "@nextui-org/react";
 import {
-  smallArrowIcon,
   bannerSales,
   apollo,
   apollo2,
@@ -23,18 +22,18 @@ import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
 import GalleryCard from "@/components/Cards/GalleryCard";
 import BlogCard, { BlogCardProps } from "@/components/Cards/BlogCard";
-import Footer from "@/components/Navigation/Footer";
 import DepartmentCard, {
   DepartmentCardProps,
 } from "@/components/Cards/DepartmentCard";
 import { navigationRoutes } from "@/core/navigationRoutes";
+import { isMobile, isTablet } from "@/utils/screenSize";
 
 export default function Home() {
   return (
     <main className="">
       <Banner />
-      <Spacer y={5} />
-      <section className="grid grid-rows-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
+      <Spacer y={10} />
+      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
         {content.map((c: ICategoryCardProps, index: number) => {
           return (
             <CategoryCard
@@ -48,40 +47,47 @@ export default function Home() {
           );
         })}
       </section>
-      <section className="flex flex-col gap-4 py-[2rem] justify-around w-full">
+      <Spacer y={5} />
+
+      <section className="flex flex-col gap-4  justify-around w-full">
         <HomeHeader
           header={HeaderHeading[0].header}
           subHeading={HeaderHeading[0].subHeading}
         />
-        <div className="grid w-full gap-4 grid-cols-1 md:grid-cols-3 xl:grid-cols-4">
-          {Doctors.map((d: DoctorCardProps, index: number) => {
-            return (
-              <DoctorCard
-                key={index}
-                name={d.name}
-                image={d.image}
-                type={d.type}
-              />
-            );
-          })}
+        <Spacer y={5} />
+        <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {isMobile() || isTablet()
+            ? Doctors.slice(0, 2).map((d: DoctorCardProps, index: number) => {
+                return (
+                  <DoctorCard
+                    key={index}
+                    name={d.name}
+                    image={d.image}
+                    type={d.type}
+                  />
+                );
+              })
+            : Doctors.map((d: DoctorCardProps, index: number) => {
+                return (
+                  <DoctorCard
+                    key={index}
+                    name={d.name}
+                    image={d.image}
+                    type={d.type}
+                  />
+                );
+              })}
         </div>
-        <div className="flex flex-row w-full justify-center gap-4">
-          <Image
-            src={smallArrowIcon}
-            width={20}
-            height={20}
-            alt="arrow"
-            className="rotate-180"
-          />
-          <Image src={smallArrowIcon} width={20} height={20} alt="arrow" />
-        </div>
+        <Spacer y={5} />
         <Image src={bannerSales} className="w-screen" />
       </section>
-      <section className="flex flex-col gap-4 py-[2rem] justify-around w-full">
+      <Spacer y={5} />
+      <section className="flex flex-col gap-4  justify-around w-full">
         <HomeHeader
           header={HeaderHeading[1].header}
           subHeading={HeaderHeading[1].subHeading}
         />
+        <Spacer y={5} />
         <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
           {CausesArr.map((d: DepartmentCardProps, index: number) => {
             return (
@@ -95,11 +101,13 @@ export default function Home() {
           })}
         </div>
       </section>
-      <section className="flex flex-col gap-4 py-[2rem] justify-around w-full">
+      <Spacer y={5} />
+      <section className="flex flex-col gap-4  justify-around w-full">
         <HomeHeader
           header={HeaderHeading[2].header}
           subHeading={HeaderHeading[2].subHeading}
         />
+        <Spacer y={5} />
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row gap-4">
             <GalleryCard
@@ -148,12 +156,18 @@ export default function Home() {
             />
           </div>
         </div>
-        <Image src={bannerSales} className="w-screen" />
       </section>
-      <section className="flex flex-col gap-4 py-[2rem] justify-around w-full">
-        <h1 className="font-bold text-2xl">Departments</h1>
+      <Spacer y={10} />
+
+      <Image src={bannerSales} className="w-screen" />
+      <Spacer y={10} />
+
+      <section className="flex flex-col gap-4  justify-around w-full">
+        <HomeHeader header={HeaderHeading[4].header} />
+        <Spacer y={5} />
+
         <div className="flex flex-col  xl:flex-row gap-4 justify-around">
-          <Image src={doctors} className="h-full rounded-xl" />
+          <Image src={doctors} className="h-full rounded-xl object-cover" />
           <div className="w-full xl:w-1/2 grid grid-rows-6 gap-[1rem] grid-cols-4 md:grid-cols-4">
             {Array.from({ length: 22 }, (_, index) => (
               <div
@@ -167,9 +181,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Spacer y={10} />
       <section className="flex flex-col">
         <HomeHeader header={HeaderHeading[3].header} />
-        <div className="flex flex-col md:flex-row p-[1rem] gap-4">
+        <Spacer y={10} />
+        <div className="grid grid-cols-4 gap-5">
           {BlogContent.map((b: BlogCardProps, index: number) => {
             return (
               <BlogCard
@@ -182,7 +198,6 @@ export default function Home() {
           })}
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

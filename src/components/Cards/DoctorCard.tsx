@@ -1,27 +1,38 @@
-import { Card, CardBody, CardHeader, CardFooter, Image } from "@nextui-org/react";
+import {
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Image,
+} from "@nextui-org/react";
 
 export interface DoctorCardProps {
-  name: string,
-  type: string,
-  image: string
+  name: string;
+  type: string;
+  image: string;
 }
-
 
 export default function DoctorCard({ name, type, image }: DoctorCardProps) {
   return (
     <>
-      <Card className="w-full h-[40vh]">
+      <Card className="w-full h-[170px] lg:h-[400px]">
         <Image
           removeWrapper
           alt="Card background"
           className="z-0 w-full h-full object-cover"
           src={image}
         />
-        <CardFooter className="absolute z-10 bottom-1 flex flex-col text-white m-2 bg-[#25B4F84D]  items-start">
+        <CardFooter
+          style={{
+            background:
+              "linear-gradient(96.2deg, rgba(37, 180, 248, 0.9) 0%, rgba(37, 180, 248, 0) 100%)",
+          }}
+          className="absolute z-10 bottom-1 flex flex-col text-white m-2   items-start"
+        >
           <p className="font-bold">{name}</p>
           <h4 className="font-medium text-large">{type}</h4>
         </CardFooter>
       </Card>
     </>
-  )
+  );
 }
