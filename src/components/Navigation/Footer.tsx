@@ -1,4 +1,4 @@
-import { logo, smallArrowIcon } from "@/content/assets";
+import { logo, smallArrowIcon } from "@/Content/assets";
 import { Button, Divider, Image } from "@nextui-org/react";
 import { FaFacebook } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
@@ -9,11 +9,11 @@ export default function Footer() {
     <>
       <div className="flex flex-col  p-[2rem] w-full">
         <div className="flex flex-row justify-around items-center rounded-2xl h-[20vh] bg-primary">
-          <h3 className="text-3xl md:text-4xl xl:text-5xl font-bold text-white">
+          <h3 className="text-[18px] md:text-4xl xl:text-5xl font-bold text-white">
             Have any enquiry
           </h3>
           <Button className="bg-white text-black p-[1rem] flex rounded-3xl">
-            <h3>Get Started</h3>
+            <h3 className="font-bold">Get Started</h3>
             <Image src={smallArrowIcon} />
           </Button>
         </div>

@@ -1,8 +1,9 @@
 import React from "react";
 import { Card, CardBody, Spacer } from "@nextui-org/react";
-import { apolloLogo, apolloDoc } from "@/content/assets";
+import { apolloLogo, apolloDoc } from "@/Content/assets";
 import { HiLocationMarker } from "react-icons/hi";
 import { CiClock2 } from "react-icons/ci";
+import { useRouter } from "next/navigation";
 
 function DocHospital() {
   return (
@@ -15,9 +16,9 @@ function DocHospital() {
             alt="apolloDoc"
           />
           <div className="flex flex-col gap-2">
-            <h1 className="font-extrabold text-lg">Hamza Ali</h1>
-            <p className="text-[10px] md:text-lg">Internal Medicine</p>
-            <p className="text-[10px] md:text-lg">17 Years experience</p>
+            <h3 className="font-extrabold text-md">Hamza Ali</h3>
+            <p className="text-sm md:text-md">Internal Medicine</p>
+            <p className="text-sm md:text-md">17 Years experience</p>
           </div>
         </CardBody>
       </Card>
@@ -26,6 +27,7 @@ function DocHospital() {
 }
 
 const HospitalCard = () => {
+  const router = useRouter();
   return (
     <Card>
       <CardBody className="flex flex-col h-full">
@@ -36,28 +38,28 @@ const HospitalCard = () => {
             alt="image"
           />
           <div className="flex flex-col justify-between gap-4">
-            <h1 className="text-2xl md:text-4xl font-extrabold">
+            <h3 className="text-md md:text-lg font-extrabold">
               Apollo Spectra Hospital
-            </h1>
+            </h3>
             <div className="flex flex-row w-full gap-4">
-              <h1 className="text-md text-blue-500 font-bold md:text-xl">
+              <h3 className="text-sm  text-blue-500 font-bold md:text-md">
                 Multi-specialty Hospital
-              </h1>
-              <div className="flex flex-row font-bold items-center text-blue-500">
+              </h3>
+              <div className="flex flex-row font-bold text-sm md:text-md  items-center text-blue-500">
                 <HiLocationMarker className="fill-blue-500" />
-                <h1>Mumbai City</h1>
+                <h3>Mumbai City</h3>
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-between">
-              <h1 className="text-lg">
+              <h3 className="text-sm md:text-md">
                 <span className="font-extrabold">₹ 300 - ₹700</span>{" "}
                 Consultation Fees
-              </h1>
+              </h3>
             </div>
-            <div className="flex flex-row w-full flex-wrap font-bold text-lg gap-4">
-              <h1>10 Specialities</h1>
+            <div className="flex flex-row w-full text-sm md:text-md flex-wrap font-bold text-md gap-2 md:gap-4">
+              <h3>10 Specialities</h3>
               <div className="flex flex-row gap-2 items-center">
-                <div className="w-2 h-2 bg-black rounded-full" />
+                <div className="w-1 md:w-2 h-1 md:h-2 bg-black rounded-full" />
                 <p>10 Doctors</p>
               </div>
             </div>
@@ -65,13 +67,13 @@ const HospitalCard = () => {
           </div>
         </div>
         <div className="flex flex-row justify-between w-full">
-          <div className="flex gap-2 md:gap-4 text-[10px] md:text-xl font-bold  items-center flex-row">
-            <CiClock2 size={30} fontSize={20} />
+          <div className="flex gap-2 md:gap-4 text-sm md:text-md font-bold  items-center flex-row">
+            <CiClock2 size={30} />
             <h3>MON-SUN 9:00AM-9:00PM</h3>
           </div>
           <div className="flex flex-row items-center gap-2">
-            <h1>Know More</h1>
-            <button className="bg-blue-500 rounded-full px-[10px] py-[5px] text-white font-bold">
+            <h3 className="text-sm md:text-md cursor-pointer">Know More</h3>
+            <button onClick={() => router.push("/hospital/12")} className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold">
               Consult Now
             </button>
           </div>

@@ -5,7 +5,7 @@ import {
   HeaderHeading,
   CausesArr,
   BlogContent,
-} from "@/content/Home/home-page-content";
+} from "@/Content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
@@ -18,7 +18,7 @@ import {
   apollo2,
   doctors,
   department,
-} from "@/content/assets";
+} from "@/Content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
 import GalleryCard from "@/components/Cards/GalleryCard";
@@ -34,7 +34,7 @@ export default function Home() {
     <main className="">
       <Banner />
       <Spacer y={5} />
-      <section className="grid grid-rows-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
+      <section className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
         {content.map((c: ICategoryCardProps, index: number) => {
           return (
             <CategoryCard
@@ -53,7 +53,7 @@ export default function Home() {
           header={HeaderHeading[0].header}
           subHeading={HeaderHeading[0].subHeading}
         />
-        <div className="grid w-full gap-4 grid-cols-1 md:grid-cols-3 xl:grid-cols-4">
+        <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
           {Doctors.map((d: DoctorCardProps, index: number) => {
             return (
               <DoctorCard
@@ -82,7 +82,7 @@ export default function Home() {
           header={HeaderHeading[1].header}
           subHeading={HeaderHeading[1].subHeading}
         />
-        <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
+        <div className="grid w-full gap-2 md:gap-4 grid-rows-auto md:grid-rows-0 grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
           {CausesArr.map((d: DepartmentCardProps, index: number) => {
             return (
               <DepartmentCard
@@ -161,7 +161,7 @@ export default function Home() {
                 className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl"
               >
                 <Image src={department} />
-                <h1>Cardiology</h1>
+                <h1 className="text-[8px]">Cardiology</h1>
               </div>
             ))}
           </div>
@@ -182,7 +182,6 @@ export default function Home() {
           })}
         </div>
       </section>
-      <Footer />
     </main>
   );
 }

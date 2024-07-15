@@ -22,19 +22,18 @@ function CategoryCard(props: ICategoryCardProps) {
       onHoverEnd={() => setIsHovered(false)}
     >
       <Card
-        className={`relative w-full ${
-          isHovered ? `${props.background}` : `${props.hover}`
-        } rounded-2xl h-[400px]  
+        className={`relative w-full ${isHovered ? `${props.background}` : `${props.hover}`
+          } rounded-2xl h-[180px] md:h-[400px] w-[150px] md:w-[350px] 
         
         `}
       >
         <CardBody className={`flex flex-col justify-between p-6`}>
           <div>
-            <h3 className="font-[600] text-3xl">{props.heading}</h3>
-            <p className="font-[400] text-2xl">{props.subHeading}</p>
+            <h3 className="font-[600] font-bold text-[15px] md:text-[32px]">{props.heading}</h3>
+            <p className="font-[400] text-[8px] md:text-[16px]">{props.subHeading}</p>
           </div>
           <Image
-            className="absolute bottom-0 right-2 h-[80%] w-auto"
+            className="absolute w-[120px] md:w-[265px] h-[120px] md:h-[265px] bottom-0 right-2 h-[80%] w-auto"
             src={props.image}
             alt="doctors"
             width={1000}

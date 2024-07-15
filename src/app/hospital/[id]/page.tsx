@@ -3,6 +3,7 @@ import DoctorCard from "@/components/Cards/DoctorCard";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import HospitalCard2 from "@/components/Cards/HospitalCard2";
 import { Input, Button, Select, SelectItem, Chip, Divider } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaMapMarkerAlt, FaSearch } from "react-icons/fa";
 
@@ -62,6 +63,7 @@ const Tags = [
   { name: "Psychiatry", number: 10 }
 ];
 function Details() {
+  const router = useRouter();
   return <section className="flex flex-col gap-[2rem]">
     <div className="flex flex-col-reverse md:flex-row w-full gap-4 p-[.5rem] md:p-[1rem] justify-between">
       <Select
@@ -93,7 +95,7 @@ function Details() {
     <HospitalCard2 />
     <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-xl w-full">
       <div className="flex flex-col p-[1rem] w-full">
-        <h3 className="text-[32px]">About Apollo Spectra Hospital</h3>
+        <h3 className="text-lg font-semibold">About Apollo Spectra Hospital</h3>
         <p className="text-[20px]">
           Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidata
           Sorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -105,19 +107,19 @@ function Details() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 p-[1rem]">
         <div className="flex flex-col items-start">
-          <h3 className="text-[24px]">Address</h3>
+          <h3 className="text-[24px] font-semibold">Address</h3>
           <p className="flex flex-wrap">
             Bombay Hospital, 12, Vitthaldas Thackersey Marg, near Liberty cinema, New Marine Lines, Marine Lines, Mumbai, Maharashtra 400020
             <span className="underline text-primary">Get Directions</span>
           </p>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-[24px]">Timings</h3>
+          <h3 className="text-[24px] font-semibold">Timings</h3>
           <h4>09:00 AM</h4>
           <h4>Photos</h4>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-[24px]">Modes of Payment</h3>
+          <h3 className="text-[24px] font-semibold">Modes of Payment</h3>
           <h3 className="flex flex-row">
             Credit Card | Cash | Online Payment | Debit Card
           </h3>
@@ -127,17 +129,17 @@ function Details() {
       </div>
     </div>
     <div className="flex bg-white shadow-xl rounded-xl flex-col p-[1rem]">
-      <h3 className="text-[24px]">Departments in Apollo Spectra Hospitals</h3>
+      <h3 className="text-[24px] font-semibold p-[.2rem]">Departments in Apollo Spectra Hospitals</h3>
       <div className="flex flex-wrap gap-2 w-full">
         {Tags.map((t: any, index: any) => {
           return <Tag key={index} number={t.number} name={t.name} />
         })}
       </div>
     </div>
-    <div className="flex flex-col bg-white shadow-xl rounded-xl w-full">
+    <div className="flex flex-col gap-4 bg-white shadow-xl rounded-xl w-full">
       <div className="flex flex-row w-full py-[1rem] justify-between items-center">
-        <h3 className="text-[16px] md:text-[32px]">Doctors in Apollo Spectra Hospital</h3>
-        <h3 className="text-primary text-[20px] underline decoration-solid ">View All</h3>
+        <h3 className="text-[16px] md:text-lg font-semibold">Doctors in Apollo Spectra Hospital</h3>
+        <h3 onClick={() => router.push("/hospital/12/doctor")} className="text-primary cursor-pointer text-[20px] underline decoration-solid ">View All</h3>
       </div>
       {Array.from({ length: 12 }, (_, index) => (
         <DoctorListCard key={index} />
@@ -155,7 +157,7 @@ function Details() {
         );
       })}
     </div>
-  </section>;
+  </section >;
 }
 
 export default Details;

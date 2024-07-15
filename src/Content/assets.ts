@@ -20,13 +20,17 @@ export const mainDoctos2: string = "/assets/images/doctors/main-photo2.png";
 export const mainDoctos3: string = "/assets/images/doctors/main-photo3.png";
 export const doctors: string = "/assets/images/Department/Doctors.jpeg";
 export const apolloDoc: string = "/assets/images/doctors/apolloDoc.jpeg";
-
+export const hospitalDocAbout: string = "/assets/images/doctors/aboutdoc.jpeg";
 //hospital icons
 export const bandaidIcon: string = "/assets/icons/hospital/bandaid.png";
 export const apollo: string = "/assets/images/hospitals/hospital1.jpeg";
 export const apollo2: string = "/assets/images/hospitals/hospital2.jpeg";
 export const apolloLogo: string = "/assets/images/hospitals/apollologo.png";
 export const hospitalLogo: string = "/assets/images/hospitals/apollologo.png";
+//aboutus
+export const aboutusdata: string = "/assets/icons/about/aboutus.svg";
+//noicons
+export const noappoints: string = "/assets/icons/profile/noapp.svg";
 //contact icons
 export const contactus: string = "/assets/contactus/contact.svg";
 //department icons

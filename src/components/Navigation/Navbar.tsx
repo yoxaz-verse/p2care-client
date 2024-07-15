@@ -11,18 +11,18 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
-import { logo } from "@/content/assets";
+import { logo } from "@/Content/assets";
 import Image from "next/image";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const menuItems = [
-    "Home",
-    "Our Services",
-    "Doctors",
-    "Hospitals",
-    "Departments",
+    { name: "Home", link: "/" },
+    { name: "Our Service", link: "/service" },
+    { name: "Doctors", link: "/doctor" },
+    { name: "Hospitals", link: "/hospital" },
+    { name: "Departments", link: "/department" }
   ];
 
   return (
@@ -45,8 +45,8 @@ export default function Header() {
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem key={`${item}-${index}`} isActive={index === 0}>
-            <Link color="foreground" href="#">
-              {item}
+            <Link color="foreground" href={item.link}>
+              {item.name}
             </Link>
           </NavbarItem>
         ))}
@@ -81,8 +81,8 @@ export default function Header() {
                 index === 2
                   ? "primary"
                   : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
+                    ? "danger"
+                    : "foreground"
               }
               className="w-full"
               href="#"

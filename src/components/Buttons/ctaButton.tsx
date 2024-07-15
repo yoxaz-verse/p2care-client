@@ -1,15 +1,17 @@
 "use client";
-import { smallArrowIcon } from "@/content/assets";
+import { smallArrowIcon } from "@/Content/assets";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
+
+
 function CtaButton() {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
     <motion.div
-      className="flex gap-3 justify-start items-center w-full"
+      className="flex gap-3 bg-primary justify-start items-center w-full"
       onHoverStart={() => {
         setIsHovered(true);
       }}
@@ -18,7 +20,7 @@ function CtaButton() {
       }}
     >
       <Button
-        className="rounded-full font-bold px-12"
+        className="rounded-full bg-secondary text-[8px] md:text-[16px] font-bold px-2 md:px-12"
         style={{ width: isHovered ? "100%" : "auto" }}
       >
         Enquire Now
@@ -32,7 +34,7 @@ function CtaButton() {
             exit={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.5, type: "spring" }}
           >
-            <Button className="rounded-full min-w-max p-4">
+            <Button isIconOnly className="rounded-full bg-secondary min-w-max p-2 md:p-4">
               <Image
                 src={smallArrowIcon}
                 alt="small_arrow"

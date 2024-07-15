@@ -10,11 +10,10 @@ function DoctorList() {
     <section className="grid gird-cols-auto w-full gap-[1rem]">
       <HospitalCard2 />
       <div className="flex flex-row w-full justify-between">
-        <h1 className="text-blue-500 font-bold text-[36px]">Doctors</h1>
-        <div className="flex flex-row w-full md:w-2/3 gap-4">
+        <h3 className="text-blue-500 font-bold text-[36px]">Doctors</h3>
+        <div className="flex flex-row w-full md:w-1/3 gap-4">
           <Input
-            variant="bordered"
-            className="border rounded-xl bg-white"
+            className="rounded-xl bg-white"
             placeholder="Search by Speciality etc"
           />
           <Button className="bg-blue-500 rounded-full" isIconOnly>

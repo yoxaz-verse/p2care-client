@@ -4,8 +4,8 @@ import HospitalCard from "@/components/Cards/HospitalCard";
 import ColourCard from "@/components/Development/colourCard";
 import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
-import { departmentFever, pediatrics } from "@/content/assets";
-import { lorem100 } from "@/content/dummyText";
+import { departmentFever, pediatrics } from "@/Content/assets";
+import { lorem100 } from "@/Content/dummyText";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import Image from "next/image";
@@ -16,7 +16,7 @@ function Details() {
       <Image
         src={departmentFever}
         alt="Service Name"
-        className=" object-cover h-[400px] w-full rounded-[30px]"
+        className=" object-cover h-[200px] md:h-[400px] w-full rounded-[30px]"
         width={1000}
         height={1000}
       />

@@ -11,7 +11,18 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        minsm: '6px',
+        sm: '8px',
+        md: '16px',
+        lg: '32px',
+        xl: '64px'
+      },
+      textColor: {
+        gray: "#011632"
+      },
+    },
   },
   darkMode: "class",
   plugins: [

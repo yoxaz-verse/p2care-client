@@ -1,7 +1,10 @@
+'use client';
+import { DoctorListCard } from "@/components/Cards/DoctorListCard";
+import { DoctorProfile } from "@/components/Cards/DoctorProfile";
 import ProfileCard from "@/components/Cards/ProfileCard";
 import ColourCard from "@/components/Development/colourCard";
-import { editIcon, emailIcon, personIcon, phoneIcon } from "@/content/assets";
-import { Avatar } from "@nextui-org/react";
+import { editIcon, emailIcon, noappoints, personIcon, phoneIcon } from "@/Content/assets";
+import { Avatar, Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 
@@ -9,7 +12,7 @@ function Profile() {
   return (
     <section className="grid grid-col-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col justify-around gap-5 h-full pe-5 border-r-1">
-        <p>Profile</p>
+        <p className="text-lg font-bold">Profile</p>
         <div className="flex relative justify-between items-center p-5 ">
           <div className="absolute z-10 top-0 left-0 w-full h-[60px] lg:h-[80px] bg-primary rounded-sm"></div>
           <Avatar
@@ -39,13 +42,27 @@ function Profile() {
         />
       </div>
       <div className="flex flex-col gap-5">
-        <div className="flex justify-between">
-          <h3>Upcoming</h3>
-          <h3>Completed</h3>
-          <h3>Cancelled</h3>
-        </div>
-        <ColourCard colour="bg-red-200" height="h-[200px]" />
-        <ColourCard colour="bg-red-200" height="h-[200px]" />
+        <Tabs aria-label="Options">
+          <Tab key="Upcoming" title="Upcoming">
+            <Card className="grid grid-cols-justify-self-end">
+              <CardBody>
+                <Image alt="no appointment" src={noappoints} width={1000} height={1000} className="w-[400px]" />
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="Completed" title="Completed">
+            <Card className="flex flex-col gap-2">
+              <DoctorProfile title="Completed" />
+              <DoctorProfile title="Completed" />
+            </Card>
+          </Tab>
+          <Tab key="Cancelled" title="Cancelled">
+            <Card>
+              <DoctorProfile title="Cancelled" />
+              <DoctorProfile title="Cancelled" />
+            </Card>
+          </Tab>
+        </Tabs>
       </div>
     </section>
   );
