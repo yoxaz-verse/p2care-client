@@ -85,10 +85,10 @@ export default function Header() {
                     : "foreground"
               }
               className="w-full"
-              href="#"
+              href={item.link}
               size="lg"
             >
-              {item}
+              {item.name}
             </Link>
           </NavbarMenuItem>
         ))}

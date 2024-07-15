@@ -15,25 +15,22 @@ export interface ICategoryCardProps {
 }
 
 function CategoryCard(props: ICategoryCardProps) {
-  const [isHovered, setIsHovered] = useState<boolean>(false);
   return (
-    <motion.div
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
+    <motion.div>
       <Card
-        className={`relative w-full ${isHovered ? `${props.background}` : `${props.hover}`
-          } rounded-2xl h-[180px] md:h-[400px] w-[150px] md:w-[350px] 
-        
-        `}
+        className={`relative w-full rounded-2xl h-[180px] lg:h-[400px] ${props.background} hover:cursor-pointer hover:${props.hover}`}
       >
-        <CardBody className={`flex flex-col justify-between p-6`}>
-          <div>
-            <h3 className="font-[600] font-bold text-[15px] md:text-[32px]">{props.heading}</h3>
-            <p className="font-[400] text-[8px] md:text-[16px]">{props.subHeading}</p>
+        <CardBody className={`flex flex-col justify-between p-3 lg:p-6`}>
+          <div className="z-10">
+            <h3 className="font-[600] text-[15px] lg:text-3xl">
+              {props.heading}
+            </h3>
+            <p className="font-[400] text-[8px] lg:text-2xl">
+              {props.subHeading}
+            </p>
           </div>
           <Image
-            className="absolute w-[120px] md:w-[265px] h-[120px] md:h-[265px] bottom-0 right-2 h-[80%] w-auto"
+            className="absolute bottom-0 right-2 h-[130px] lg:h-[80%] w-auto "
             src={props.image}
             alt="doctors"
             width={1000}

@@ -10,9 +10,11 @@ import {
   mainDoctos3,
   maleDoctor01,
   maleFemaleDoctor01,
+  pediatrics,
 } from "../assets";
 import { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import { BlogCardProps } from "@/components/Cards/BlogCard";
+import { title } from "process";
 
 export const content: ICategoryCardProps[] = [
   {
@@ -20,28 +22,28 @@ export const content: ICategoryCardProps[] = [
     subHeading: "Contect within 60 seconds",
     image: femaleDoctor01,
     background: "bg-primary",
-    hover: "bg-secondary-foreground",
+    hover: "bg-white",
   },
   {
     heading: "Services",
     subHeading: "Confirmed Appointments",
     image: maleDoctor01,
-    background: "bg-primary-500",
-    hover: "bg-primary-400",
+    background: "bg-secondary",
+    hover: "bg-white",
   },
   {
     heading: "Hospitals",
     subHeading: "Essentials at your doorstep.",
     image: maleFemaleDoctor01,
-    background: "bg-primary-500",
-    hover: "bg-secondary-foreground",
+    background: "bg-primary",
+    hover: "bg-white",
   },
   {
     heading: "Departments",
     subHeading: "Simple pickup at your home.",
     image: femaleDoctor02,
-    background: "bg-[#3EBAFF]",
-    hover: "bg-[#8ED2CF]",
+    background: "bg-secondary",
+    hover: "bg-white",
   },
 ];
 
@@ -72,22 +74,34 @@ export const Doctors: DoctorCardProps[] = [
 
 export const CausesArr: any[] = [
   {
-    cause: "Period doubts or Pregnancy",
+    title: "Pediatrics",
+    redirect: "/department-id",
+    icon: pediatrics,
   },
   {
-    cause: "Acne, pimple or skin issues",
+    title: "Pediatrics",
+    redirect: "/department-id",
+    icon: pediatrics,
   },
   {
-    cause: "Performance issues in bed",
+    title: "Pediatrics",
+    redirect: "/department-id",
+    icon: pediatrics,
   },
   {
-    cause: "Cold, cough or fever",
+    title: "Pediatrics",
+    redirect: "/department-id",
+    icon: pediatrics,
   },
   {
-    cause: "Child not feeling well",
+    title: "Pediatrics",
+    redirect: "/department-id",
+    icon: pediatrics,
   },
   {
-    cause: "Depression or anxiety",
+    title: "Pediatrics",
+    redirect: "/department-id",
+    icon: pediatrics,
   },
 ];
 export const HeaderHeading: HomeHeaderProps[] = [
@@ -113,7 +127,7 @@ export const HeaderHeading: HomeHeaderProps[] = [
     header: "Blogs",
   },
   {
-    header: "Departments"
+    header: "Departments",
   },
 ];
 

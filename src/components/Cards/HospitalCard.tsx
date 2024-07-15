@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Card, CardBody, Spacer } from "@nextui-org/react";
 import { apolloLogo, apolloDoc } from "@/Content/assets";
