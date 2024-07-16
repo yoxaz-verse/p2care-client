@@ -6,7 +6,7 @@ interface DescriptionParagraphProps {
 
 function DescriptionParagraph(props: DescriptionParagraphProps) {
   return (
-    <p className="font-[400] text-sm lg:text-lg text-bodyText">
+    <p className="font-[400] text-md lg:text-lg text-bodyText">
       {props.content}
     </p>
   );

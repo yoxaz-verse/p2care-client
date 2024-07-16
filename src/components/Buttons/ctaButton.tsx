@@ -9,8 +9,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function CtaButton() {
   return (
-    <motion.div className="flex gap-3 justify-start items-center w-full">
-      <Button className="rounded-full text-sm md:text-md  bg-secondary font-bold px-2 md:px-12">Enquire Now</Button>
+    <motion.div className="flex gap-1 md:gap-3 justify-end p-2 md:justify-start items-center w-full">
+      <button className="text-sm md:text-md  bg-secondary font-bold px-2 rounded-full py-1 md:py-3 md:px-12">Enquire Now</button>
       <AnimatePresence>
         <motion.div
           key="arrow"
@@ -19,15 +19,15 @@ function CtaButton() {
           exit={{ opacity: 0, x: -50 }}
           transition={{ duration: 0.5, type: "spring" }}
         >
-          <Button className="rounded-full bg-secondary  min-w-max p-4">
+          <button className="rounded-full bg-secondary min-w-max p-2 md:p-4">
             <Image
               src={smallArrowIcon}
               alt="small_arrow"
               width={1000}
               height={1000}
-              className="p-0 m-0 w-2 h-2"
+              className="p-0 m-0 w-1 h-1 md:w-2 md:h-2"
             />
-          </Button>
+          </button>
         </motion.div>
       </AnimatePresence>
     </motion.div>

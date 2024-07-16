@@ -229,12 +229,11 @@ function Banner() {
         </div>
       </section>
       <section
-        className="relative flex md:hidden bg-cover bg-center h-[320px] lg:h-[700px] flex-col items-center align-middle rounded-[30px] lg:rounded-[70px]"
+        className="relative flex lg:hidden bg-cover bg-center h-fit  flex-col items-center align-middle rounded-[30px] lg:rounded-[70px]"
         style={{ backgroundImage: `url(${bannerBackground})` }}
-
       >
         <h1
-          className="text-[#C6DEFD] text-center font-[700] text-[55px] md:text-[115px] lg:text-[150px] xl:text-[225px]"
+          className="text-[#C6DEFD] text-center font-[700] text-[55px]"
         >
           P2 Care
         </h1>
@@ -244,13 +243,13 @@ function Banner() {
             alt="P2Care Logo"
             width={1000}
             height={1000}
-            className={`w-[300px] h-[230px] md:h-[600px] transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
+            className={`w-[150px] h-[230px]  transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
               }`}
           />
-          <div className="flex w-full flex-col h-full gap-4">
+          <div className="flex relative w-[90%] flex-col h-full gap-4">
             <div className="flex flex-row h-fit gap-4">
               <motion.div
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-2"
                 initial={{
                   opacity: 0,
                 }}
@@ -311,7 +310,7 @@ function Banner() {
                 ))}
               </motion.div>
               <motion.div
-                className="flex flex-col gap-5"
+                className="flex flex-col gap-2 md:gap-5"
                 initial={{
                   opacity: 0,
                 }}

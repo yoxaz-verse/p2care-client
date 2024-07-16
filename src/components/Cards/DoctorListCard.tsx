@@ -1,9 +1,10 @@
 "use client"
 import { NextPage } from "next";
 import { doctor, doctors, maleDoctorCard } from "@/Content/assets";
-import { Button, Card, CardBody, Chip, Image } from "@nextui-org/react";
+import { Button, Card, CardBody, Chip } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export const DoctorListCard: React.FC<any> = () => {
   const router = useRouter();
@@ -12,31 +13,34 @@ export const DoctorListCard: React.FC<any> = () => {
       <Card className="flex flex-row justify-around w-full h-[110px] md:h-[270px]">
         <CardBody className="flex flex-row justify-between">
           <div className="flex flex-row h-full gap-2 md:gap-4">
-            <img
+            <Image
               src={maleDoctorCard}
-              className="w-[57px] h-[57px] h-full md:w-[220px] md:h-[220px] rounded-full"
+              width={10000}
+              height={1000}
+              alt="male doc"
+              className="w-[57px] h-[57px] md:w-[220px] md:h-[220px] rounded-full"
             />
-            <div className="flex flex-col h-full  justify-around">
-              <div className="flex  w-full items-center gap-[1rem] flex-row">
-                <h3 className="text-sm md:text-lg font-extrabold">
+            <div className="flex flex-col h-full  justify-between">
+              <div className="flex  w-full items-center gap-[.3rem] md:gap-[1rem] flex-row">
+                <h3 className="text-[11px] md:text-lg font-extrabold">
                   Dr Manish Sharma
                 </h3>
-                <div className="flex flex-row gap-2 md:gap-4 items-center">
+                <div className="flex flex-row gap-1 md:gap-4 items-center">
                   <div className="w-1 md:w-2 h-1 md:h-2 bg-red-500 rounded-full" />
-                  <p className="font-extrabold text-sm md:text-md text-red-500">
+                  <p className="font-extrabold text-[6px] md:text-md text-red-500">
                     General Phyiscian
                   </p>
                 </div>
               </div>
               <div className="flex flex-row gap-2 md:gap-4 items-center">
-                <div className="w-2 h-2 bg-blue-500 rounded-full" />
-                <p className="font-extrabold text-[10px] md:text-md text-blue-500">
+                <div className="w-1 md:w-2 h-1 md:h-2 bg-blue-500 rounded-full" />
+                <p className="font-extrabold text-[6px] md:text-md text-blue-500">
                   MA, MPhil, MBBS
                 </p>
               </div>
-              <div className="flex  items-center flex-row gap-2 md:gap-4">
+              <div className="flex text-sm md:text-md   items-center flex-row gap-2 md:gap-4">
                 <FaMapMarkerAlt className="fill-gray-500" />
-                <h3 className="text-sm md:text-md text-gray font-extrabold">
+                <h3 className="text-gray font-extrabold">
                   Marine Drive, Mumbai (MH)
                 </h3>
               </div>
@@ -57,7 +61,7 @@ export const DoctorListCard: React.FC<any> = () => {
               <h3 className="text-gray-600 text-[8px]  md:text-md">
                 Know More
               </h3>
-              <button onClick={() => router.push('/doctor/12')} className="text-sm bg-blue-500 px-[4px] md:px-[25px] py-[2px] md:py-[10px] rounded-full md:text-md text-white font-bold">
+              <button onClick={() => router.push('/doctor/12')} className="text-sm bg-blue-500 px-[2px] md:px-[25px] py-[2px] md:py-[10px] rounded-full md:text-md text-white font-bold">
                 Consult Now
               </button>
             </div>

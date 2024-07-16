@@ -7,20 +7,20 @@ import { FaGithub } from "react-icons/fa";
 export default function Footer() {
   return (
     <>
-      <div className="flex flex-col  p-[2rem] w-full">
-        <div className="flex flex-row justify-around items-center rounded-2xl h-[20vh] bg-primary">
-          <h3 className="text-md md:text-lg font-bold text-white">
+      <div className="flex flex-col gap-4 p-[2rem] w-full">
+        <div className="flex flex-row justify-around items-center rounded-2xl h-[100px] md:h-[310px] bg-primary">
+          <h3 className="text-md md:text-xl font-bold text-white">
             Have any enquiry
           </h3>
-          <Button className="bg-white text-black p-[.5rem] md:p-[1rem] flex rounded-3xl">
-            <h3 className="font-bold">Get Started</h3>
-            <Image src={smallArrowIcon} />
-          </Button>
+          <button className="bg-white text-black p-[.3rem] md:p-[1rem] flex items-center w-1/4 md:w-[200px] rounded-full justify-around">
+            <h3 className="text-sm md:text-md font-bold">Get Started</h3>
+            <Image src={smallArrowIcon} className="w-2 md:w-3 h-2 md:h-3" />
+          </button>
         </div>
-        <div className="flex flex-col md:flex-row justify-around w-full p-[2rem]">
+        <div className="flex flex-col md:flex-row justify-around w-full p-[.1rem] md:p-[2rem]">
           <div className="flex gap-2 md:gap-4 flex-col">
             <Image src={logo} />
-            <h3>
+            <h3 className="text-[10px] md:text-md">
               Clarity gives you the blocks and components you need to create a
               truly professional website.
             </h3>
@@ -30,7 +30,7 @@ export default function Footer() {
               <FaGithub size={40} />
             </div>
           </div>
-          <div className="flex p-[1rem] flex-row w-full justify-around">
+          <div className="flex p-[.2rem] md:p-[.8rem] flex-row w-full md:w-1/2 justify-around">
             <div className="flex gap-4 flex-col">
               <h3 className="text-primary font-bold">Company</h3>
               <h3>About</h3>
@@ -40,13 +40,6 @@ export default function Footer() {
             </div>
             <div className="flex gap-4 flex-col">
               <h3 className="text-primary font-bold">Help</h3>
-              <h3>About</h3>
-              <h3>Features</h3>
-              <h3>Works</h3>
-              <h3>Career</h3>
-            </div>
-            <div className="flex gap-4 flex-col">
-              <h3 className="text-primary font-bold">Resources</h3>
               <h3>About</h3>
               <h3>Features</h3>
               <h3>Works</h3>

@@ -1,4 +1,5 @@
-import { Button, Card, CardBody, Image } from "@nextui-org/react";
+import { Button, Card, CardBody } from "@nextui-org/react";
+import Image from "next/image";
 
 export interface BlogCardProps {
   image: any;
@@ -12,17 +13,16 @@ export default function BlogCard({
   description,
 }: BlogCardProps) {
   return (
-    <Card className="flex flex-row w-full">
-      <CardBody className="flex flex-col items-center h-full gap-[1rem] ">
-        <Image src={image} alt="image" />
-        <h1 className="text-primary text-lg font-bold">{heading}</h1>
-        <p>{description}</p>
-        <Button
-          color="primary"
-          className="rounded-xl w-1/2 font-bold text-white"
+    <Card className="flex flex-col w-full justify-between h-[250px] lg:h-[580px]">
+      <CardBody className="flex flex-col items-center h-full gap-[.2rem] md:gap-[.6rem] ">
+        <Image src={image} alt="image" width={1000} height={1000} className="w-full rounded-sm h-[116px] lg:h-[265px]" />
+        <h3 className="text-primary leading-[16px] lg:leading-[36px] text-[14px] lg:text-lg font-bold">{heading}</h3>
+        <p className="text-[8px] lg:text-md">{description}</p>
+        <button
+          className="rounded-full self-end bg-primary text-sm lg:text-md px-2 py-1 lg:px-4 lg:py-2 font-bold text-white"
         >
           Read More
-        </Button>
+        </button>
       </CardBody>
     </Card>
   );

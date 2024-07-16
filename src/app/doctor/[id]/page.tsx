@@ -9,11 +9,11 @@ function DoctorDetails() {
     <section>
       <DoctorListCard />
       <Spacer y={2} />
-      <div className="h-[100px] md:h-[200px] gap-2 w-full md:w-1/2 flex flex-col">
+      <div className="gap-2  flex flex-col">
         <h3 className="font-bold text-md md:text-lg text-start">
           Information
         </h3>
-        <p className="text-sm md:text-md w-full text-[#3C4959]">
+        <p className="text-md w-full lg:w-1/2 text-[#3C4959]">
           Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           vulputate libero et velit interdum, ac aliquet odio mattis. Class
           aptent taciti sociosqu ad litora torquent per conubia nostra, per
@@ -33,7 +33,7 @@ function DoctorDetails() {
           </div>
         </div>
         <div className="h-[100px] md:h-[200px]">
-          <h3 className="font-bold text-md md:text-lg">Visiting Time</h3>
+          <h3 className="font-bold text-md lg:text-lg">Visiting Time</h3>
           <div className="flex flex-col text-gray text-md gap-2">
             <h3>9:00 AM to 1:00PM</h3>
             <h3>5:00 PM to 8:00PM</h3>

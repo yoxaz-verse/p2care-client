@@ -110,7 +110,7 @@ export default function Home() {
         />
         <Spacer y={5} />
         <div className="flex flex-col gap-4">
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="grid grid-cols-auto gap-4">
             <GalleryCard
               name="Apollo"
               place="Mumbai"
@@ -118,22 +118,23 @@ export default function Home() {
               width={"w-full md:w-1/2"}
               height={"h-[400px]"}
             />
+            <div className="flex flex-row w-full">
             <GalleryCard
               name="Apollo"
               place="Mumbai"
               image={apollo2}
-              width={"w-full md:w-1/4"}
+              width={"w-[156px] md:w-1/4"}
               height={"h-[400px]"}
             />
             <GalleryCard
               name="Apollo"
               place="Mumbai"
               image={apollo2}
-              width={"w-full md:w-1/4"}
               height={"h-[400px]"}
             />
+            </div>
           </div>
-          <div className="flex flex-col-reverse md:flex-row-reverse gap-4">
+          <div className="hidden lg:flex flex-col-reverse md:flex-row-reverse gap-4">
             <GalleryCard
               name="Apollo"
               place="Mumbai"
@@ -186,7 +187,7 @@ export default function Home() {
       <section className="flex flex-col">
         <HomeHeader header={HeaderHeading[3].header} />
         <Spacer y={10} />
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {BlogContent.map((b: BlogCardProps, index: number) => {
             return (
               <BlogCard

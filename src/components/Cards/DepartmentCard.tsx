@@ -20,7 +20,7 @@ export default function DepartmentCard(props: DepartmentCardProps) {
         handleNavigation();
       }}
       isPressable
-      className="w-[150px] h-[130px]  md:h-[300px] md:w-[220px] rounded-[20px] hover:bg-secondary-200 hover:cursor-pointer"
+      className="w-[150px] h-[200px]  md:h-[300px] md:w-[220px] rounded-[20px] hover:bg-secondary-200 hover:cursor-pointer"
     >
       <CardBody className="flex justify-center items-center">
         <div className="w-[70px] h-[70px] lg:w-[150px] lg:h-[150px] bg-secondary-200 flex justify-center items-center rounded-full">

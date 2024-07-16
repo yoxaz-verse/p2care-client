@@ -29,12 +29,12 @@ export default function GalleryCard({
         <Image
           removeWrapper
           alt="Card example background"
-          className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
+          className="z-0 w-full h-full -translate-y-6 object-cover"
           src={image}
         />
         <CardFooter className="absolute bg-white/30 bottom-0 z-10 items-start">
           <Button className="flex w-1/2 p-[1rem] rounded-2xl bg-white text-black">
-            <h1 className="text-sm md:text-md font-bold">View Hospital</h1>
+            <h3 className="text-sm md:text-md font-bold">View Hospital</h3>
             <Image src={smallArrowIcon} className="w-full" alt="smallArrow" />
           </Button>
         </CardFooter>

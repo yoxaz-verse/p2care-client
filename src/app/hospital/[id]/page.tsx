@@ -43,8 +43,8 @@ function FAQ({ question, ans }: { question: string, ans: string }) {
   return (
     <>
       <div className="flex flex-col">
-        <h3 className="text-[12px] md:text-[24px] font-semibold flex flex-row"><span>Q.</span> {question}</h3>
-        <h3 className="text-[12px] md:text-[24px] flex flex-row"><span>A.</span> {ans}</h3>
+        <h3 className="text-[14px] md:text-[24px] font-semibold flex flex-row"><span>Q.</span> {question}</h3>
+        <h3 className="text-[10px] md:text-[24px] flex flex-row"><span>A.</span> {ans}</h3>
       </div>
     </>
   )
@@ -95,31 +95,32 @@ function Details() {
     <HospitalCard2 />
     <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-xl w-full">
       <div className="flex flex-col p-[1rem] w-full">
-        <h3 className="text-md md:text-lg font-semibold">About Apollo Spectra Hospital</h3>
-        <p className="text-md md:text-lg">
+        <h3 className="text-[24px] md:text-lg  font-semibold">About Apollo Spectra Hospital</h3>
+        <p className="text-md">
           Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidata
           Sorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
           Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-          <span className="text-primary underline">Readmore</span>
+          <span className="text-primary text-md font-semibold underline">Readmore</span>
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 w-full gap-4 p-[1rem]">
         <div className="flex flex-col items-start">
-          <h3 className="text-md md:text-lg font-semibold">Address</h3>
+          <h3 className="text-[24px] md:text-lg font-semibold">Address</h3>
           <p className="flex flex-wrap">
             Bombay Hospital, 12, Vitthaldas Thackersey Marg, near Liberty cinema, New Marine Lines, Marine Lines, Mumbai, Maharashtra 400020
-            <span className="underline text-primary">Get Directions</span>
+            <span className="underline text-md font-semibold text-primary">Get Directions</span>
           </p>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-md md:text-lg  font-semibold">Timings</h3>
+          <h3 className="text-[24px] md:text-lg  font-semibold">Timings</h3>
+          <h3>Mon - Sun</h3>
           <h4>09:00 AM</h4>
           <h4>Photos</h4>
         </div>
         <div className="flex flex-col">
-          <h3 className="text-md md:text-lg font-semibold">Modes of Payment</h3>
+          <h3 className="text-[24px] md:text-lg font-semibold">Modes of Payment</h3>
           <h3 className="flex flex-row">
             Credit Card | Cash | Online Payment | Debit Card
           </h3>
@@ -129,7 +130,7 @@ function Details() {
       </div>
     </div>
     <div className="flex bg-white shadow-xl rounded-xl flex-col p-[1rem]">
-      <h3 className="text-[24px] font-semibold p-[.2rem]">Departments in Apollo Spectra Hospitals</h3>
+      <h3 className="text-[24px] md:textlg font-semibold p-[.2rem]">Departments in Apollo Spectra Hospitals</h3>
       <div className="flex flex-wrap gap-2 w-full">
         {Tags.map((t: any, index: any) => {
           return <Tag key={index} number={t.number} name={t.name} />
@@ -145,8 +146,8 @@ function Details() {
         <DoctorListCard key={index} />
       ))}
     </div>
-    <div className="flex flex-col shadow-xl gap-2 p-[1rem]">
-      <h3 className="text-[12px] md:text-[24px]  font-bold">Common Questions and Answers</h3>
+    <div className="flex flex-col rounded-xl shadow-xl gap-2 p-[1rem]">
+      <h3 className="text-[24px]  font-semibold">Common Questions and Answers</h3>
       {questions.map((q: any, index: any) => {
         return (
           <>

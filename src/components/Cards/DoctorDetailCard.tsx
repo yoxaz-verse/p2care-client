@@ -6,34 +6,35 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 function DoctorDetailCard() {
   return (
-    <Card className="grid w-full h-[200px] md:h-[300px] grid-cols-auto justify-between p-5 w-full hover:cursor-pointer hover:bg-primary-100">
-      <div className="flex gap-5">
+    <Card className="flex  h-[145px] md:h-[300px] w-full m-0 p-4 flex-col justify-between md:p-5 w-full hover:cursor-pointer hover:bg-primary-100">
+
+      <div className="flex gap-2">
         <Image
           src={apolloDoc}
           alt="Doctor Name"
-          className="w-[75px] h-[75px] rounded-full"
+          className="w-[35px] md:w-[75px] h-[35px] md:h-[75px] rounded-full"
           width={1000}
           height={1000}
         />
         <div className="flex flex-col">
-          <h5 className="font-[600] text-sm md:text-md">Dr. John Doe</h5>
-          <p className="text-sm md:text-md">Internal Medicine</p>
-          <p className="text-sm md:text-md">17 Years Exp</p>
+          <h5 className="font-[500] text-sm md:text-[21px]">Dr. John Doe</h5>
+          <p className="text-[7px] md:text-md">Internal Medicine</p>
+          <p className="text-[7px] md:text-md">17 Years Exp</p>
         </div>
       </div>
-      <div className="flex flex-row gap-2 text-sm md:text-md  items-center text-gray-500">
-        <FaMapMarkerAlt />
+      <div className="flex flex-row gap-2 text-[6px] md:text-md  justify-center items-center text-[#3C4959]">
+        <FaMapMarkerAlt className="fill-[#3C4959]" />
         <h1 className="font-bold">Marine Drive, Mumbai (MH)</h1>
       </div>
-      <div className="flex flex-row items-center gap-2 justify-self-end">
-        <h1 className="text-red-400 text-md md:text-lg line-through font-semibold">
+      <div className="flex flex-row items-center gap-2 justify-end">
+        <h1 className="text-red-400 text-[7px] md:text-md line-through font-semibold">
           Rs 649
         </h1>
         <h1 className="text-md md:text-lg font-bold">Rs 649</h1>
       </div>
-      <div className="flex flex-row items-center gap-2 md:gap-4 justify-self-end">
-        <h1 className="text-sm">Know More</h1>
-        <button color="primary" className="text-sm  p-2 rounded-full text-white bg-primary md:text-md">
+      <div className="flex flex-row items-center gap-2 md:gap-4 justify-end w-full">
+        <h1 className="text-sm md:text-[10px] text-[#3C4959]">Know More</h1>
+        <button color="primary" className="text-sm px-2 py-1  p-0 md:p-2 rounded-full font-bold text-white bg-primary md:text-md">
           Consult Now
         </button>
       </div>

@@ -25,7 +25,10 @@ function Details() {
       <Spacer y={3} />
       <DescriptionParagraph content={lorem100} />
       <Spacer y={3} />
-      <TitleHeading heading="Doctors" />
+      <div className="flex flex-row justify-between items-center">
+        <TitleHeading heading="Doctors" />
+        <h3 className="text-sm md:text-md underline text-blue-400 font-bold">View All</h3>
+      </div>
       <Spacer y={3} />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
         {Array.from({ length: 6 }).map((_, index) => (
@@ -33,7 +36,10 @@ function Details() {
         ))}
       </div>
       <Spacer y={3} />
-      <TitleHeading heading="Hopitals" />
+      <div className="flex flex-row justify-between items-center">
+        <TitleHeading heading="Hospitals" />
+        <h3 className="text-sm md:text-md underline text-blue-400 font-bold">View All</h3>
+      </div>
       <Spacer y={3} />
       <div className="grid grid-cols-1  gap-5">
         {Array.from({ length: 3 }).map((_, index) => (
@@ -41,9 +47,9 @@ function Details() {
         ))}
       </div>
       <div className="flex flex-col">
-        <div className="flex flex-row justify-between items-center p-[2rem]">
-          <h1 className="text-3xl font-bold text-blue-500">Departments</h1>
-          <h1 className="text-blue-600 font-bold underline">View All</h1>
+        <div className="flex flex-row justify-between items-center">
+          <TitleHeading heading="Departments" />
+          <h3 className="text-sm md:text-md underline text-blue-400 font-bold">View All</h3>
         </div>
         <div className="flex flex-wrap gap-5">
           {Array.from({ length: 10 }).map((_, index) => (
