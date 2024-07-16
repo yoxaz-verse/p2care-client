@@ -28,6 +28,7 @@ import DepartmentCard, {
 } from "@/components/Cards/DepartmentCard";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { isMobile, isTablet } from "@/Utils/screenSize";
+import Testimonials from "@/components/Cards/Testimonal";
 
 export default function Home() {
   return (
@@ -119,19 +120,19 @@ export default function Home() {
               height={"h-[400px]"}
             />
             <div className="flex flex-row w-full">
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo2}
-              width={"w-[156px] md:w-1/4"}
-              height={"h-[400px]"}
-            />
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo2}
-              height={"h-[400px]"}
-            />
+              <GalleryCard
+                name="Apollo"
+                place="Mumbai"
+                image={apollo2}
+                width={"w-[156px] md:w-1/4"}
+                height={"h-[400px]"}
+              />
+              <GalleryCard
+                name="Apollo"
+                place="Mumbai"
+                image={apollo2}
+                height={"h-[400px]"}
+              />
             </div>
           </div>
           <div className="hidden lg:flex flex-col-reverse md:flex-row-reverse gap-4">
@@ -184,6 +185,12 @@ export default function Home() {
         </div>
       </section>
       <Spacer y={10} />
+      <section className="flex flex-col gap-2">
+        <h1 className="text-center text-[54px] font-bold">Testimonials</h1>
+        <div className="flex flex-row gap-2">
+          <Testimonials />
+        </div>
+      </section>
       <section className="flex flex-col">
         <HomeHeader header={HeaderHeading[3].header} />
         <Spacer y={10} />

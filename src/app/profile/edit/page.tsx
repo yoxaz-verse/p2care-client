@@ -4,16 +4,16 @@ import { DoctorProfile } from "@/components/Cards/DoctorProfile";
 import ProfileCard from "@/components/Cards/ProfileCard";
 import ColourCard from "@/components/Development/colourCard";
 import { editIcon, emailIcon, noappoints, personIcon, phoneIcon } from "@/Content/assets";
-import { Avatar, Card, CardBody, Tab, Tabs } from "@nextui-org/react";
+import { Avatar, Card, CardBody, Tab, Tabs, Input, Button } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 
 function EditProfile() {
   return (
-    <section className="grid grid-col-1 lg:grid-cols-2 gap-5">
-      <div className="flex flex-col justify-around gap-5 h-full pe-5 border-r-1">
+    <section className="flex flex-col justify-center items-center h-full">
+      <form className="flex flex-col gap-4 w-1/2">
         <p className="text-lg font-bold">Edit Profile</p>
-        <div className="flex relative justify-between items-center p-5 ">
+        <div className="flex relative w-full justify-between items-center p-5 ">
           <div className="absolute z-10 top-0 left-0 w-full h-[60px] lg:h-[80px] bg-primary rounded-sm"></div>
           <Avatar
             className="w-[80px] lg:w-[120px] h-auto z-20 text-large border-white border-5"
@@ -29,19 +29,12 @@ function EditProfile() {
             />
           </div>
         </div>
-        <ProfileCard heading="User name" content="John Doe" icon={personIcon} />
-        <ProfileCard
-          heading="Email"
-          content="p2care@gmail.com"
-          icon={emailIcon}
-        />
-        <ProfileCard
-          heading="Phone"
-          content="+91 9876543210"
-          icon={phoneIcon}
-        />
-      </div>
-    </section>
+        <Input label="User Name" placeholder="User Name" labelPlacement="outside" className="font-semibold bg-inherit text-[#90A4AE] rounded-none" endContent={<Image alt="person" width={10} height={10} src={personIcon} />} />
+        <Input label="Email" placeholder="Email" labelPlacement="outside" className="font-semibold text-[#90A4AE] rounded-none" endContent={<Image alt="person" width={10} height={10} src={emailIcon} />} />
+        <Input label="Phone" placeholder="Phone" labelPlacement="outside" className="font-semibold text-[#90A4AE] rounded-none" endContent={<Image alt="person" width={10} height={10} src={phoneIcon} />} />
+        <Button color="primary" variant="light" className="border-2 font-bold border-[#3F8EFC]">Save</Button>
+      </form>
+    </section >
   );
 }
 

@@ -27,7 +27,7 @@ function Booking() {
           Schedule date and time
         </h3>
         <h3 className="text-gray font-semibold text-md">Day</h3>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-col md:flex-row justify-between gap-2">
           <div onClick={() => setIndex(1)} className={`flex flex-col cursor-pointer w-[200px] md:w-[400px] ${index === 1 ? "border-4 border-gray-300 text-gray-500" : "border-2 border-gray-200 text-gray-100"} justify-center items-center border-gray-300 rounded-xl p-[1rem]`}>
             <h3>Today</h3>
             <h3>5 slots</h3>

@@ -20,7 +20,7 @@ export const mainDoctos2: string = "/assets/images/doctors/main-photo2.png";
 export const mainDoctos3: string = "/assets/images/doctors/main-photo3.png";
 export const doctors: string = "/assets/images/Department/Doctors.jpeg";
 export const apolloDoc: string = "/assets/images/doctors/apolloDoc.jpeg";
-export const hospitalDocAbout: string = "/assets/images/doctors/aboutdoc.jpeg";
+export const hospitalDocAbout: string = "/assets/icons/about/doctor.png";
 //hospital icons
 export const bandaidIcon: string = "/assets/icons/hospital/bandaid.png";
 export const apollo: string = "/assets/images/hospitals/hospital1.jpeg";
@@ -55,3 +55,6 @@ export const serviceDigitalXRay: string =
   "/assets/development/service/digital-x-ray.png";
 export const departmentFever: string =
   "/assets/development/department/fever.png";
+//tetimonial images
+export const testimonial: string = "/assets/images/testimonial/testimonial.jpeg"
+export const testimonial1: string = "/assets/images/testimonial/testimonial2.jpeg"

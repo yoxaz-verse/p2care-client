@@ -43,7 +43,7 @@ export const DoctorProfile: React.FC<DoctorProfileProps> = ({ title }) => {
                   Marine Drive, Mumbai (MH)
                 </h3>
               </div>
-              <span className="bg-blue-500 text-white font-bold px-[10px] w-1/4 text-center py-[5px] rounded-full">{title}</span>
+              <span className="bg-blue-500 text-white text-sm lg:text-md font-bold px-[5px] md:px-[10px] w-1/2 md:w-1/4 text-center py-[5px] rounded-full">{title}</span>
             </div>
           </div>
         </CardBody>
