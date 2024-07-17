@@ -1,6 +1,6 @@
 import ServiceCard from "@/components/Cards/ServiceCard";
 import PageHeading from "@/components/Text/PageHeading";
-import { serviceDigitalXRay } from "@/content/assets";
+import { serviceDigitalXRay } from "@/Content/assets";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import React from "react";

@@ -1,4 +1,4 @@
-import { apolloDoc } from "@/content/assets";
+import { apolloDoc } from "@/Content/assets";
 import { Button, Card } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";

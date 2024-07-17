@@ -1,6 +1,6 @@
 import React from "react";
 import AuthLayout from "../layout";
-import { logo, signin } from "@/content/assets";
+import { logo, signin } from "@/Content/assets";
 import Image from "next/image";
 
 import { Button, Input, Spacer } from "@nextui-org/react";

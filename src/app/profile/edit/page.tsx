@@ -1,6 +1,6 @@
 "use client";
 
-import { editIcon, emailIcon, personIcon, phoneIcon } from "@/content/assets";
+import { editIcon, emailIcon, personIcon, phoneIcon } from "@/Content/assets";
 import {
   Avatar,
   Button,

@@ -1,4 +1,4 @@
-import { smallArrowDarkIcon } from "@/content/assets";
+import { smallArrowDarkIcon } from "@/Content/assets";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";

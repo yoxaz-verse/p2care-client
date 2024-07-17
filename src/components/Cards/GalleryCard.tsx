@@ -1,4 +1,4 @@
-import { apollo, apollo2, smallArrowIcon } from "@/content/assets";
+import { apollo, apollo2, smallArrowIcon } from "@/Content/assets";
 import { Button, Card, CardFooter, CardHeader, Image } from "@nextui-org/react";
 import "../../app/globals.css";
 

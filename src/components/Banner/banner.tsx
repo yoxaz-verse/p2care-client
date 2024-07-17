@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { bannerBackground, doctor } from "@/content/assets";
+import { bannerBackground, doctor } from "@/Content/assets";
 import { motion, useAnimate } from "framer-motion";
 import {
   isDesktop,
@@ -10,7 +10,7 @@ import {
 } from "@/utils/screenSize";
 import Image from "next/image";
 import Points from "./points";
-import { pointsLeft, pointsRight } from "@/content/Home/banner";
+import { pointsLeft, pointsRight } from "@/Content/Home/banner";
 import CtaButton from "../Buttons/ctaButton";
 function Banner() {
   const [scope, animate] = useAnimate();

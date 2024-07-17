@@ -1,4 +1,4 @@
-import { contactus } from "@/content/assets";
+import { contactus } from "@/Content/assets";
 import { Input, Textarea, Image, Button } from "@nextui-org/react";
 import React from "react";
 
@@ -29,7 +29,7 @@ function ContactUs() {
           </Button>
         </form>
       </div>
-      <Image src={contactus} />
+      <Image src={contactus} alt="contact-us" />
     </div>
   );
 }

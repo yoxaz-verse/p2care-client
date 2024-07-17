@@ -1,5 +1,5 @@
 "use client";
-import { smallArrowIcon } from "@/content/assets";
+import { smallArrowIcon } from "@/Content/assets";
 import { Button } from "@nextui-org/react";
 import Image from "next/image";
 import React, { useState } from "react";

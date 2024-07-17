@@ -109,30 +109,29 @@ export const HeaderHeading: HomeHeaderProps[] = [
     header: "Our Top Doctors",
     subHeading:
       "We use only the best quality materials on the market in order to provide the best products to our patients.",
-    link: "/doctor"
+    link: "/doctor",
   },
   {
     header: "Services",
     subHeading:
       "Private online consultation with verified doctors in all specialists.",
-    link: "/service"
+    link: "/service",
   },
   {
     header: "Top Hospitals",
     subHeading:
       "We use only the best quality materials on the market in order to provide the best products to our patients.",
-    link: "/hospital"
+    link: "/hospital",
   },
   {
     header: "Blogs",
-    link: "/blog"
+    link: "/blog",
   },
   {
     header: "Departments",
-    link: "/department"
+    link: "/department",
   },
 ];
-
 
 export const BlogContent: BlogCardProps[] = [
   {

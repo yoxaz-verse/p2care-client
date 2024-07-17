@@ -1,6 +1,6 @@
 import React from "react";
 import { Image } from "@nextui-org/react";
-import { aboutusdata, hospitalDocAbout } from "@/content/assets";
+import { aboutusdata, hospitalDocAbout } from "@/Content/assets";
 import { TbWorld } from "react-icons/tb";
 import { TfiWorld } from "react-icons/tfi";
 import { PiUsers } from "react-icons/pi";
@@ -38,6 +38,7 @@ function AboutUs() {
           width={1000}
           height={1000}
           className="w-[834px]"
+          alt="hospitalDocAbout"
         />
       </div>
       <div className="flex flex-col">
@@ -169,6 +170,7 @@ function AboutUs() {
           width={1000}
           height={1000}
           className="w-[600px]"
+          alt="aboutusdata"
         />
       </div>
     </section>

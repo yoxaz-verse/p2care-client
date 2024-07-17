@@ -1,6 +1,6 @@
 import { Button, Card } from "@nextui-org/react";
 import React from "react";
-import { apollo2, smallArrowIcon } from "@/content/assets";
+import { apollo2, smallArrowIcon } from "@/Content/assets";
 import Image from "next/image";
 
 function HospitalViewCard2() {

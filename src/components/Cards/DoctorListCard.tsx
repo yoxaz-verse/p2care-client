@@ -1,5 +1,5 @@
 "use client";
-import { maleDoctorCard } from "@/content/assets";
+import { maleDoctorCard } from "@/Content/assets";
 import { Button, Card, CardBody, Chip } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";

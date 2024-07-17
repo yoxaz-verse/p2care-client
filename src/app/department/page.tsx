@@ -1,6 +1,6 @@
 import DepartmentCard from "@/components/Cards/DepartmentCard";
 import PageHeading from "@/components/Text/PageHeading";
-import { pediatrics } from "@/content/assets";
+import { pediatrics } from "@/Content/assets";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import React from "react";

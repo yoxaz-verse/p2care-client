@@ -6,7 +6,7 @@ import {
   HeaderHeading,
   CausesArr,
   BlogContent,
-} from "@/content/Home/home-page-content";
+} from "@/Content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
@@ -18,7 +18,7 @@ import {
   apollo2,
   doctors,
   department,
-} from "@/content/assets";
+} from "@/Content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
 import GalleryCard from "@/components/Cards/GalleryCard";

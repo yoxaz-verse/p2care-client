@@ -1,4 +1,4 @@
-import { hospitalLogo } from "@/content/assets";
+import { hospitalLogo } from "@/Content/assets";
 import { Button, Card, CardBody } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";

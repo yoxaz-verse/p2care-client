@@ -1,4 +1,4 @@
-import { testimonial1 } from "@/content/assets";
+import { testimonial1 } from "@/Content/assets";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 

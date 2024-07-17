@@ -9,7 +9,7 @@ import {
   noappoints,
   personIcon,
   phoneIcon,
-} from "@/content/assets";
+} from "@/Content/assets";
 import { Avatar, Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
