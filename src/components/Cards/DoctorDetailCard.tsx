@@ -7,7 +7,6 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 function DoctorDetailCard() {
   return (
     <Card className="flex  h-[145px] md:h-[300px] w-full m-0 p-4 flex-col justify-between md:p-5 w-full hover:cursor-pointer hover:bg-primary-100">
-
       <div className="flex gap-2">
         <Image
           src={apolloDoc}
@@ -34,7 +33,10 @@ function DoctorDetailCard() {
       </div>
       <div className="flex flex-row items-center gap-2 md:gap-4 justify-end w-full">
         <h1 className="text-sm md:text-[10px] text-[#3C4959]">Know More</h1>
-        <button color="primary" className="text-sm px-2 py-1  p-0 md:p-2 rounded-full font-bold text-white bg-primary md:text-md">
+        <button
+          color="primary"
+          className="text-sm px-2 py-1  p-0 md:p-2 rounded-full font-bold text-white bg-primary md:text-md"
+        >
           Consult Now
         </button>
       </div>

@@ -74,7 +74,10 @@ const HospitalCard = () => {
           </div>
           <div className="flex flex-row items-center gap-2">
             <h3 className="text-sm md:text-md cursor-pointer">Know More</h3>
-            <button onClick={() => router.push("/hospital/12")} className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold">
+            <button
+              onClick={() => router.push("/hospital/12")}
+              className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold"
+            >
               Consult Now
             </button>
           </div>

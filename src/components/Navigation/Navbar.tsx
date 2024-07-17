@@ -22,9 +22,9 @@ export default function Header() {
     { name: "Our Service", link: "/service" },
     { name: "Doctors", link: "/doctor" },
     { name: "Hospitals", link: "/hospital" },
-    { name: "Departments", link: "/department" }
+    { name: "Departments", link: "/department" },
   ];
-  const [name, setName] = useState<any>('Home');
+  const [name, setName] = useState<any>("Home");
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
@@ -44,7 +44,11 @@ export default function Header() {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {menuItems.map((item, index) => (
-          <NavbarItem key={`${item}-${index}`} isActive={name === item.name} onClick={() => setName(item.name)}>
+          <NavbarItem
+            key={`${item}-${index}`}
+            isActive={name === item.name}
+            onClick={() => setName(item.name)}
+          >
             <Link color="foreground" href={item.link}>
               {item.name}
             </Link>
@@ -81,8 +85,8 @@ export default function Header() {
                 index === 2
                   ? "primary"
                   : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
+                  ? "danger"
+                  : "foreground"
               }
               className="w-full"
               href={item.link}

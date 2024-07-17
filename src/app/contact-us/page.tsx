@@ -29,7 +29,7 @@ function ContactUs() {
           </Button>
         </form>
       </div>
-      <Image src={contactus} />
+      <Image src={contactus} alt="contact-us" />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { logo, smallArrowIcon } from "@/Content/assets";
 import { Button, Divider, Image } from "@nextui-org/react";
 import { FaFacebook } from "react-icons/fa";
@@ -37,14 +37,39 @@ export default function Footer() {
             <div className="flex gap-4 flex-col">
               <h3 className="text-primary font-bold">Company</h3>
               <h3 onClick={() => router.push("/about-us")}>About</h3>
-              <h3 className="cursor-pointer" onClick={() => router.push("/blog")}>Blogs</h3>
-              <h3 className="cursor-pointer" onClick={() => router.push("/doctor")}>Doctors</h3>
-              <h3 className="cursor-pointer" onClick={() => router.push("/hospital")}>Hospital</h3>
+              <h3
+                className="cursor-pointer"
+                onClick={() => router.push("/blog")}
+              >
+                Blogs
+              </h3>
+              <h3
+                className="cursor-pointer"
+                onClick={() => router.push("/doctor")}
+              >
+                Doctors
+              </h3>
+              <h3
+                className="cursor-pointer"
+                onClick={() => router.push("/hospital")}
+              >
+                Hospital
+              </h3>
             </div>
             <div className="flex gap-4 flex-col">
               <h3 className="text-primary font-bold">Help</h3>
-              <h3 onClick={() => router.push("/contact-us")} className="cursor-pointer">Contact</h3>
-              <h3 className="cursor-pointer" onClick={() => router.push("/department")}>Department</h3>
+              <h3
+                onClick={() => router.push("/contact-us")}
+                className="cursor-pointer"
+              >
+                Contact
+              </h3>
+              <h3
+                className="cursor-pointer"
+                onClick={() => router.push("/department")}
+              >
+                Department
+              </h3>
             </div>
           </div>
         </div>
@@ -52,7 +77,7 @@ export default function Footer() {
         <h3 className="p-[1rem] text-center w-full">
           © Copyright {new Date().getUTCFullYear()}, All Rights Reserved{" "}
         </h3>
-      </div >
+      </div>
     </>
   );
 }

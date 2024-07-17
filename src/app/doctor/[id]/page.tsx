@@ -1,18 +1,21 @@
-import DoctorCard from "@/components/Cards/DoctorCard";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
-import ColourCard from "@/components/Development/colourCard";
+import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import React from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 function DoctorDetails() {
   return (
     <section>
-      <DoctorListCard />
+      <DoctorListCard
+        redirect={
+          navigationRoutes.doctor + "1" + "/" + navigationRoutes.booking
+        }
+      />
       <Spacer y={2} />
+
       <div className="gap-2  flex flex-col">
-        <h3 className="font-bold text-md md:text-lg text-start">
-          Information
-        </h3>
+        <h3 className="font-bold text-md md:text-lg text-start">Information</h3>
         <p className="text-md w-full lg:w-1/2 text-[#3C4959]">
           Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
           vulputate libero et velit interdum, ac aliquet odio mattis. Class
@@ -27,9 +30,14 @@ function DoctorDetails() {
           <h3 className="font-bold text-md md:text-lg">Contact Details</h3>
           <div className="flex flex-col text-md text-gray gap-2">
             <h3>Phone: +91 343 434 34 34</h3>
-            <h3>
-              Email : doctor21@gmail.com
-            </h3>
+            <h3>Email : doctor21@gmail.com</h3>
+            <div className="flex gap-2 items-center">
+              {/* location icon */}
+              <FaMapMarkerAlt className="text-grey  w-4 h-4" />
+              <p className="text-[12px] font-[600] lg:text-[16px] text-grey">
+                Marine Drive, Mumbai (MH)
+              </p>
+            </div>
           </div>
         </div>
         <div className="h-[100px] md:h-[200px]">

@@ -45,11 +45,11 @@ function HospitalCard2() {
           <div className="justify-self-end">
             <Button
               radius="full"
-              className="flex flex-row gap-2 text-md px-[.2rem] md:px-[1rem]"
+              className="flex flex-row gap-2 text-[8px] lg:text-md py-0 font-[500] bg-primary text-white"
               color="primary"
+              startContent={<IoMdCall />}
             >
-              <IoMdCall />
-              <p className="text-md">+91 0987654321</p>
+              +91 0987654321
             </Button>
           </div>
         </div>

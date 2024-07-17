@@ -1,10 +1,15 @@
-'use client';
-import { DoctorListCard } from "@/components/Cards/DoctorListCard";
-import { DoctorProfile } from "@/components/Cards/DoctorProfile";
-import ProfileCard from "@/components/Cards/ProfileCard";
-import ColourCard from "@/components/Development/colourCard";
-import { editIcon, emailIcon, noappoints, personIcon, phoneIcon } from "@/Content/assets";
-import { Avatar, Card, CardBody, Tab, Tabs, Input, Button } from "@nextui-org/react";
+"use client";
+
+import { editIcon, emailIcon, personIcon, phoneIcon } from "@/Content/assets";
+import {
+  Avatar,
+  Button,
+  Card,
+  CardBody,
+  Input,
+  Tab,
+  Tabs,
+} from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 
@@ -29,12 +34,42 @@ function EditProfile() {
             />
           </div>
         </div>
-        <Input label="User Name" placeholder="User Name" labelPlacement="outside" className="font-semibold bg-inherit text-[#90A4AE] rounded-none" endContent={<Image alt="person" width={10} height={10} src={personIcon} />} />
-        <Input label="Email" placeholder="Email" labelPlacement="outside" className="font-semibold text-[#90A4AE] rounded-none" endContent={<Image alt="person" width={10} height={10} src={emailIcon} />} />
-        <Input label="Phone" placeholder="Phone" labelPlacement="outside" className="font-semibold text-[#90A4AE] rounded-none" endContent={<Image alt="person" width={10} height={10} src={phoneIcon} />} />
-        <Button color="primary" variant="light" className="border-2 font-bold border-[#3F8EFC]">Save</Button>
+        <Input
+          label="User Name"
+          placeholder="User Name"
+          labelPlacement="outside"
+          className="font-semibold bg-inherit text-[#90A4AE] rounded-none"
+          endContent={
+            <Image alt="person" width={10} height={10} src={personIcon} />
+          }
+        />
+        <Input
+          label="Email"
+          placeholder="Email"
+          labelPlacement="outside"
+          className="font-semibold text-[#90A4AE] rounded-none"
+          endContent={
+            <Image alt="person" width={10} height={10} src={emailIcon} />
+          }
+        />
+        <Input
+          label="Phone"
+          placeholder="Phone"
+          labelPlacement="outside"
+          className="font-semibold text-[#90A4AE] rounded-none"
+          endContent={
+            <Image alt="person" width={10} height={10} src={phoneIcon} />
+          }
+        />
+        <Button
+          color="primary"
+          variant="light"
+          className="border-2 font-bold border-[#3F8EFC]"
+        >
+          Save
+        </Button>
       </form>
-    </section >
+    </section>
   );
 }
 

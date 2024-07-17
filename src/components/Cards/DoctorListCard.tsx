@@ -1,69 +1,100 @@
-"use client"
-import { NextPage } from "next";
-import { doctor, doctors, maleDoctorCard } from "@/Content/assets";
+"use client";
+import { maleDoctorCard } from "@/Content/assets";
 import { Button, Card, CardBody, Chip } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export const DoctorListCard: React.FC<any> = () => {
+interface DoctorListCardProps {
+  redirect: string;
+}
+export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
   const router = useRouter();
   return (
     <>
-      <Card className="flex flex-row justify-around w-full h-[110px] md:h-[270px]">
-        <CardBody className="flex flex-row justify-between">
-          <div className="flex flex-row h-full gap-2 md:gap-4">
+      <Card className="w-full h-[110px] lg:h-[300px]">
+        <CardBody className="flex flex-col justify-between">
+          <div className="flex justify-center items-center gap-5 w-full ">
             <Image
               src={maleDoctorCard}
-              width={10000}
+              width={1000}
               height={1000}
               alt="male doc"
-              className="w-[57px] h-[57px] md:w-[220px] md:h-[220px] rounded-full"
+              className="w-[57px] h-[57px] lg:w-[220px] lg:h-[220px] rounded-full object-cover"
             />
-            <div className="flex flex-col h-full  justify-between">
-              <div className="flex  w-full items-center gap-[.3rem] md:gap-[1rem] flex-row">
-                <h3 className="text-[11px] md:text-lg font-extrabold">
-                  Dr Manish Sharma
-                </h3>
-                <div className="flex flex-row gap-1 md:gap-4 items-center">
-                  <div className="w-1 md:w-2 h-1 md:h-2 bg-red-500 rounded-full" />
-                  <p className="font-extrabold text-[6px] md:text-md text-red-500">
-                    General Phyiscian
+            <div className="flex flex-col gap-3 flex-grow justify-between align-top ">
+              {/* level 1 */}
+              <div className="flex justify-between w-full items-center  ">
+                <div className="flex gap-10 ">
+                  <h4 className="text-[11px] lg:text-[44px] font-[700]">
+                    Dr. John Doe
+                  </h4>
+                  <p className=" font-[700] text-[8px] self-center lg:text-[24px] text-danger">
+                    Cardiologist
                   </p>
                 </div>
-              </div>
-              <div className="flex flex-row gap-2 md:gap-4 items-center">
-                <div className="w-1 md:w-2 h-1 md:h-2 bg-blue-500 rounded-full" />
-                <p className="font-extrabold text-[6px] md:text-md text-blue-500">
-                  MA, MPhil, MBBS
-                </p>
-              </div>
-              <div className="flex text-sm md:text-md   items-center flex-row gap-2 md:gap-4">
-                <FaMapMarkerAlt className="fill-gray-500" />
-                <h3 className="text-gray font-extrabold">
-                  Marine Drive, Mumbai (MH)
+                <h3 className="font-[700] text-[18px]  text-#011632 lg:text-[64px]">
+                  ₹ 649
                 </h3>
               </div>
-              <p className="text-sm md:text-md p-0 md:p-2 bg-[#8ED2CF] text-white text-center font-bold rounded-full w-2/3">
-                15 years experinced
-              </p>
+              {/* level 2 */}
+              <div className="flex justify-between w-full  items-center ">
+                <div className="flex gap-10">
+                  <p className="text-[6px] font-[700] lg:text-[24px] text-primary">
+                    . MA, MPhil, MBBS
+                  </p>
+                </div>
+                <h5 className="font-[600] line-through text-[8px] lg:text-[32px] text-danger">
+                  ₹ 649
+                </h5>
+              </div>
+              {/* level 3 */}
+              <div className="hidden lg:flex justify-between w-full items-center  ">
+                <div className="flex gap-2 items-center">
+                  {/* location icon */}
+                  <FaMapMarkerAlt className="text-grey  w-5 h-5" />
+                  <p className="text-[8px] font-[600] lg:text-[24px] text-grey">
+                    Marine Drive, Mumbai (MH)
+                  </p>
+                </div>
+                <p className="font-[700] text-[8px] lg:text-[16px] self-center text-grey">
+                  Consultation fee at clinic
+                </p>
+              </div>
+              {/* level 4 */}
+              <div className="hidden lg:flex justify-between w-full items-center ">
+                <div className="bg-secondary p-2 rounded-xl text-[8px] lg:text-[20px]  text-white">
+                  15 Years of Experience
+                </div>
+                <div className="flex gap-5">
+                  <p className="text-[8px] lg:text-[20px] text-grey self-center">
+                    know more
+                  </p>
+                  <Button
+                    onPress={() => router.push(props.redirect)}
+                    className="text-[10px] lg:text-[20px] p-5 bg-primary text-white"
+                  >
+                    CONSULT NOW
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="flex flex-col text-center justify-around h-full items-end">
-            <h3 className="text-md md:text-xl font-extrabold">₹ 649</h3>
-            <h3 className="text-red-400 line-through  font-bold text-sm md:text-lg">
-              ₹ 649
-            </h3>
-            <h3 className="text-[5px] md:text-md text-[#3C4959] text-right">
-              Consultation fee at clinic
-            </h3>
-            <div className="flex flex-row justify-around items-center gap-2 md:gap-4">
-              <h3 className="text-gray-600 text-[8px]  md:text-md">
-                Know More
-              </h3>
-              <button onClick={() => router.push('/doctor/12')} className="text-sm bg-blue-500 px-[2px] md:px-[25px] py-[2px] md:py-[10px] rounded-full md:text-md text-white font-bold">
+          <div className="lg:hidden flex justify-between w-full items-center ">
+            <div className="bg-secondary p-1 lg:p-3 rounded-xl text-[8px] lg:text-[20px]  text-white">
+              15 Years of Experience
+            </div>
+            <div className="flex gap-5">
+              <p className="text-[8px] lg:text-[20px] text-grey self-center">
+                know more
+              </p>
+              <Card
+                isPressable
+                onPress={() => router.push(props.redirect)}
+                className="text-[10px] p-1 px-3 bg-primary text-white"
+              >
                 Consult Now
-              </button>
+              </Card>
             </div>
           </div>
         </CardBody>

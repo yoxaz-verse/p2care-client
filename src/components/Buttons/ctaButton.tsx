@@ -5,13 +5,13 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-
-
 function CtaButton() {
   return (
-    <motion.div className="flex gap-1 md:gap-3 justify-end p-2 md:justify-start items-center w-full">
-      <button className="text-sm md:text-md  bg-secondary font-bold px-2 rounded-full py-1 md:py-3 md:px-12">Enquire Now</button>
-      <AnimatePresence>
+    <motion.div className="flex gap-1 md:gap-3 justify-end p-2 md:justify-start items-center w-full me-3 lg:me-0">
+      <button className="text-sm md:text-md  bg-secondary font-bold px-2 rounded-full py-1 md:py-3 md:px-12">
+        Enquire Now
+      </button>
+      {/* <AnimatePresence>
         <motion.div
           key="arrow"
           initial={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ function CtaButton() {
             />
           </button>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence> */}
     </motion.div>
   );
 }
