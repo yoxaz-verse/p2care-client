@@ -1,3 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
 import { hospitalLogo } from "@/Content/assets";
 import { isMobile } from "@/Utils/screenSize";
 import { Button, Card, CardBody } from "@nextui-org/react";
@@ -7,6 +9,7 @@ import { FaWheelchair } from "react-icons/fa6";
 import { IoMdCall, IoMdCar } from "react-icons/io";
 
 function HospitalCard2() {
+  const router = useRouter();
   return (
     <Card>
       <CardBody className="flex flex-row gap-10">
@@ -44,15 +47,13 @@ function HospitalCard2() {
             <h3>Wheelchair accessibility available</h3>
           </div>
           <div className="justify-self-end">
-            <Button
-              radius="full"
-              size={isMobile() ? "md" : "lg"}
-              className="flex flex-row gap-2 text-[10px] lg:text-md py-0 md:py-2 xl:py-4  px-2 lg:px-4 font-[500] bg-primary text-white"
-              color="primary"
-              startContent={<IoMdCall />}
+            <Card
+              isPressable
+              onPress={() => router.push("/doctor/12/booking")}
+              className="flex flex-row items-center text-[10px] md:text-[16px] p-1 md:p-3 px-3 md:px-6 rounded-full bg-primary text-white"
             >
-              +91 0987654321
-            </Button>
+              <IoMdCall /> +91 0987654321
+            </Card>
           </div>
         </div>
       </CardBody>
