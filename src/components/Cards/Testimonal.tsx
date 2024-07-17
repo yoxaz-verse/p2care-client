@@ -11,7 +11,7 @@ export default function Testimonial() {
           height={1000}
           src={testimonial1}
           alt="image"
-          className="w-[100px] md:w-[300px] rounded-[10px] h-[100px] md:h-[300px]"
+          className="w-[100px] md:w-[300px] rounded-[10px] h-[100px] md:h-[300px] object-cover"
         />
         <div className="flex flex-col gap-2">
           <p className="absolute text-[80px] text-blue-500 right-1 md:right-4 top-[-16px] md:top-[20px]">

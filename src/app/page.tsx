@@ -21,13 +21,11 @@ import {
 } from "@/Content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
-import GalleryCard from "@/components/Cards/GalleryCard";
 import BlogCard, { BlogCardProps } from "@/components/Cards/BlogCard";
 import DepartmentCard, {
   DepartmentCardProps,
 } from "@/components/Cards/DepartmentCard";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import { isMobile, isTablet } from "@/Utils/screenSize";
 import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
@@ -129,7 +127,7 @@ export default function Home() {
           subHeading={HeaderHeading[2].subHeading}
         />
         <Spacer y={5} />
-        <div className="hidden lg:flex gap-5">
+        <div className="hidden lg:grid grid-cols-2 gap-5 w-full">
           <div className="flex flex-col gap-5">
             <HospitalViewCard />
             <div className="flex flex-row w-full gap-5">
