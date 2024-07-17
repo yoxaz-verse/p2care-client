@@ -1,16 +1,15 @@
 "use client";
-import { DoctorListCard } from "@/components/Cards/DoctorListCard";
-import { DoctorProfile } from "@/components/Cards/DoctorProfile";
-import ProfileCard from "@/components/Cards/ProfileCard";
-import ColourCard from "@/components/Development/colourCard";
+
+import { editIcon, emailIcon, personIcon, phoneIcon } from "@/content/assets";
 import {
-  editIcon,
-  emailIcon,
-  noappoints,
-  personIcon,
-  phoneIcon,
-} from "@/content/assets";
-import { Avatar, Card, CardBody, Tab, Tabs } from "@nextui-org/react";
+  Avatar,
+  Button,
+  Card,
+  CardBody,
+  Input,
+  Tab,
+  Tabs,
+} from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 
