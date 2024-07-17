@@ -1,4 +1,4 @@
-import { contactus } from "@/Content/assets";
+import { contactus } from "@/content/assets";
 import { Input, Textarea, Image, Button } from "@nextui-org/react";
 import React from "react";
 

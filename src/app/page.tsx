@@ -6,7 +6,7 @@ import {
   HeaderHeading,
   CausesArr,
   BlogContent,
-} from "@/Content/Home/home-page-content";
+} from "@/content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
@@ -18,7 +18,7 @@ import {
   apollo2,
   doctors,
   department,
-} from "@/Content/assets";
+} from "@/content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
 import GalleryCard from "@/components/Cards/GalleryCard";
@@ -27,7 +27,9 @@ import DepartmentCard, {
   DepartmentCardProps,
 } from "@/components/Cards/DepartmentCard";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import { isMobile, isTablet } from "@/Utils/screenSize";
+import { isMobile, isTablet } from "@/utils/screenSize";
+import HospitalViewCard from "@/components/Cards/HospitalViewCard";
+import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 
 export default function Home() {
   return (
@@ -56,28 +58,29 @@ export default function Home() {
           subHeading={HeaderHeading[0].subHeading}
         />
         <Spacer y={5} />
-        <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {isMobile() || isTablet()
-            ? Doctors.slice(0, 2).map((d: DoctorCardProps, index: number) => {
-              return (
-                <DoctorCard
-                  key={index}
-                  name={d.name}
-                  image={d.image}
-                  type={d.type}
-                />
-              );
-            })
-            : Doctors.map((d: DoctorCardProps, index: number) => {
-              return (
-                <DoctorCard
-                  key={index}
-                  name={d.name}
-                  image={d.image}
-                  type={d.type}
-                />
-              );
-            })}
+        <div className="grid lg:hidden w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {Doctors.slice(0, 2).map((d: DoctorCardProps, index: number) => {
+            return (
+              <DoctorCard
+                key={index}
+                name={d.name}
+                image={d.image}
+                type={d.type}
+              />
+            );
+          })}
+        </div>
+        <div className=" hidden lg:grid w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          {Doctors.slice(0, 4).map((d: DoctorCardProps, index: number) => {
+            return (
+              <DoctorCard
+                key={index}
+                name={d.name}
+                image={d.image}
+                type={d.type}
+              />
+            );
+          })}
         </div>
         <Spacer y={5} />
         <Image src={bannerSales} className="w-screen" />
@@ -89,17 +92,33 @@ export default function Home() {
           subHeading={HeaderHeading[1].subHeading}
         />
         <Spacer y={5} />
-        <div className="grid w-full gap-4 grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
-          {CausesArr.map((d: DepartmentCardProps, index: number) => {
-            return (
-              <DepartmentCard
-                key={index}
-                title={d.title}
-                icon={d.icon}
-                redirect={navigationRoutes.department + "department-id"}
-              />
-            );
-          })}
+        <div className="grid lg:hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+          {CausesArr.slice(0, 3).map(
+            (d: DepartmentCardProps, index: number) => {
+              return (
+                <DepartmentCard
+                  key={index}
+                  title={d.title}
+                  icon={d.icon}
+                  redirect={navigationRoutes.department + "department-id"}
+                />
+              );
+            }
+          )}
+        </div>
+        <div className="lg:grid hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+          {CausesArr.slice(0, 6).map(
+            (d: DepartmentCardProps, index: number) => {
+              return (
+                <DepartmentCard
+                  key={index}
+                  title={d.title}
+                  icon={d.icon}
+                  redirect={navigationRoutes.department + "department-id"}
+                />
+              );
+            }
+          )}
         </div>
       </section>
       <Spacer y={5} />
@@ -109,53 +128,29 @@ export default function Home() {
           subHeading={HeaderHeading[2].subHeading}
         />
         <Spacer y={5} />
-        <div className="flex flex-col gap-4">
-          <div className="grid grid-cols-auto gap-4">
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo}
-              width={"w-full md:w-1/2"}
-              height={"h-[400px]"}
-            />
-            <div className="flex flex-row w-full">
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo2}
-              width={"w-[156px] md:w-1/4"}
-              height={"h-[400px]"}
-            />
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo2}
-              height={"h-[400px]"}
-            />
+        <div className="hidden lg:flex gap-5">
+          <div className="flex flex-col gap-5">
+            <HospitalViewCard />
+            <div className="flex flex-row w-full gap-5">
+              <HospitalViewCard2 />
+              <HospitalViewCard2 />
             </div>
           </div>
-          <div className="hidden lg:flex flex-col-reverse md:flex-row-reverse gap-4">
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo}
-              width={"w-full md:w-1/2"}
-              height={"h-[400px]"}
-            />
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo2}
-              width={"w-full md:w-1/4"}
-              height={"h-[400px]"}
-            />
-            <GalleryCard
-              name="Apollo"
-              place="Mumbai"
-              image={apollo2}
-              width={"w-full md:w-1/4"}
-              height={"h-[400px]"}
-            />
+          <div className="flex flex-col gap-5">
+            <div className="flex flex-row w-full gap-5">
+              <HospitalViewCard2 />
+              <HospitalViewCard2 />
+            </div>
+            <HospitalViewCard />
+          </div>
+        </div>
+        <div className="lg:hidden">
+          <div className="flex flex-col gap-5">
+            <HospitalViewCard />
+            <div className="flex flex-row w-full gap-5">
+              <HospitalViewCard2 />
+              <HospitalViewCard2 />
+            </div>
           </div>
         </div>
       </section>

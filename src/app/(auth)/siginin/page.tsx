@@ -1,4 +1,4 @@
-import { logo, signin } from "@/Content/assets";
+import { logo, signin } from "@/content/assets";
 import AuthLayout from "../layout";
 import { Button, Input } from "@nextui-org/react";
 

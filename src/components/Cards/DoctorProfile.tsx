@@ -1,12 +1,12 @@
-"use client"
+"use client";
 import { NextPage } from "next";
-import { doctor, doctors, maleDoctorCard } from "@/Content/assets";
+import { doctor, doctors, maleDoctorCard } from "@/content/assets";
 import { Button, Card, CardBody, Chip, Image } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 
 interface DoctorProfileProps {
-  title: any
+  title: any;
 }
 
 export const DoctorProfile: React.FC<DoctorProfileProps> = ({ title }) => {
@@ -43,7 +43,9 @@ export const DoctorProfile: React.FC<DoctorProfileProps> = ({ title }) => {
                   Marine Drive, Mumbai (MH)
                 </h3>
               </div>
-              <span className="bg-blue-500 text-white font-bold px-[10px] w-1/4 text-center py-[5px] rounded-full">{title}</span>
+              <span className="bg-blue-500 text-white font-bold px-[10px] w-1/4 text-center py-[5px] rounded-full">
+                {title}
+              </span>
             </div>
           </div>
         </CardBody>

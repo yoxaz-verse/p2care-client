@@ -12,6 +12,7 @@ const resetPassword = "/reset-password/";
 const otp = "/otp/";
 const profile = "/profile/";
 const profileEdit = "/profile/edit/";
+const booking = "/booking/";
 
 export const navigationRoutes = {
   home,
@@ -28,4 +29,5 @@ export const navigationRoutes = {
   otp,
   profile,
   profileEdit,
+  booking,
 };

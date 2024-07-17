@@ -1,11 +1,10 @@
 import DepartmentCard from "@/components/Cards/DepartmentCard";
 import DoctorDetailCard from "@/components/Cards/DoctorDetailCard";
 import HospitalCard from "@/components/Cards/HospitalCard";
-import ColourCard from "@/components/Development/colourCard";
 import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
-import { pediatrics, serviceXRay } from "@/Content/assets";
-import { lorem150 } from "@/Content/dummyText";
+import { pediatrics, serviceXRay } from "@/content/assets";
+import { lorem150 } from "@/content/dummyText";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import Image from "next/image";
@@ -47,7 +46,7 @@ function Details() {
           <h1 className="text-3xl font-bold text-blue-500">Departments</h1>
           <h1 className="text-blue-600 font-bold underline">View All</h1>
         </div>
-        <div className="flex flex-wrap gap-5">
+        <div className="grid grid-cols-3 lg:grid-cols-6 gap-5">
           {Array.from({ length: 10 }).map((_, index) => (
             <DepartmentCard
               key={index}

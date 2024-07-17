@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { Card, CardBody, Spacer } from "@nextui-org/react";
-import { apolloLogo, apolloDoc } from "@/Content/assets";
+import { apolloLogo, apolloDoc } from "@/content/assets";
 import { HiLocationMarker } from "react-icons/hi";
 import { CiClock2 } from "react-icons/ci";
 import { useRouter } from "next/navigation";
@@ -74,7 +74,10 @@ const HospitalCard = () => {
           </div>
           <div className="flex flex-row items-center gap-2">
             <h3 className="text-sm md:text-md cursor-pointer">Know More</h3>
-            <button onClick={() => router.push("/hospital/12")} className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold">
+            <button
+              onClick={() => router.push("/hospital/12")}
+              className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold"
+            >
               Consult Now
             </button>
           </div>
