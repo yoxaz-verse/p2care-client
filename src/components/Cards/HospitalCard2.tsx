@@ -1,4 +1,5 @@
 import { hospitalLogo } from "@/Content/assets";
+import { isMobile } from "@/Utils/screenSize";
 import { Button, Card, CardBody } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
@@ -45,7 +46,8 @@ function HospitalCard2() {
           <div className="justify-self-end">
             <Button
               radius="full"
-              className="flex flex-row gap-2 text-[10px] lg:text-md py-0 font-[500] bg-primary text-white"
+              size={isMobile() ? "md" : "lg"}
+              className="flex flex-row gap-2 text-[10px] lg:text-md py-0 md:py-2 xl:py-4  px-2 lg:px-4 font-[500] bg-primary text-white"
               color="primary"
               startContent={<IoMdCall />}
             >
@@ -54,7 +56,7 @@ function HospitalCard2() {
           </div>
         </div>
       </CardBody>
-    </Card>
+    </Card >
   );
 }
 
