@@ -20,8 +20,10 @@ function CategoryCard(props: ICategoryCardProps) {
   const router = useRouter();
   return (
     <Card
-      isPressable
-      onPress={() => router.push(props.link)}
+      onPress={() => {
+        router.push(props.link);
+      }}
+      isPressable={true}
       className={`relative w-full rounded-2xl h-[180px] lg:h-[400px] ${props.background} hover:cursor-pointer hover:${props.hover}`}
     >
       <CardBody className={`flex flex-col justify-between p-3 lg:p-6`}>

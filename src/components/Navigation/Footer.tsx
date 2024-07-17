@@ -28,13 +28,13 @@ export default function Footer() {
               Clarity gives you the blocks and components you need to create a
               truly professional website.
             </h3>
-            <div className="flex text-lg lg:text-xl flex-row gap-4">
+            <div className="flex text-lg items-center w-full justify-center lg:text-[50px] flex-row gap-4">
               <FaFacebook className="fill-blue-400" />
               <CiInstagram />
               <FaGithub />
             </div>
           </div>
-          <div className="flex p-[.2rem] md:p-[.8rem] text-md flex-row w-full md:w-1/2 justify-around">
+          <div className="flex p-[.2rem] md:p-[.8rem] text-[12px] lg:text-md flex-row w-full md:w-1/2 justify-around">
             <div className="flex gap-4 flex-col">
               <h3 className="text-primary font-bold">Company</h3>
               <h3 className="cursor-pointer" onClick={() => router.push("/about-us")}>About</h3>

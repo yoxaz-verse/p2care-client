@@ -9,10 +9,9 @@ interface IBlackArrowButtonProps {
 
 function BlackArrowButton(props: IBlackArrowButtonProps) {
   return (
-    <Button
-      className={`rounded-full bg-dark min-w-max max-w-${
-        props.isFullWidth ? "full" : "max"
-      } p-3 lg:p-4 h-auto `}
+    <div
+      className={`rounded-full bg-dark min-w-max max-w-${props.isFullWidth ? "full" : "max"
+        } p-3 lg:p-4 h-auto `}
     >
       <Image
         src={smallArrowDarkIcon}
@@ -21,7 +20,7 @@ function BlackArrowButton(props: IBlackArrowButtonProps) {
         height={1000}
         className="p-0 m-0 w-2 h-2"
       />
-    </Button>
+    </div>
   );
 }
 

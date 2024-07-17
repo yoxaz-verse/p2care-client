@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -27,6 +27,12 @@ export default function Header() {
   ];
   const [name, setName] = useState<any>("Home");
   const router = useRouter();
+  useEffect(() => {
+    if (window.location.href.includes(name)) {
+      setName(window.location.href.split('/')[1]);
+    }
+  }, []);
+
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
@@ -79,20 +85,15 @@ export default function Header() {
           </Button>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>
+      <NavbarMenu className="w-1/2">
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-              }
+              color={`${item.name === name ? "primary" : "secondary"}`}
               className="w-full"
               href={item.link}
-              size="lg"
+              onClick={() => setName(item.name)}
+              size="md"
             >
               {item.name}
             </Link>
