@@ -109,7 +109,7 @@ export const HeaderHeading: HomeHeaderProps[] = [
     header: "Our Top Doctors",
     subHeading:
       "We use only the best quality materials on the market in order to provide the best products to our patients.",
-    link: "/doctors"
+    link: "/doctor"
   },
   {
     header: "Services",
@@ -125,14 +125,54 @@ export const HeaderHeading: HomeHeaderProps[] = [
   },
   {
     header: "Blogs",
+    link: "/blog"
   },
   {
     header: "Departments",
+    link: "/department"
   },
 ];
 
 
 export const BlogContent: BlogCardProps[] = [
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description:
+      "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future.",
+  },
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description:
+      "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future.",
+  },
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description:
+      "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future.",
+  },
+];
+export const BlogContentPage: BlogCardProps[] = [
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description:
+      "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future.",
+  },
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description:
+      "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future.",
+  },
+  {
+    heading: "Why Nike is Making Shoes You can Take Apart",
+    image: blogs1,
+    description:
+      "The ISPA Link and ISPA Link Axis, examples of design for disassembly, are innovative catalysts that move the brand closer to a circular future.",
+  },
   {
     heading: "Why Nike is Making Shoes You can Take Apart",
     image: blogs1,

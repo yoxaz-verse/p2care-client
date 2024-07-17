@@ -30,6 +30,7 @@ import { navigationRoutes } from "@/core/navigationRoutes";
 import { isMobile, isTablet } from "@/utils/screenSize";
 import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
+import Testimonial from "@/components/Cards/Testimonal";
 
 export default function Home() {
   return (
@@ -179,6 +180,12 @@ export default function Home() {
         </div>
       </section>
       <Spacer y={10} />
+      <section className="flex flex-col gap-2">
+        <h1 className="text-center text-[54px] font-bold">Testimonials</h1>
+        <div className="flex flex-row gap-2">
+          <Testimonial />
+        </div>
+      </section>
       <section className="flex flex-col">
         <HomeHeader header={HeaderHeading[3].header} />
         <Spacer y={10} />
