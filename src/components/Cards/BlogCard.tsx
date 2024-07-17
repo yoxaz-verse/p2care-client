@@ -13,7 +13,7 @@ export default function BlogCard({
   description,
 }: BlogCardProps) {
   return (
-    <Card className="flex flex-col w-full justify-between h-[300px] lg:h-[585px]">
+    <Card className="flex flex-col w-full justify-between h-[320px] lg:h-[585px]">
       <CardBody className="p-2 flex flex-col gap-2">
         <Image
           src={image}
