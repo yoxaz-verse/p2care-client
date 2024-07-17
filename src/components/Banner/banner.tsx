@@ -7,7 +7,7 @@ import {
   isLargeDesktop,
   isMobile,
   isTablet,
-} from "@/utils/screenSize";
+} from "@/Utils/screenSize";
 import Image from "next/image";
 import Points from "./points";
 import { pointsLeft, pointsRight } from "@/Content/Home/banner";

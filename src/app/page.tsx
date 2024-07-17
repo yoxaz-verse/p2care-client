@@ -27,7 +27,7 @@ import DepartmentCard, {
   DepartmentCardProps,
 } from "@/components/Cards/DepartmentCard";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import { isMobile, isTablet } from "@/utils/screenSize";
+import { isMobile, isTablet } from "@/Utils/screenSize";
 import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
