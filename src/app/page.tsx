@@ -11,7 +11,7 @@ import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
 } from "@/components/Cards/categoryCard";
-import { Spacer, Image } from "@nextui-org/react";
+import { Spacer, Image, useDisclosure, Modal, ModalContent, ModalFooter, ModalHeader, ModalBody, Button, Input, Textarea } from "@nextui-org/react";
 import {
   bannerSales,
   apollo,
@@ -31,9 +31,51 @@ import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
 
 export default function Home() {
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   return (
     <main className="">
-      <Banner />
+      <Banner onOpen={onOpen} />
+      <Modal placement="center" isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} isKeyboardDismissDisabled={true}>
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Enquire Us</ModalHeader>
+              <ModalBody>
+                <form className="flex flex-col gap-4">
+                  <Input
+                    className="bg-white rounded-none"
+                    variant="underlined"
+                    placeholder="Full Name"
+                  />
+                  <Input
+                    className="bg-white rounded-none"
+                    variant="underlined"
+                    placeholder="Email"
+                  />
+                  <Textarea
+                    className="bg-white rounded-none"
+                    variant="underlined"
+                    placeholder="Message"
+                    cols={20}
+                  />
+                  <Button color="primary" radius="full" className="p-[1rem]">
+                    Submit
+                  </Button>
+                </form>
+
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Enquire
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
       <Spacer y={10} />
       <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
         {content.map((c: ICategoryCardProps, index: number) => {
@@ -44,6 +86,7 @@ export default function Home() {
               hover={c.hover}
               image={c.image}
               heading={c.heading}
+              link={c.link}
               subHeading={c.subHeading}
             />
           );
@@ -54,6 +97,7 @@ export default function Home() {
       <section className="flex flex-col gap-4  justify-around w-full">
         <HomeHeader
           header={HeaderHeading[0].header}
+          link={HeaderHeading[0].link}
           subHeading={HeaderHeading[0].subHeading}
         />
         <Spacer y={5} />
@@ -87,6 +131,7 @@ export default function Home() {
       <Spacer y={5} />
       <section className="flex flex-col gap-4  justify-around w-full">
         <HomeHeader
+          link={HeaderHeading[1].link}
           header={HeaderHeading[1].header}
           subHeading={HeaderHeading[1].subHeading}
         />
@@ -123,6 +168,7 @@ export default function Home() {
       <Spacer y={5} />
       <section className="flex flex-col gap-4  justify-around w-full">
         <HomeHeader
+          link={HeaderHeading[2].link}
           header={HeaderHeading[2].header}
           subHeading={HeaderHeading[2].subHeading}
         />
@@ -159,7 +205,7 @@ export default function Home() {
       <Spacer y={10} />
 
       <section className="flex flex-col gap-4  justify-around w-full">
-        <HomeHeader header={HeaderHeading[4].header} />
+        <HomeHeader link={HeaderHeading[4].link} header={HeaderHeading[4].header} />
         <Spacer y={5} />
 
         <div className="flex flex-col  xl:flex-row gap-4 justify-around">
@@ -178,14 +224,14 @@ export default function Home() {
         </div>
       </section>
       <Spacer y={10} />
-      <section className="flex flex-col p-[1rem] gap-2">
-        <h1 className="text-center text-[54px] font-bold">Testimonials</h1>
+      <section className="flex flex-col p-[1rem] gap-2 items-center">
+        <h1 className="text-center text-[27px] lg:text-[54px] font-bold">Testimonials</h1>
         <div className="flex flex-row gap-2">
           <Testimonial />
         </div>
       </section>
       <section className="flex flex-col">
-        <HomeHeader header={HeaderHeading[3].header} />
+        <HomeHeader link={HeaderHeading[3].link} header={HeaderHeading[3].header} />
         <Spacer y={10} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {BlogContent.map((b: BlogCardProps, index: number) => {

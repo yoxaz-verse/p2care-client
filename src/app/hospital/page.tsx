@@ -27,12 +27,12 @@ function List() {
         <Select
           startContent={<FaMapMarkerAlt size={20} />}
           defaultSelectedKeys={["mumbai"]}
-          className="max-w-xs bg-white"
+          className="w-1/2 md:max-w-xs bg-white"
         >
           {cities.map((animal: any) => (
             <SelectItem
               className="font-bold text-xl"
-              startContent={<FaMapMarkerAlt />}
+              startContent={<FaMapMarkerAlt size={20} />}
               key={animal.key}
             >
               {animal.label}

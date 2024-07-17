@@ -12,10 +12,10 @@ import Image from "next/image";
 import Points from "./points";
 import { pointsLeft, pointsRight } from "@/Content/Home/banner";
 import CtaButton from "../Buttons/ctaButton";
-function Banner() {
+
+function Banner({ onOpen }: any) {
   const [scope, animate] = useAnimate();
   const [isRendered, setIsRendered] = useState<boolean>(false);
-
   const handleAnimation = async () => {
     await animate(
       "h1",
@@ -25,12 +25,12 @@ function Banner() {
           isMobile()
             ? -50
             : isTablet()
-            ? -100
-            : isDesktop()
-            ? -300
-            : isLargeDesktop()
-            ? -500
-            : -500,
+              ? -100
+              : isDesktop()
+                ? -300
+                : isLargeDesktop()
+                  ? -500
+                  : -500,
           0,
         ],
       },
@@ -45,12 +45,12 @@ function Banner() {
         y: isMobile()
           ? -10
           : isTablet()
-          ? -20
-          : isDesktop()
-          ? -30
-          : isLargeDesktop()
-          ? -75
-          : -75,
+            ? -20
+            : isDesktop()
+              ? -30
+              : isLargeDesktop()
+                ? -75
+                : -75,
       },
       {
         duration: 0.5,
@@ -83,12 +83,10 @@ function Banner() {
           alt="P2Care Logo"
           width={1000}
           height={1000}
-          className={`max-w-max h-[200px] lg:h-[600px] absolute bottom-0 ${
-            isMobile() || isTablet() ? "left-0" : ""
-          }
-          transition delay-500 duration-1000 ease-in-out opacity-${
-            isRendered ? 100 : 0
-          }`}
+          className={`max-w-max h-[200px] lg:h-[600px] absolute bottom-0 ${isMobile() || isTablet() ? "left-0" : ""
+            }
+          transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
+            }`}
         />
         <div className={`flex gap-2`}>
           <motion.div
@@ -101,21 +99,21 @@ function Banner() {
               x: isMobile()
                 ? 0
                 : isTablet()
-                ? 180
-                : isDesktop()
-                ? 300
-                : isLargeDesktop()
-                ? 450
-                : 450,
+                  ? 180
+                  : isDesktop()
+                    ? 300
+                    : isLargeDesktop()
+                      ? 450
+                      : 450,
               y: isMobile()
                 ? 0
                 : isTablet()
-                ? -50
-                : isDesktop()
-                ? -70
-                : isLargeDesktop()
-                ? -90
-                : 0,
+                  ? -50
+                  : isDesktop()
+                    ? -70
+                    : isLargeDesktop()
+                      ? -90
+                      : 0,
             }}
             transition={{
               duration: 1,
@@ -130,12 +128,12 @@ function Banner() {
                   x: isMobile()
                     ? 0
                     : isTablet()
-                    ? index * 10
-                    : isDesktop()
-                    ? index * 15
-                    : isLargeDesktop()
-                    ? index * 20
-                    : index * 20,
+                      ? index * 10
+                      : isDesktop()
+                        ? index * 15
+                        : isLargeDesktop()
+                          ? index * 20
+                          : index * 20,
                   opacity: [0, 1],
                 }}
                 transition={{
@@ -163,21 +161,21 @@ function Banner() {
               x: isMobile()
                 ? 0
                 : isTablet()
-                ? -180
-                : isDesktop()
-                ? -300
-                : isLargeDesktop()
-                ? -450
-                : -450,
+                  ? -180
+                  : isDesktop()
+                    ? -300
+                    : isLargeDesktop()
+                      ? -450
+                      : -450,
               y: isMobile()
                 ? 0
                 : isTablet()
-                ? -50
-                : isDesktop()
-                ? -70
-                : isLargeDesktop()
-                ? -90
-                : 0,
+                  ? -50
+                  : isDesktop()
+                    ? -70
+                    : isLargeDesktop()
+                      ? -90
+                      : 0,
             }}
             transition={{
               duration: 1,
@@ -192,12 +190,12 @@ function Banner() {
                   x: isMobile()
                     ? 0
                     : isTablet()
-                    ? index * -10
-                    : isDesktop()
-                    ? index * -15
-                    : isLargeDesktop()
-                    ? index * -20
-                    : index * -20,
+                      ? index * -10
+                      : isDesktop()
+                        ? index * -15
+                        : isLargeDesktop()
+                          ? index * -20
+                          : index * -20,
                   opacity: [0, 1],
                 }}
                 transition={{
@@ -216,18 +214,17 @@ function Banner() {
           </motion.div>
         </div>
         <div
-          className={`flex w-full justify-between lg:px-14 ${
-            isMobile() || isTablet()
-              ? "flex-col items-end max-w-52 me-2 py-2"
-              : ""
-          } `}
+          className={`flex w-full justify-between lg:px-14 ${isMobile() || isTablet()
+            ? "flex-col items-end max-w-52 me-2 py-2"
+            : ""
+            } `}
         >
           <h4 className="text-white font-[500] max-w-64 text-[8px] lg:text-[16px]">
             If you are seeking a user-friendly and innovative way to manage
             medical records, P2Care is the ideal solution.
           </h4>
           <div className="lg:mt-auto">
-            <CtaButton />
+            <CtaButton onOpen={onOpen} />
           </div>
         </div>
       </section>
@@ -243,9 +240,8 @@ function Banner() {
           alt="Doctor Banner"
           width={1000}
           height={1000}
-          className={`w-auto h-[230px] absolute bottom-0 left-0 transition delay-500 duration-1000 ease-in-out opacity-${
-            isRendered ? 100 : 0
-          }`}
+          className={`w-auto h-[230px] absolute bottom-0 left-0 transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
+            }`}
         />
         <div className="flex flex-col justify-between w-full h-[200px] items-end ">
           <div className="flex gap-8 me-5">
@@ -259,21 +255,21 @@ function Banner() {
                 x: isMobile()
                   ? 20
                   : isTablet()
-                  ? 180
-                  : isDesktop()
-                  ? 300
-                  : isLargeDesktop()
-                  ? 450
-                  : 450,
+                    ? 180
+                    : isDesktop()
+                      ? 300
+                      : isLargeDesktop()
+                        ? 450
+                        : 450,
                 y: isMobile()
                   ? 0
                   : isTablet()
-                  ? -50
-                  : isDesktop()
-                  ? -70
-                  : isLargeDesktop()
-                  ? -90
-                  : 0,
+                    ? -50
+                    : isDesktop()
+                      ? -70
+                      : isLargeDesktop()
+                        ? -90
+                        : 0,
               }}
               transition={{
                 duration: 1,
@@ -288,12 +284,12 @@ function Banner() {
                     x: isMobile()
                       ? 0
                       : isTablet()
-                      ? 0
-                      : isDesktop()
-                      ? index * 15
-                      : isLargeDesktop()
-                      ? index * 20
-                      : index * 20,
+                        ? 0
+                        : isDesktop()
+                          ? index * 15
+                          : isLargeDesktop()
+                            ? index * 20
+                            : index * 20,
                     opacity: [0, 1],
                   }}
                   transition={{
@@ -320,21 +316,21 @@ function Banner() {
                 x: isMobile()
                   ? 0
                   : isTablet()
-                  ? 0
-                  : isDesktop()
-                  ? -300
-                  : isLargeDesktop()
-                  ? -450
-                  : -450,
+                    ? 0
+                    : isDesktop()
+                      ? -300
+                      : isLargeDesktop()
+                        ? -450
+                        : -450,
                 y: isMobile()
                   ? 0
                   : isTablet()
-                  ? 0
-                  : isDesktop()
-                  ? -70
-                  : isLargeDesktop()
-                  ? -90
-                  : 0,
+                    ? 0
+                    : isDesktop()
+                      ? -70
+                      : isLargeDesktop()
+                        ? -90
+                        : 0,
               }}
               transition={{
                 duration: 1,
@@ -349,12 +345,12 @@ function Banner() {
                     x: isMobile()
                       ? 0
                       : isTablet()
-                      ? 0
-                      : isDesktop()
-                      ? index * -15
-                      : isLargeDesktop()
-                      ? index * -20
-                      : index * -20,
+                        ? 0
+                        : isDesktop()
+                          ? index * -15
+                          : isLargeDesktop()
+                            ? index * -20
+                            : index * -20,
                     opacity: [0, 1],
                   }}
                   transition={{
@@ -376,7 +372,7 @@ function Banner() {
             If you are seeking a user-friendly and innovative way to manage
             medical records, P2Care is the ideal solution.
           </h4>
-          <CtaButton />
+          <CtaButton onOpen={onOpen} />
         </div>
       </section>
     </>

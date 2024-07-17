@@ -13,6 +13,7 @@ import {
 } from "@nextui-org/react";
 import { logo } from "@/Content/assets";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -25,6 +26,7 @@ export default function Header() {
     { name: "Departments", link: "/department" },
   ];
   const [name, setName] = useState<any>("Home");
+  const router = useRouter();
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
@@ -37,7 +39,7 @@ export default function Header() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand>
+        <NavbarBrand onClick={() => router.push("/")} className="cursor-pointer">
           <Image src={logo} alt="P2Care Logo" width={100} height={100} />
         </NavbarBrand>
       </NavbarContent>
@@ -85,8 +87,8 @@ export default function Header() {
                 index === 2
                   ? "primary"
                   : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
+                    ? "danger"
+                    : "foreground"
               }
               className="w-full"
               href={item.link}

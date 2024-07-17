@@ -6,7 +6,7 @@ interface PageHeadingProps {
 
 function PageHeading(props: PageHeadingProps) {
   return (
-    <h1 className="font-[600] text-[48px] lg:text-[60px] text-primary">
+    <h1 className="font-[600] text-[27px] lg:text-[54px] text-primary">
       {props.heading}
     </h1>
   );

@@ -14,7 +14,7 @@ import {
 } from "../assets";
 import { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import { BlogCardProps } from "@/components/Cards/BlogCard";
-import { title } from "process";
+
 
 export const content: ICategoryCardProps[] = [
   {
@@ -23,6 +23,7 @@ export const content: ICategoryCardProps[] = [
     image: femaleDoctor01,
     background: "bg-primary",
     hover: "bg-white",
+    link: "/doctor"
   },
   {
     heading: "Services",
@@ -30,6 +31,7 @@ export const content: ICategoryCardProps[] = [
     image: maleDoctor01,
     background: "bg-secondary",
     hover: "bg-white",
+    link: '/service'
   },
   {
     heading: "Hospitals",
@@ -37,6 +39,7 @@ export const content: ICategoryCardProps[] = [
     image: maleFemaleDoctor01,
     background: "bg-primary",
     hover: "bg-white",
+    link: '/hospital'
   },
   {
     heading: "Departments",
@@ -44,6 +47,7 @@ export const content: ICategoryCardProps[] = [
     image: femaleDoctor02,
     background: "bg-secondary",
     hover: "bg-white",
+    link: '/department'
   },
 ];
 

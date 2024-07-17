@@ -25,10 +25,10 @@ export default function BlogCard({
         <h3 className="text-primary  text-[14px] lg:text-[32px] font-[700]">
           {heading}
         </h3>
-        <p className="text-[8px] lg:text-[16px]">{description}</p>
-        <Button className="rounded-full self-end bg-primary text-sm lg:text-md p-2 lg:px-4 lg:py-2 font-bold text-white">
+        <p className="text-[10px] lg:text-[16px]">{description}</p>
+        <button className="rounded-full self-end place-items-end bg-primary text-sm lg:text-md px-2 py-1 lg:px-4 lg:py-2 font-bold text-white">
           Read More
-        </Button>
+        </button>
       </CardBody>
     </Card>
   );

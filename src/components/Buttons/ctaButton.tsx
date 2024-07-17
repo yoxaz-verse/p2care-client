@@ -5,10 +5,15 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-function CtaButton() {
+
+interface CtaButtonProps {
+  onOpen: () => any;
+}
+
+function CtaButton({ onOpen }: CtaButtonProps) {
   return (
     <motion.div className="flex gap-1 md:gap-3 justify-end p-2 md:justify-start items-center w-full me-3 lg:me-0">
-      <button className="text-sm md:text-md  bg-secondary font-bold px-2 rounded-full py-1 md:py-3 md:px-12">
+      <button onClick={() => onOpen()} className="text-sm md:text-md  bg-secondary font-bold px-2 rounded-full py-1 md:py-3 md:px-12">
         Enquire Now
       </button>
       {/* <AnimatePresence>
