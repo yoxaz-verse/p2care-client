@@ -57,7 +57,7 @@ function Profile() {
                   src={noappoints}
                   width={1000}
                   height={1000}
-                  className="w-[400px]"
+                  className="w-[400px] self-center"
                 />
               </CardBody>
             </Card>

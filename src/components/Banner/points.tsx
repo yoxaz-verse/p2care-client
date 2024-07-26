@@ -12,9 +12,8 @@ function Points(props: IPointsProps) {
   return (
     <div className="flex gap-2 lg:gap-5 items-center text-white">
       <div
-        className={`p-1 lg:p-4 rounded-full bg-${
-          props.background ?? "red-300"
-        }`}
+        className={`p-1 lg:p-4 rounded-full bg-${props.background ?? "red-300"
+          }`}
       >
         <Image
           src={bandaidIcon}
@@ -24,7 +23,7 @@ function Points(props: IPointsProps) {
           className="w-[6px] h-[6px] lg:w-5 lg:h-5"
         />
       </div>
-      <p className="text-[8px] font-[400] lg:text-[20px]">
+      <p className="text-[8px] md:text-[15px] font-[400] lg:text-[20px]">
         {props.point ?? "Quick Points To Show"}
       </p>
     </div>

@@ -10,10 +10,12 @@ import {
   NavbarMenuItem,
   Link,
   Button,
+  useDisclosure,
 } from "@nextui-org/react";
 import { logo } from "@/Content/assets";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import EnquireModal from "../Enquire";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -27,12 +29,14 @@ export default function Header() {
   ];
   const [name, setName] = useState<any>("Home");
   const router = useRouter();
+  const path = usePathname();
+
   useEffect(() => {
-    if (window.location.href.includes(name)) {
+    if (path.includes(name)) {
       setName(window.location.href.split('/')[1]);
     }
   }, []);
-
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
@@ -68,17 +72,19 @@ export default function Header() {
           <Button
             color="primary"
             href="#"
+            onClick={onOpen}
             variant="bordered"
             className="rounded-full px-6"
           >
             Enquire
           </Button>
+          <EnquireModal onOpenChange={onOpenChange} isOpen={isOpen} />
         </NavbarItem>
         <NavbarItem>
           <Button
             as={Link}
             color="primary"
-            href="#"
+            href="/siginin"
             className="rounded-full px-6"
           >
             Log In

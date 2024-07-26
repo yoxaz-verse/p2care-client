@@ -24,14 +24,14 @@ function CategoryCard(props: ICategoryCardProps) {
         router.push(props.link);
       }}
       isPressable={true}
-      className={`relative w-full rounded-2xl h-[180px] lg:h-[400px] ${props.background} hover:cursor-pointer hover:${props.hover}`}
+      className={`relative w-full rounded-2xl h-[180px] md:h-[200px] lg:h-[400px] ${props.background} hover:cursor-pointer hover:${props.hover}`}
     >
       <CardBody className={`flex flex-col justify-between p-3 lg:p-6`}>
         <div className="z-10">
-          <h3 className="font-[600] text-[15px] lg:text-3xl">
+          <h3 className="font-[600] text-[15px] md:text-[25px] lg:text-[30px]">
             {props.heading}
           </h3>
-          <p className="font-[400] text-[8px] lg:text-2xl">
+          <p className="font-[400] text-[8px] md:text-[12px] lg:text-md">
             {props.subHeading}
           </p>
         </div>

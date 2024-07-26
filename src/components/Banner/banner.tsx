@@ -83,12 +83,12 @@ function Banner({ onOpen }: any) {
           alt="P2Care Logo"
           width={1000}
           height={1000}
-          className={`max-w-max h-[200px] lg:h-[600px] absolute bottom-0 ${isMobile() || isTablet() ? "left-0" : ""
+          className={`max-w-max h-[200px] md:h-[300px] lg:h-[600px] absolute bottom-0 ${isMobile() || isTablet() ? "left-0" : ""
             }
           transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
             }`}
         />
-        <div className={`flex gap-2`}>
+        <div className={`flex gap-2 w-1/2`}>
           <motion.div
             className="flex flex-col gap-2 lg:gap-5"
             initial={{
@@ -214,12 +214,12 @@ function Banner({ onOpen }: any) {
           </motion.div>
         </div>
         <div
-          className={`flex w-full justify-between lg:px-14 ${isMobile() || isTablet()
-            ? "flex-col items-end max-w-52 me-2 py-2"
-            : ""
+          className={`flex flex-col justify-between lg:px-14 ${isMobile() || isTablet()
+            ? "flex-col items-end py-2"
+            : "w-full items-end justify-center"
             } `}
         >
-          <h4 className="text-white font-[500] max-w-64 text-[8px] lg:text-[16px]">
+          <h4 className="flex flex-row text-white font-[500] max-w-64 text-[8px] md:text-[12px] lg:text-[16px]  font-bold">
             If you are seeking a user-friendly and innovative way to manage
             medical records, P2Care is the ideal solution.
           </h4>
@@ -229,7 +229,7 @@ function Banner({ onOpen }: any) {
         </div>
       </section>
       <section
-        className="relative  lg:hidden bg-cover bg-center h-[300px]  rounded-[30px] "
+        className="relative block  md:hidden bg-cover bg-center h-[300px]  rounded-[30px] "
         style={{ backgroundImage: `url(${bannerBackground})` }}
       >
         <h1 className="text-[#C6DEFD] text-center font-[700] text-[55px]">

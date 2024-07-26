@@ -12,7 +12,7 @@ export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
   const router = useRouter();
   return (
     <>
-      <Card className="w-full h-[130px] lg:h-[280px]">
+      <Card className="w-full h-[130px] md:h-[175px] lg:h-[280px]">
         <CardBody className="flex flex-col justify-between">
           <div className="flex justify-center items-center gap-5 w-full ">
             <Image
@@ -20,31 +20,31 @@ export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
               width={1000}
               height={1000}
               alt="male doc"
-              className="w-[57px] h-[57px] lg:w-[220px] lg:h-[220px] rounded-full object-cover"
+              className="w-[57px] h-[57px] md:w-[100px] md:h-[100px] xl:w-[220px] xl:h-[220px] rounded-full object-cover"
             />
             <div className="flex flex-col gap-3 flex-grow justify-between align-top ">
               {/* level 1 */}
-              <div className="flex justify-between w-full items-center  ">
+              <div className="flex justify-between w-full items-center">
                 <div className="flex gap-10 ">
-                  <h4 className="text-md lg:text-[32px] font-[700]">
+                  <h4 className="text-md md:text-[24px] lg:text-lg font-[700]">
                     Dr. John Doe
                   </h4>
-                  <p className=" font-[700] text-[10px] self-center lg:text-[24px] text-danger">
+                  <p className=" font-[700] text-[10px] md:text-[16px] self-center lg:text-[24px] text-danger">
                     Cardiologist
                   </p>
                 </div>
-                <h3 className="font-[700] text-[18px]  text-#011632 lg:text-[48px]">
+                <h3 className="font-[700] text-[18px] md:text-[30px]  text-#011632 lg:text-[48px]">
                   ₹ 649
                 </h3>
               </div>
               {/* level 2 */}
               <div className="flex justify-between w-full  items-center ">
                 <div className="flex gap-10">
-                  <p className="text-[10px] font-[700] lg:text-[24px] text-primary">
+                  <p className="text-[10px] font-[700] md:text-[16px] lg:text-[24px] text-primary">
                     . MA, MPhil, MBBS
                   </p>
                 </div>
-                <h5 className="font-[600] line-through text-[12px] lg:text-[32px] text-danger">
+                <h5 className="font-[600] line-through text-[12px] md:text-[16px] lg:text-[32px] text-danger">
                   ₹ 649
                 </h5>
               </div>
@@ -53,7 +53,7 @@ export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
                 <div className="flex gap-2 items-center text-[8px] lg:text-md">
                   {/* location icon */}
                   <FaMapMarkerAlt className="text-grey" />
-                  <p className="text-[8px] font-[600] lg:text-md text-grey">
+                  <p className="text-[8px] font-[600] md:text-[14px] lg:text-md text-grey">
                     Marine Drive, Mumbai (MH)
                   </p>
                 </div>
@@ -81,17 +81,17 @@ export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
             </div>
           </div>
           <div className="lg:hidden flex justify-between w-full items-center ">
-            <div className="bg-secondary p-1 lg:p-3 rounded-xl text-[8px] lg:text-[20px]  text-white">
+            <div className="bg-secondary p-1 lg:p-3 rounded-xl text-[8px] md:text-[12px] lg:text-[20px]  text-white">
               15 Years of Experience
             </div>
             <div className="flex gap-5">
-              <p className="text-[8px] lg:text-[20px] text-grey self-center">
+              <p className="text-[8px] md:text-[12px] lg:text-[20px] text-grey self-center">
                 know more
               </p>
               <Card
                 isPressable
                 onPress={() => router.push(props.redirect)}
-                className="text-[10px] p-1 px-3 bg-primary text-white"
+                className="text-[10px] md:text-[15px] p-1 px-3 bg-primary text-white"
               >
                 Consult Now
               </Card>

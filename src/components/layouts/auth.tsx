@@ -8,8 +8,8 @@ interface AuthLayoutProps {
 export function AuthLayout({ children, src }: AuthLayoutProps) {
   return (
     <>
-      <div className="flex flex-col md:flex-row w-full items-center justify-center h-[100vh]">
-        <Image src={src} alt="image" width={1000} height={1000} className="w-full md:w-1/2 h-full md:h-1/2" />
+      <div className="flex flex-col items-center h-[100vh] gap-[1rem] md:h-[60vh] md:flex-row justify-center">
+        <Image src={src} alt="image" width={1000} height={1000} className="w-3/4 md:w-1/2 h-3/4" />
         {children}
       </div>
     </>

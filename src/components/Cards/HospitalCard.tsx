@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Card, CardBody, Spacer } from "@nextui-org/react";
+import { Card, CardBody, Spacer, Image } from "@nextui-org/react";
 import { apolloLogo, apolloDoc } from "@/Content/assets";
 import { HiLocationMarker } from "react-icons/hi";
 import { CiClock2 } from "react-icons/ci";
@@ -33,7 +33,7 @@ const HospitalCard = () => {
     <Card>
       <CardBody className="flex flex-col h-full">
         <div className="flex flex-row gap-4">
-          <img
+          <Image
             src={apolloLogo}
             className="h-[100px] md:h-[220px] w-[100px] md:w-[220px] rounded-full"
             alt="image"

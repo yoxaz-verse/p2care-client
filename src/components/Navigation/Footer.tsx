@@ -1,29 +1,32 @@
 "use client";
 import { logo, smallArrowIcon } from "@/Content/assets";
-import { Button, Divider } from "@nextui-org/react";
+import { Button, Divider, useDisclosure } from "@nextui-org/react";
 import Image from "next/image";
 import { FaFacebook } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import EnquireModal from "../Enquire";
 
 export default function Footer() {
   const router = useRouter();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <>
       <div className="flex flex-col gap-4 p-[2rem] w-full">
-        <div className="flex flex-row justify-around items-center rounded-2xl h-[100px] md:h-[310px] bg-primary">
-          <h3 className="text-md md:text-xl font-bold text-white">
+        <div className="flex flex-row justify-around items-center rounded-2xl h-[100px] xl:h-[310px] bg-primary">
+          <h3 className="text-md xl:text-xl font-bold text-white">
             Have any enquiry
           </h3>
-          <button className="bg-white text-black p-[.3rem] md:p-[1rem] flex items-center w-1/4 md:w-[200px] rounded-full justify-around">
+          <Button onClick={() => onOpen()} className="bg-white text-black p-[.3rem] md:p-[1rem] flex items-center w-1/4 xl:w-[200px] rounded-full justify-around">
             <h3 className="text-sm md:text-md font-bold">Get Started</h3>
             <Image src={smallArrowIcon} alt="icon" width={20} height={20} className="w-2 md:w-3 h-2 md:h-3" />
-          </button>
+          </Button>
         </div>
-        <div className="flex flex-col md:flex-row justify-around gap-[1rem] w-full p-[.1rem] md:p-[2rem]">
+        <EnquireModal onOpenChange={onOpenChange} isOpen={isOpen} />
+        <div className="flex flex-col md:flex-row justify-around gap-[1rem] w-full p-[.1rem] xl:p-[2rem]">
           <div className="flex gap-2 md:gap-4 flex-col">
-            <Image src={logo} width={200} height={200} alt="logo" />
+            <Image src={logo} width={200} className="w-1/4 md:w-1/2" height={200} alt="logo" />
             <h3 className="text-[10px] md:text-md">
               Clarity gives you the blocks and components you need to create a
               truly professional website.

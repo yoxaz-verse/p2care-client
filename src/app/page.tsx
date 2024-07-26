@@ -29,55 +29,16 @@ import { navigationRoutes } from "@/core/navigationRoutes";
 import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
+import EnquireModal from "@/components/Enquire";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   return (
     <main className="">
       <Banner onOpen={onOpen} />
-      <Modal placement="center" isOpen={isOpen} onOpenChange={onOpenChange} isDismissable={false} isKeyboardDismissDisabled={true}>
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="flex flex-col gap-1">Enquire Us</ModalHeader>
-              <ModalBody>
-                <form className="flex flex-col gap-4">
-                  <Input
-                    className="bg-white rounded-none"
-                    variant="underlined"
-                    placeholder="Full Name"
-                  />
-                  <Input
-                    className="bg-white rounded-none"
-                    variant="underlined"
-                    placeholder="Email"
-                  />
-                  <Textarea
-                    className="bg-white rounded-none"
-                    variant="underlined"
-                    placeholder="Message"
-                    cols={20}
-                  />
-                  <Button color="primary" radius="full" className="p-[1rem]">
-                    Submit
-                  </Button>
-                </form>
-
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Enquire
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+      <EnquireModal isOpen={isOpen} onOpenChange={onOpenChange} />
       <Spacer y={10} />
-      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
+      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 gap-4 w-full">
         {content.map((c: ICategoryCardProps, index: number) => {
           return (
             <CategoryCard

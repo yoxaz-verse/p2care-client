@@ -8,11 +8,11 @@ export default function DoctorPage() {
   return (
     <>
       <div className="flex flex-col">
-        <div className="flex flex-col md:flex-row justify-between  w-full p-[2rem]">
-          <h1 className="text-2xl md:text-4xl font-bold text-[#3F8EFC]">
+        <div className="flex flex-col xl:flex-row justify-between  w-full p-[2rem]">
+          <h3 className="text-lg font-bold text-[#3F8EFC]">
             Doctors Near You
-          </h1>
-          <div className="flex flex-row w-full md:w-2/3  gap-4">
+          </h3>
+          <div className="flex flex-row w-full xl:w-2/3  gap-4">
             <Input
               className="rounded-xl border-gray-400"
               placeholder="Search By Doctor Name, Speciality etc"

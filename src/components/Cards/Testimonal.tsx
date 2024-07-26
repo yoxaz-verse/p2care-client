@@ -4,14 +4,14 @@ import Image from "next/image";
 
 export default function Testimonial() {
   return (
-    <Card className="w-[330px] md:w-[754px] h-[160px] md:h-[362px]">
+    <Card className="w-[330px] md:w-[500px] lg:w-[754px] h-[160px] md:h-[362px]">
       <CardBody className="flex flex-row items-center gap-4 p-2 w-full">
         <Image
           width={1000}
           height={1000}
           src={testimonial1}
           alt="image"
-          className="w-[100px] md:w-[300px] rounded-[10px] h-[100px] md:h-[300px] object-cover"
+          className="w-[100px] md:w-[200px] lg:w-[300px]  rounded-[10px] h-[100px] md:h-[200px] lg:h-[300px] object-cover"
         />
         <div className="flex flex-col gap-2">
           <p className="absolute text-[80px] text-blue-500 right-1 md:right-4 top-[-16px] md:top-[20px]">

@@ -2,7 +2,9 @@
 export const logo: string = "/assets/images/logo.png";
 //auth
 export const signin: string = "/assets/icons/auth/signin.svg";
-
+export const register: string = "/assets/icons/auth/register.svg";
+export const otp: string = "/assets/icons/auth/otp.svg";
+export const forgotpass: string = "/assets/icons/auth/forgotpass.svg";
 //banner
 export const bannerBackground: string = "/assets/images/home/banner-bg.png";
 export const doctor: string = "/assets/images/home/doctor.png";
