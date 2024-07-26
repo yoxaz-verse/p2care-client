@@ -10,6 +10,7 @@ import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
+
 function Details() {
   return (
     <section>

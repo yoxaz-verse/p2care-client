@@ -35,18 +35,18 @@ const HospitalCard = () => {
         <div className="flex flex-row gap-4">
           <Image
             src={apolloLogo}
-            className="h-[100px] md:h-[220px] w-[100px] md:w-[220px] rounded-full"
+            className="h-[100px] md:h-[160px] lg:h-[220px] w-[100px] md:w-[160px] lg:w-[220px] rounded-full"
             alt="image"
           />
           <div className="flex flex-col justify-between gap-4">
-            <h3 className="text-md md:text-lg font-extrabold">
+            <h3 className="text-md md:text-[24px] lg:text-lg font-extrabold">
               Apollo Spectra Hospital
             </h3>
             <div className="flex flex-row w-full gap-4">
-              <h3 className="text-sm  text-blue-500 font-bold md:text-md">
+              <h3 className="text-sm  text-blue-500 font-bold md:text-[15px] lg:text-md">
                 Multi-specialty Hospital
               </h3>
-              <div className="flex flex-row font-bold text-sm md:text-md  items-center text-blue-500">
+              <div className="flex flex-row font-bold text-sm md:text-[12px] lg:text-md  items-center text-blue-500">
                 <HiLocationMarker className="fill-blue-500" />
                 <h3>Mumbai City</h3>
               </div>
@@ -68,7 +68,7 @@ const HospitalCard = () => {
           </div>
         </div>
         <div className="flex flex-row justify-between w-full">
-          <div className="flex gap-2 md:gap-4 text-sm md:text-md font-bold  items-center flex-row">
+          <div className="flex gap-2 md:gap-4 text-sm md:text-[15px]  lg:text-[20px] font-bold  items-center flex-row">
             <CiClock2 />
             <h3>MON-SUN 9:00AM-9:00PM</h3>
           </div>

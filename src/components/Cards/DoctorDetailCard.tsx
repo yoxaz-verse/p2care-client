@@ -11,7 +11,7 @@ function DoctorDetailCard() {
         <Image
           src={apolloDoc}
           alt="Doctor Name"
-          className="w-[35px] md:w-[50px] lg:w-[75px] h-[35px] md:h-[50px] lg:h-[75px] rounded-full"
+          className="w-[35px] md:w-[60px] lg:w-[75px] h-[35px] md:h-[60px] lg:h-[75px] rounded-full"
           width={1000}
           height={1000}
         />
@@ -35,7 +35,7 @@ function DoctorDetailCard() {
         <h1 className="text-sm md:text-[10px] text-[#3C4959]">Know More</h1>
         <button
           color="primary"
-          className="text-sm px-2 py-1  p-0 md:p-2 rounded-full font-bold text-white bg-primary md:text-[10px] lg:text-md"
+          className="text-sm px-2 py-1  p-0 md:p-1 lg:p-2 rounded-full font-bold text-white bg-primary md:text-[10px] lg:text-md"
         >
           Consult Now
         </button>
