@@ -50,24 +50,6 @@ function Details() {
           <HospitalCard key={index} />
         ))}
       </div>
-      <div className="flex flex-col">
-        <div className="flex flex-row justify-between items-center">
-          <TitleHeading heading="Departments" />
-          <h3 className="text-sm md:text-md underline text-blue-400 font-bold">
-            View All
-          </h3>
-        </div>
-        <div className="flex flex-wrap gap-5">
-          {Array.from({ length: 10 }).map((_, index) => (
-            <DepartmentCard
-              key={index}
-              title="Pediatrics"
-              icon={pediatrics}
-              redirect={navigationRoutes.department + "pediatrics-id"}
-            ></DepartmentCard>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }
