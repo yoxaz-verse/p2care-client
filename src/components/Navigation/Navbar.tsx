@@ -29,8 +29,13 @@ export default function Header() {
   ];
   const [name, setName] = useState<any>("Home");
   const router = useRouter();
-  const path = usePathname();
-
+  const path: any = usePathname();
+  const [visible, setVisible] = useState(true);
+  useEffect(() => {
+    if (path === "/forgot-password" || path === "/forgot-password/retype" || path === "/otp" || path === "/siginin") {
+      setVisible(false);
+    }
+  }, [path]);
   useEffect(() => {
     if (path.includes(name)) {
       setName(window.location.href.split('/')[1]);
@@ -41,7 +46,7 @@ export default function Header() {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className="max-w-[95vw] bg-white 2xl:max-w-[1440px] mx-auto"
+      className={`max-w-[95vw] ${visible ? "block" : "hidden"} bg-white 2xl:max-w-[1440px] mx-auto`}
       isBordered
     >
       <NavbarContent>

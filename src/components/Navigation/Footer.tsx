@@ -5,15 +5,24 @@ import Image from "next/image";
 import { FaFacebook } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import EnquireModal from "../Enquire";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
   const router = useRouter();
+  const path: any = useParams();
+  const [visible, setVisible] = useState(true);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  useEffect(() => {
+    if (path === "/forgot-password" || path === "/forgot-password/retype" || path === "/otp" || path === "/siginin") {
+      setVisible(false);
+    }
+  }, [path]);
   return (
     <>
-      <div className="flex flex-col gap-4 p-[2rem] w-full">
+      <div className={` ${visible ? "flex" : "hidden"} flex-col gap-4 p-[2rem] w-full`}>
         <div className="flex flex-row justify-around items-center rounded-2xl h-[100px] xl:h-[310px] bg-primary">
           <h3 className="text-md xl:text-xl font-bold text-white">
             Have any enquiry

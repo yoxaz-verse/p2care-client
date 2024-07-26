@@ -30,9 +30,12 @@ import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
 import EnquireModal from "@/components/Enquire";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
+
   return (
     <main className="">
       <Banner onOpen={onOpen} />
