@@ -14,6 +14,7 @@ const profile = "/profile/";
 const profileEdit = "/profile/edit/";
 const booking = "/booking/";
 
+
 export const navigationRoutes = {
   home,
   hospital,

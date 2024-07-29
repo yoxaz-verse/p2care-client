@@ -5,6 +5,7 @@ import Providers from "./providers";
 import Header from "@/components/Navigation/Navbar";
 import { Spacer } from "@nextui-org/react";
 import Footer from "@/components/Navigation/Footer";
+import { Toaster } from "sonner";
 
 const inter = Quicksand({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
             <Footer />
           </Providers>
         </main>
+        <Toaster />
       </body>
     </html>
   );
