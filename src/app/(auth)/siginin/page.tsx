@@ -22,7 +22,7 @@ export default function SignIn() {
       console.log(data);
       toast.success("Registered Succesfully", {
         position: "top-right",
-        className: "bg-green-500 text-xl"
+        className: "bg-green-300"
       })
       setisLoading(false);
       router.push("/");
@@ -30,11 +30,18 @@ export default function SignIn() {
     onError: (error: any) => {
       toast.error(error.response.data.message, {
         position: "top-right",
-        className: "bg-red-500 text-white"
+        className: "bg-red-300 text-white"
       })
       setisLoading(false);
     }
   });
+  const testMutation = useMutation({
+    mutationKey: ["test"],
+    mutationFn: (data: any) => {
+      return postData("/admin/login", {}, data);
+    }
+  })
+
   const loginPhone = useMutation({
     mutationKey: ["loginPhone"],
     mutationFn: (data: any) => {
@@ -44,7 +51,7 @@ export default function SignIn() {
       console.log(data.data.data);
       toast.success("Logged in Succesfully", {
         position: "top-right",
-        className: "bg-green-500"
+        className: "bg-green-300"
       })
       setisLoading(false);
       router.push("/");
