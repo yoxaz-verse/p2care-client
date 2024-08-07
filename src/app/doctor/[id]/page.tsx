@@ -1,10 +1,20 @@
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
+import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
+import { useQuery } from "@tanstack/react-query";
+import { useParams } from "next/navigation";
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 function DoctorDetails() {
+  const { id } = useParams();
+  const { data: getDoctor, isLoading } = useQuery({
+    queryKey: ["getDoctors"],
+    queryFn: () => {
+      return getData(`/doctor/get-all/${id}`, {});
+    }
+  })
   return (
     <section>
       <DoctorListCard

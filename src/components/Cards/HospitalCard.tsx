@@ -27,7 +27,7 @@ function DocHospital() {
   );
 }
 
-const HospitalCard = () => {
+const HospitalCard = ({ data }: any) => {
   const router = useRouter();
   return (
     <Card>

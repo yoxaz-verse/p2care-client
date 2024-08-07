@@ -13,8 +13,10 @@ import {
 import { Avatar, Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
+import isAuth from "../isAuth";
 
 function Profile() {
+  const profile = isAuth();
   return (
     <section className="grid grid-col-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col justify-around gap-5 h-full pe-5 border-r-1">

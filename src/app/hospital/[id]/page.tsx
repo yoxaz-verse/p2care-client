@@ -2,6 +2,8 @@
 import DoctorCard from "@/components/Cards/DoctorCard";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import HospitalCard2 from "@/components/Cards/HospitalCard2";
+import { getData } from "@/core/apiHandler";
+import { hospitalRoutes } from "@/core/apiRoutes";
 import {
   Input,
   Button,
@@ -11,7 +13,8 @@ import {
   Divider,
   Spacer,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
+import { useParams, useRouter } from "next/navigation";
 import React from "react";
 import { FaMapMarkerAlt, FaSearch } from "react-icons/fa";
 
@@ -79,6 +82,13 @@ const Tags = [
 ];
 function Details() {
   const router = useRouter();
+  const { id } = useParams();
+  const { data: getHospitals, isLoading } = useQuery({
+    queryKey: ["getHospitals"],
+    queryFn: () => {
+      return getData(`${hospitalRoutes.hospital}/${id}`, {});
+    },
+  })
   return (
     <section className="flex flex-col gap-[2rem]">
       <div className="flex flex-col-reverse md:flex-row w-full gap-4 p-[.5rem] md:p-[1rem] justify-between">

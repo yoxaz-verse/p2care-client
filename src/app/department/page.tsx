@@ -1,11 +1,20 @@
 import DepartmentCard from "@/components/Cards/DepartmentCard";
 import PageHeading from "@/components/Text/PageHeading";
 import { pediatrics } from "@/Content/assets";
+import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 function List() {
+  const { data: getDepartment, isLoading } = useQuery({
+    queryKey: ["getDoctors"],
+    queryFn: () => {
+      return getData("/department/get-all", {});
+    }
+  })
+
   return (
     <section>
       <PageHeading heading="Departments" />

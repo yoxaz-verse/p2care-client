@@ -1,3 +1,4 @@
+"use client";
 import DepartmentCard from "@/components/Cards/DepartmentCard";
 import DoctorDetailCard from "@/components/Cards/DoctorDetailCard";
 import HospitalCard from "@/components/Cards/HospitalCard";
@@ -5,12 +6,22 @@ import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
 import { pediatrics, serviceXRay } from "@/Content/assets";
 import { lorem150 } from "@/Content/dummyText";
+import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import React from "react";
 
 function Details() {
+  const { id } = useParams();
+  const { data: getDoctor, isLoading } = useQuery({
+    queryKey: ["getServices", id],
+    queryFn: () => {
+      return getData(`/services/get-all/${id}`, {});
+    }
+  })
   return (
     <section>
       <Image

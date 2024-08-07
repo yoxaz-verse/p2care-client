@@ -1,8 +1,11 @@
 "use client";
 import HospitalCard from "@/components/Cards/HospitalCard";
 import HospitalCard2 from "@/components/Cards/HospitalCard2";
+import { getData } from "@/core/apiHandler";
+import { hospitalRoutes } from "@/core/apiRoutes";
 import { Select, SelectItem, Input, Button, Spacer } from "@nextui-org/react";
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { FaMapMarkerAlt, FaSearch } from "react-icons/fa";
 
 const cities = [
@@ -21,21 +24,37 @@ const cities = [
   { key: "patna", label: "Patna" },
 ];
 function List() {
+  const [city, setCity] = useState<any>('');
+  const { data: getHospitals, isLoading } = useQuery({
+    queryKey: ["getHospitals"],
+    queryFn: () => {
+      return getData(`${hospitalRoutes.hospital}?${city}`, {});
+    },
+    enabled: !!city
+  })
+  console.log(getHospitals);
+  const { data: getCity } = useQuery({
+    queryKey: ["getCity"],
+    queryFn: () => {
+      return getData("/city/all", {});
+    }
+  })
+
   return (
     <>
       <div className="flex flex-col-reverse md:flex-row w-full gap-4 p-[.5rem] md:p-[1rem] justify-between">
         <Select
           startContent={<FaMapMarkerAlt size={20} />}
-          defaultSelectedKeys={["mumbai"]}
+          onChange={(e) => setCity(e.target.value)}
           className="w-full md:max-w-xs bg-white"
         >
-          {cities.map((animal: any) => (
+          {getCity?.data?.data.map((animal: any) => (
             <SelectItem
               className="font-bold text-xl"
               startContent={<FaMapMarkerAlt size={20} />}
-              key={animal.key}
+              key={animal._id}
             >
-              {animal.label}
+              {animal.name}
             </SelectItem>
           ))}
         </Select>
@@ -52,8 +71,8 @@ function List() {
       </div>
       <Spacer y={5} />
       <div className="grid grid-cols-1 gap-10">
-        {Array.from({ length: 12 }, (_, index) => (
-          <HospitalCard key={index} />
+        {getHospitals?.data?.map((data: any, index: any) => (
+          <HospitalCard data={data} key={index} />
         ))}
       </div>
     </>

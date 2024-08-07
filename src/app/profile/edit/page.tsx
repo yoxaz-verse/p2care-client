@@ -1,5 +1,6 @@
 "use client";
 
+import isAuth from "@/app/isAuth";
 import { editIcon, emailIcon, personIcon, phoneIcon } from "@/Content/assets";
 import {
   Avatar,
@@ -14,6 +15,7 @@ import Image from "next/image";
 import React from "react";
 
 function EditProfile() {
+  const profile = isAuth();
   return (
     <section className="flex flex-col justify-center items-center h-full">
       <form className="flex flex-col gap-4 w-1/2">

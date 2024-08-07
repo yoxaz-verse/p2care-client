@@ -1,10 +1,18 @@
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
+import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Divider, Input, Spacer, Button } from "@nextui-org/react";
+import { useQuery } from "@tanstack/react-query";
 import { FaSearch } from "react-icons/fa";
 import { IoFilterCircleOutline } from "react-icons/io5";
 
 export default function DoctorPage() {
+  const { data: getDoctors, isLoading } = useQuery({
+    queryKey: ["getDoctors"],
+    queryFn: () => {
+      return getData("/doctor/get-all", {});
+    }
+  })
   return (
     <>
       <div className="flex flex-col">

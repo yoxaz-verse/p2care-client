@@ -6,12 +6,22 @@ import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
 import { departmentFever, pediatrics } from "@/Content/assets";
 import { lorem100 } from "@/Content/dummyText";
+import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import React from "react";
 
 function Details() {
+  const { id } = useParams();
+  const { data: getDepartment, isLoading } = useQuery({
+    queryKey: ["getDoctors"],
+    queryFn: () => {
+      return getData("/department/get-all", { id });
+    }
+  })
   return (
     <section>
       <Image

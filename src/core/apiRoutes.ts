@@ -3,3 +3,7 @@ export const authRoutes = {
   loginEmail: "/patient/login/email",
   loginPhone: "/patient/login/phone"
 }
+
+export const hospitalRoutes = {
+  hospital: "/hospital/get-hospitals",
+}
