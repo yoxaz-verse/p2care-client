@@ -31,14 +31,14 @@ export default function Header() {
   const router = useRouter();
   const path: any = usePathname();
   const [visible, setVisible] = useState(true);
-  useEffect(() => {
-    if (path === "/forgot-password" || path === "/forgot-password/retype" || path === "/otp" || path === "/siginin") {
-      setVisible(false);
-    }
-  }, [path]);
+  // useEffect(() => {
+  //   if (path === "/forgot-password" || path === "/forgot-password/retype" || path === "/otp" || path === "/siginin") {
+  //     setVisible(false);
+  //   }
+  // }, [path]);
   useEffect(() => {
     if (path.includes(name)) {
-      setName(window.location.href.split('/')[1]);
+      setName(window.location.href.split("/")[1]);
     }
   }, []);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -46,7 +46,9 @@ export default function Header() {
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className={`max-w-[95vw] ${visible ? "block" : "hidden"} bg-white 2xl:max-w-[1440px] mx-auto`}
+      className={`max-w-[95vw] ${
+        visible ? "block" : "hidden"
+      } bg-white 2xl:max-w-[1440px] mx-auto`}
       isBordered
     >
       <NavbarContent>
@@ -54,7 +56,10 @@ export default function Header() {
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
         />
-        <NavbarBrand onClick={() => router.push("/")} className="cursor-pointer">
+        <NavbarBrand
+          onClick={() => router.push("/")}
+          className="cursor-pointer"
+        >
           <Image src={logo} alt="P2Care Logo" width={100} height={100} />
         </NavbarBrand>
       </NavbarContent>
