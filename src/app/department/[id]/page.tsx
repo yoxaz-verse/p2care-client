@@ -1,13 +1,11 @@
-import DepartmentCard from "@/components/Cards/DepartmentCard";
+"use client";
 import DoctorDetailCard from "@/components/Cards/DoctorDetailCard";
 import HospitalCard from "@/components/Cards/HospitalCard";
-import ColourCard from "@/components/Development/colourCard";
 import DescriptionParagraph from "@/components/Text/DescriptionParas";
 import TitleHeading from "@/components/Text/TitleHeading";
-import { departmentFever, pediatrics } from "@/Content/assets";
+import { departmentFever } from "@/Content/assets";
 import { lorem100 } from "@/Content/dummyText";
 import { getData } from "@/core/apiHandler";
-import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -17,7 +15,7 @@ import React from "react";
 function Details() {
   const { id } = useParams();
   const { data: getDepartment, isLoading } = useQuery({
-    queryKey: ["getDoctors"],
+    queryKey: ["getDepartment"],
     queryFn: () => {
       return getData("/department/get-all", { id });
     }

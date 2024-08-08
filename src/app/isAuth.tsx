@@ -6,11 +6,11 @@ export default function isAuth() {
   const { data: getCheckAuth, isLoading, isError, isFetched } = useQuery({
     queryKey: ["checkAuth"],
     queryFn: () => {
-      return getData('/patient/check/', {});
+      return getData('/patient/test/check', {});
     }
   })
   return {
-    data: getCheckAuth,
+    data: getCheckAuth?.data,
     isFetched,
     isLoading,
     isError

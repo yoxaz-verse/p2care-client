@@ -6,5 +6,5 @@ export const authRoutes = {
 };
 
 export const hospitalRoutes = {
-  hospital: "/hospital/get-hospitals",
+  hospital: "/hospital/get/hospitals",
 };

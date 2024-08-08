@@ -8,7 +8,7 @@ import { pediatrics, serviceXRay } from "@/Content/assets";
 import { lorem150 } from "@/Content/dummyText";
 import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import { Spacer } from "@nextui-org/react";
+import { Spacer, Spinner } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -16,58 +16,66 @@ import React from "react";
 
 function Details() {
   const { id } = useParams();
-  const { data: getDoctor, isLoading } = useQuery({
+  const { data: getService, isLoading } = useQuery({
     queryKey: ["getServices", id],
     queryFn: () => {
-      return getData(`/services/get-all/${id}`, {});
+      return getData(`/service/get-all/${id}`, {});
     }
   })
+  console.log(getService?.data.data);
   return (
     <section>
-      <Image
-        src={serviceXRay}
-        alt="Service Name"
-        className=" object-cover h-[200px] md:h-[400px] w-full rounded-[30px]"
-        width={1000}
-        height={1000}
-      />
-      <Spacer y={3} />
-      <TitleHeading heading="Digital X-Ray" />
-      <Spacer y={3} />
-      <DescriptionParagraph content={lorem150} />
-      <Spacer y={3} />
+      {isLoading ? <div className="flex flex-col-reverse justify-center items-center h-[80vh]">
+        <h3>Loading service details...</h3>
+        <Spinner title="Loadung Service Details..." />
+      </div> : (
+        <>
+          <Image
+            src={getService?.data?.data?.image?.path || serviceXRay}
+            loading="lazy"
+            alt="Service Name"
+            className=" object-cover h-[200px] md:h-[400px] w-full rounded-[30px]"
+            width={1000}
+            height={1000}
+          />
+          <Spacer y={3} />
+          <TitleHeading heading={getService?.data?.data?.title || "Service"} />
+          <Spacer y={3} />
+          <DescriptionParagraph content={getService?.data?.data?.description || lorem150} />
+          <Spacer y={3} />
 
-      <TitleHeading heading="Doctors" />
-      <Spacer y={3} />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-        {Array.from({ length: 6 }).map((_, index) => (
-          <DoctorDetailCard key={index}></DoctorDetailCard>
-        ))}
-      </div>
-      <Spacer y={3} />
-      <TitleHeading heading="Hopitals" />
-      <Spacer y={3} />
-      <div className="grid grid-cols-1  gap-5">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <HospitalCard key={index} />
-        ))}
-      </div>
-      <div className="flex flex-col">
-        <div className="flex flex-row justify-between items-center p-[2rem]">
-          <h1 className="text-3xl font-bold text-blue-500">Departments</h1>
-          <h1 className="text-blue-600 font-bold underline">View All</h1>
-        </div>
-        <div className="grid grid-cols-3 lg:grid-cols-6 gap-5">
-          {Array.from({ length: 10 }).map((_, index) => (
-            <DepartmentCard
-              key={index}
-              title="Pediatrics"
-              icon={pediatrics}
-              redirect={navigationRoutes.department + "pediatrics-id"}
-            ></DepartmentCard>
-          ))}
-        </div>
-      </div>
+          <TitleHeading heading="Doctors" />
+          <Spacer y={3} />
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {getService?.data.data.doctors.map((d: any, index: any) => (
+              <DoctorDetailCard data={d} key={index} />
+            ))}
+          </div>
+          <Spacer y={3} />
+          <TitleHeading heading="Hopitals" />
+          <Spacer y={3} />
+          <div className="grid grid-cols-1  gap-5">
+            {getService?.data?.data?.hospitals?.map((d: any, index: any) => (
+              <HospitalCard data={d} key={index} />
+            ))}
+          </div>
+          <div className="flex flex-col">
+            <div className="flex flex-row justify-between items-center p-[2rem]">
+              <h1 className="text-3xl font-bold text-blue-500">Departments</h1>
+              <h1 className="text-blue-600 font-bold underline">View All</h1>
+            </div>
+            <div className="grid grid-cols-3 lg:grid-cols-6 gap-5">
+              {getService?.data?.data?.departments.map((d: any, index: any) => (
+                <DepartmentCard
+                  key={index}
+                  title={d?.name}
+                  icon={d?.image.path}
+                  redirect={navigationRoutes?.department + d._id} />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </section>
   );
 }

@@ -8,18 +8,49 @@ import {
   Radio,
   Tabs,
   Tab,
+  Spinner,
 } from "@nextui-org/react";
 import React, { useState } from "react";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { navigationRoutes } from "@/core/navigationRoutes";
+import isAuth from "@/app/isAuth";
+import { getData } from "@/core/apiHandler";
+import { useQuery } from "@tanstack/react-query";
 
 function Booking() {
   const router = useRouter();
   const [index, setIndex] = useState<number>(1);
+  const { data, isLoading: isLoadingPatient } = isAuth();
+  console.log(data);
+  const { id } = useParams();
+  const { data: getDoctor, isLoading, isError, error } = useQuery({
+    queryKey: ["getDoctors", id],
+    queryFn: () => getData(`/doctor/get-all/${id}`, {}),
+    enabled: !!id,
+  });
+
+  const { data: getGender, isLoading: isLoadingGender } = useQuery({
+    queryKey: ["getGender"],
+    queryFn: () => {
+      return getData("/gender/all", {});
+    }
+  })
+  console.log(getGender?.data.data.data)
+  if (isLoading || isLoadingGender || isLoadingPatient) {
+    return (
+      <div className="flex flex-col items-center justify-center">
+        <Spinner />
+        <h3>Loading Details..</h3>
+      </div>
+    )
+  }
   return (
     <section>
-      <DoctorListCard />
+      <DoctorListCard
+        data={getDoctor?.data?.data}
+        redirect={`${navigationRoutes.doctor}/${id}/booking`}
+      />
       <Spacer y={5} />
       <Divider orientation="horizontal" />
       <Spacer y={5} />
@@ -43,21 +74,14 @@ function Booking() {
             orientation="horizontal"
             className="flex gap-0 justify-between w-full"
           >
-            <Radio
-              value="Male"
-              description="Male"
-              className=" border-gray-300 p-3"
-            />
-            <Radio
-              value="Female"
-              description="Female"
-              className=" border-gray-300 p-3"
-            />
-            <Radio
-              value="Others"
-              description="Others"
-              className=" border-gray-300 p-3"
-            />
+            {getGender?.data.data.data.map((d: any, index: any) => {
+              return <Radio
+                key={d.name}
+                value={d?.name}
+                description={d?.name}
+                className=" border-gray-300 p-3"
+              />
+            })}
           </RadioGroup>
           <Input
             variant="bordered"

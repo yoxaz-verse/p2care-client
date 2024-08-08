@@ -28,11 +28,10 @@ function List() {
   const { data: getHospitals, isLoading } = useQuery({
     queryKey: ["getHospitals"],
     queryFn: () => {
-      return getData(`${hospitalRoutes.hospital}?${city}`, {});
-    },
-    enabled: !!city
+      return getData(`${hospitalRoutes.hospital}`, { city });
+    }
   })
-  console.log(getHospitals);
+  console.log(getHospitals?.data.data);
   const { data: getCity } = useQuery({
     queryKey: ["getCity"],
     queryFn: () => {
@@ -71,7 +70,7 @@ function List() {
       </div>
       <Spacer y={5} />
       <div className="grid grid-cols-1 gap-10">
-        {getHospitals?.data?.map((data: any, index: any) => (
+        {getHospitals?.data?.data?.data.map((data: any, index: any) => (
           <HospitalCard data={data} key={index} />
         ))}
       </div>

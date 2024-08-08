@@ -1,3 +1,4 @@
+"use client";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
@@ -10,9 +11,10 @@ export default function DoctorPage() {
   const { data: getDoctors, isLoading } = useQuery({
     queryKey: ["getDoctors"],
     queryFn: () => {
-      return getData("/doctor/get-all", {});
+      return getData("/doctor/user/all/", {});
     }
   })
+  console.log(getDoctors?.data.data.data);
   return (
     <>
       <div className="flex flex-col">
@@ -36,10 +38,11 @@ export default function DoctorPage() {
         <Divider orientation="horizontal" />
         <Spacer y={2} />
         <div className="flex flex-col gap-2">
-          {Array.from({ length: 12 }, (_, index) => (
+          {getDoctors?.data.data.data.map((d: any, index: any) => (
             <DoctorListCard
               key={index}
-              redirect={navigationRoutes.doctor + "1"}
+              data={d}
+              redirect={navigationRoutes.doctor + d._id}
             />
           ))}
         </div>

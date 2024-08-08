@@ -28,32 +28,31 @@ function DocHospital() {
 }
 
 const HospitalCard = ({ data }: any) => {
+  console.log(data);
   const router = useRouter();
   return (
     <Card>
       <CardBody className="flex flex-col h-full">
         <div className="flex flex-row gap-4">
           <Image
-            src={apolloLogo}
+            src={data?.image?.path}
             className="h-[100px] md:h-[160px] lg:h-[220px] w-[100px] md:w-[160px] lg:w-[220px] rounded-full"
             alt="image"
           />
           <div className="flex flex-col justify-between gap-4">
             <h3 className="text-md md:text-[24px] lg:text-lg font-extrabold">
-              Apollo Spectra Hospital
+              {data?.name}
             </h3>
             <div className="flex flex-row w-full gap-4">
-              <h3 className="text-sm  text-blue-500 font-bold md:text-[15px] lg:text-md">
-                Multi-specialty Hospital
-              </h3>
+
               <div className="flex flex-row font-bold text-sm md:text-[12px] lg:text-md  items-center text-blue-500">
                 <HiLocationMarker className="fill-blue-500" />
-                <h3>Mumbai City</h3>
+                <h3>{data?.city?.name}</h3>
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-between">
               <h3 className="text-sm md:text-md">
-                <span className="font-extrabold">₹ 300 - ₹700</span>{" "}
+                <span className="font-extrabold">₹ {data?.consultingFee?.min} - ₹{data?.consultingFee?.max}</span>{" "}
                 Consultation Fees
               </h3>
             </div>
@@ -75,7 +74,7 @@ const HospitalCard = ({ data }: any) => {
           <div className="flex flex-row items-center gap-2">
             <h3 className="text-sm md:text-md cursor-pointer">Know More</h3>
             <button
-              onClick={() => router.push("/hospital/12")}
+              onClick={() => router.push(`/hospital/${data._id}`)}
               className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold"
             >
               Consult Now

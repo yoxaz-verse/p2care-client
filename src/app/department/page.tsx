@@ -1,3 +1,4 @@
+"use client";
 import DepartmentCard from "@/components/Cards/DepartmentCard";
 import PageHeading from "@/components/Text/PageHeading";
 import { pediatrics } from "@/Content/assets";
@@ -9,7 +10,7 @@ import React from "react";
 
 function List() {
   const { data: getDepartment, isLoading } = useQuery({
-    queryKey: ["getDoctors"],
+    queryKey: ["getDepartment"],
     queryFn: () => {
       return getData("/department/get-all", {});
     }
