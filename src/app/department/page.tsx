@@ -15,18 +15,18 @@ function List() {
       return getData("/department/get-all", {});
     }
   })
-
+  console.log(getDepartment?.data?.data?.data);
   return (
     <section>
       <PageHeading heading="Departments" />
       <Spacer y={5} />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5">
-        {Array.from({ length: 15 }).map((_, index) => (
+        {getDepartment?.data?.data?.data.map((d: any, index: any) => (
           <DepartmentCard
             key={index}
-            title="Pediatrics"
-            icon={pediatrics}
-            redirect={navigationRoutes.department + "pediatrics-id"}
+            title={d?.name}
+            icon={d?.image?.path}
+            redirect={navigationRoutes.department + d._id}
           />
         ))}
       </div>

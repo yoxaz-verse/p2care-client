@@ -22,7 +22,7 @@ function Booking() {
   const router = useRouter();
   const [index, setIndex] = useState<number>(1);
   const { data, isLoading: isLoadingPatient } = isAuth();
-  console.log(data);
+  console.log(data?.data);
   const { id } = useParams();
   const { data: getDoctor, isLoading, isError, error } = useQuery({
     queryKey: ["getDoctors", id],
@@ -36,8 +36,14 @@ function Booking() {
       return getData("/gender/all", {});
     }
   })
-  console.log(getGender?.data.data.data)
-  if (isLoading || isLoadingGender || isLoadingPatient) {
+  const { data: getSlots, isLoading: isLoadingSlot } = useQuery({
+    queryKey: ["getSlots"],
+    queryFn: () => {
+      return getData(`/doctor-slot/get-slots/${id}`, {});
+    }
+  })
+  console.log(getSlots?.data.data.data)
+  if (isLoading || isLoadingGender || isLoadingPatient || isLoadingSlot) {
     return (
       <div className="flex flex-col items-center justify-center">
         <Spinner />
@@ -63,9 +69,11 @@ function Booking() {
           <Input
             variant="bordered"
             type="text"
+            value={data?.data?.name}
             radius="none"
             className="w-full hover:outline-none h-full"
             placeholder="Full Name"
+            disabled
             labelPlacement="outside"
             label="Full Name"
           />
@@ -77,6 +85,7 @@ function Booking() {
             {getGender?.data.data.data.map((d: any, index: any) => {
               return <Radio
                 key={d.name}
+                onClick={(e: any) => console.log(e)}
                 value={d?.name}
                 description={d?.name}
                 className=" border-gray-300 p-3"

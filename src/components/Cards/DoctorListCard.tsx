@@ -10,7 +10,7 @@ interface DoctorListCardProps {
   redirect: string;
 }
 export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
-  console.log(props.data);
+  console.log(props.data.experience);
   const router = useRouter();
   return (
     <>
@@ -76,7 +76,7 @@ export const DoctorListCard: React.FC<any> = (props: DoctorListCardProps) => {
               {/* level 4 */}
               <div className="hidden lg:flex justify-between w-full items-center ">
                 <div className="bg-secondary p-2 rounded-xl text-[8px] lg:text-[20px]  text-white">
-                  {props.data.experince} Years of Experience
+                  {props.data.experience} Years of Experience
                 </div>
                 <div className="flex gap-5">
                   <p className="text-[8px] lg:text-[20px] text-grey self-center">
