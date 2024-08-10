@@ -31,12 +31,37 @@ import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
 import EnquireModal from "@/components/Enquire";
 import isAuth from "./isAuth";
-
+import { useQuery } from "@tanstack/react-query";
+import { getData } from "@/core/apiHandler";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { data } = isAuth();
-  console.log(data);
+  const { data: getTopDoctors, isLoading } = useQuery({
+    queryKey: ["getTopDoctors"],
+    queryFn: () => {
+      return getData("/doctor/top/client", {});
+    }
+  })
+  const { data: getTopServices, isLoading: isLoadingServices } = useQuery({
+    queryKey: ["getTopDoctors"],
+    queryFn: () => {
+      return getData("/service/top/client", {});
+    }
+  })
+  const { data: getTopHospital, isLoading: isLoadingHospital } = useQuery({
+    queryKey: ["getTopHospital"],
+    queryFn: () => {
+      return getData("/hospital/top/client", {});
+    }
+  })
+  const { data: getDepartment, isLoading: isLoadingDepartment } = useQuery({
+    queryKey: ["getDepartment"],
+    queryFn: () => {
+      return getData("/department/get-all/", {});
+    }
+  })
+
   return (
     <main className="">
       <Banner onOpen={onOpen} />
@@ -79,13 +104,13 @@ export default function Home() {
           })}
         </div>
         <div className=" hidden lg:grid w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {Doctors.slice(0, 4).map((d: DoctorCardProps, index: number) => {
+          {getTopDoctors?.data.data.map((d: any, index: number) => {
             return (
               <DoctorCard
-                key={index}
-                name={d.name}
-                image={d.image}
-                type={d.type}
+                key={d._id}
+                name={d?.name}
+                image={d?.image?.path}
+                type={d?.department?.name}
               />
             );
           })}
@@ -102,28 +127,28 @@ export default function Home() {
         />
         <Spacer y={5} />
         <div className="grid lg:hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
-          {CausesArr.slice(0, 3).map(
-            (d: DepartmentCardProps, index: number) => {
+          {getTopServices?.data?.data?.map(
+            (d: any, index: number) => {
               return (
                 <DepartmentCard
                   key={index}
-                  title={d.title}
-                  icon={d.icon}
-                  redirect={navigationRoutes.department + "department-id"}
+                  title={d?.name}
+                  icon={d?.image?.path}
+                  redirect={navigationRoutes.department + d._id}
                 />
               );
             }
           )}
         </div>
         <div className="lg:grid hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
-          {CausesArr.slice(0, 6).map(
-            (d: DepartmentCardProps, index: number) => {
+          {getTopServices?.data?.data?.map(
+            (d: any, index: number) => {
               return (
                 <DepartmentCard
                   key={index}
-                  title={d.title}
-                  icon={d.icon}
-                  redirect={navigationRoutes.department + "department-id"}
+                  title={d?.name}
+                  icon={d?.image?.path}
+                  redirect={navigationRoutes.department + d._id}
                 />
               );
             }
@@ -140,26 +165,26 @@ export default function Home() {
         <Spacer y={5} />
         <div className="hidden lg:grid grid-cols-2 gap-5 w-full">
           <div className="flex flex-col gap-5">
-            <HospitalViewCard />
+            <HospitalViewCard data={getTopHospital?.data.data[0]} />
             <div className="flex flex-row w-full gap-5">
-              <HospitalViewCard2 />
-              <HospitalViewCard2 />
+              <HospitalViewCard2 data={getTopHospital?.data?.data[1]} />
+              <HospitalViewCard2 data={getTopHospital?.data?.data[2]} />
             </div>
           </div>
           <div className="flex flex-col gap-5">
             <div className="flex flex-row w-full gap-5">
-              <HospitalViewCard2 />
-              <HospitalViewCard2 />
+              <HospitalViewCard2 data={getTopHospital?.data.data[3]} />
+              <HospitalViewCard2 data={getTopHospital?.data.data[4]} />
             </div>
-            <HospitalViewCard />
+            <HospitalViewCard data={getTopHospital?.data.data[5]} />
           </div>
         </div>
         <div className="lg:hidden">
           <div className="flex flex-col gap-5">
-            <HospitalViewCard />
+            <HospitalViewCard data={getTopHospital?.data.data[0]} />
             <div className="flex flex-row w-full gap-5">
-              <HospitalViewCard2 />
-              <HospitalViewCard2 />
+              <HospitalViewCard2 data={getTopHospital?.data.data[1]} />
+              <HospitalViewCard2 data={getTopHospital?.data.data[2]} />
             </div>
           </div>
         </div>
@@ -176,13 +201,13 @@ export default function Home() {
         <div className="flex flex-col  xl:flex-row gap-4 justify-around">
           <Image src={doctors} className="h-full rounded-xl object-cover" />
           <div className="w-full xl:w-1/2 grid grid-rows-6 gap-[1rem] grid-cols-4 md:grid-cols-4">
-            {Array.from({ length: 22 }, (_, index) => (
+            {getDepartment?.data?.data?.data.map((d: any, index: any) => (
               <div
                 key={index}
                 className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl"
               >
-                <Image src={department} />
-                <h1 className="text-[8px]">Cardiology</h1>
+                <Image src={d?.image?.path} />
+                <h1 className="text-[8px]">{d.name}</h1>
               </div>
             ))}
           </div>

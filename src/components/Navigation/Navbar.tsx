@@ -11,11 +11,20 @@ import {
   Link,
   Button,
   useDisclosure,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+  User,
 } from "@nextui-org/react";
 import { logo } from "@/Content/assets";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import EnquireModal from "../Enquire";
+import isAuth from "@/app/isAuth";
+import { useMutation } from "@tanstack/react-query";
+import { postData } from "@/core/apiHandler";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -41,14 +50,16 @@ export default function Header() {
       setName(window.location.href.split("/")[1]);
     }
   }, []);
+  const { data, status, error } = isAuth();
+
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className={`max-w-[95vw] ${
-        visible ? "block" : "hidden"
-      } bg-white 2xl:max-w-[1440px] mx-auto`}
+      className={`max-w-[95vw] ${visible ? "block" : "hidden"
+        } bg-white 2xl:max-w-[1440px] mx-auto`}
       isBordered
     >
       <NavbarContent>
@@ -64,7 +75,7 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+      <NavbarContent className={`hidden sm:${data === undefined ? "hidden" : "flex"}`} justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={`${item}-${index}`}
@@ -90,16 +101,64 @@ export default function Header() {
           </Button>
           <EnquireModal onOpenChange={onOpenChange} isOpen={isOpen} />
         </NavbarItem>
-        <NavbarItem>
-          <Button
-            as={Link}
-            color="primary"
-            href="/siginin"
-            className="rounded-full px-6"
+        {data ? <>
+          <Dropdown
+            showArrow
+            radius="sm"
+            classNames={{
+              base: "before:bg-default-200", // change arrow background
+              content: "p-0 border-small border-divider bg-background",
+            }}
           >
-            Log In
-          </Button>
-        </NavbarItem>
+            <DropdownTrigger>
+              <User
+                name={data?.data?.name}
+                className="cursor-pointer"
+                description={data?.data?.email || data?.data?.phone}
+                classNames={{
+                  name: "text-default-600",
+                  description: "text-default-500",
+                }}
+                avatarProps={{
+                  size: "sm",
+                }}
+              />
+            </DropdownTrigger>
+            <DropdownMenu
+              aria-label="Custom item styles"
+              className="p-3"
+              itemClasses={{
+                base: [
+                  "rounded-md",
+                  "text-default-500",
+                  "transition-opacity",
+                  "data-[hover=true]:text-white",
+                  "data-[hover=true]:bg-primary",
+                  "dark:data-[hover=true]:bg-default-50",
+                  "data-[selectable=true]:focus:bg-default-50",
+                  "data-[pressed=true]:opacity-70",
+                  "data-[focus-visible=true]:ring-red-500",
+                ],
+              }}
+            >
+              <DropdownSection aria-label="Profile & Actions" showDivider>
+                <DropdownItem key="myprofile" onClick={() => router.push("/profile")}>My Profile</DropdownItem>
+                <DropdownItem key="logout" color="warning">Log Out</DropdownItem>
+              </DropdownSection>
+            </DropdownMenu>
+          </Dropdown>
+        </> : (
+          <NavbarItem>
+            <Button
+              as={Link}
+              color="primary"
+              href="/siginin"
+              className="rounded-full px-6"
+            >
+              Log In
+            </Button>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarMenu className="w-1/2">
         {menuItems.map((item, index) => (

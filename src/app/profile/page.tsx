@@ -14,9 +14,12 @@ import { Avatar, Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
 import isAuth from "../isAuth";
+import { useRouter } from "next/navigation";
 
 function Profile() {
-  const profile = isAuth();
+  const { data } = isAuth();
+  const router = useRouter();
+  if (data === undefined) router.push("/");
   return (
     <section className="grid grid-col-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col justify-around gap-5 h-full pe-5 border-r-1">
@@ -27,7 +30,7 @@ function Profile() {
             className="w-[80px] lg:w-[120px] h-auto z-20 text-large border-white border-5"
             src="https://i.pravatar.cc/150?u=a04258114e29026708c"
           />
-          <div className="p-2 lg:p-4 bg-white rounded-full z-20 hover:cursor-pointer hover:border-primary hover:border-5 transition-all duration-100 ease-in-out ">
+          <div onClick={() => router.push("/profile/edit")} className="p-2 lg:p-4 bg-white rounded-full z-20 hover:cursor-pointer hover:border-primary hover:border-5 transition-all duration-100 ease-in-out ">
             <Image
               src={editIcon}
               alt="edit icon"
@@ -37,15 +40,15 @@ function Profile() {
             />
           </div>
         </div>
-        <ProfileCard heading="User name" content="John Doe" icon={personIcon} />
+        <ProfileCard heading="User name" content={data.data.name} icon={personIcon} />
         <ProfileCard
           heading="Email"
-          content="p2care@gmail.com"
+          content={data?.data?.email}
           icon={emailIcon}
         />
         <ProfileCard
           heading="Phone"
-          content="+91 9876543210"
+          content={data?.data?.phone}
           icon={phoneIcon}
         />
       </div>

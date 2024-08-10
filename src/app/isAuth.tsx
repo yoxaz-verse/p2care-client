@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
 
 export default function isAuth() {
-  const { data: getCheckAuth, isLoading, isError, isFetched } = useQuery({
+  const { data: getCheckAuth, isLoading, isError, error, isFetched } = useQuery({
     queryKey: ["checkAuth"],
     queryFn: () => {
       return getData('/patient/test/check', {});
@@ -11,7 +11,9 @@ export default function isAuth() {
   })
   return {
     data: getCheckAuth?.data,
+    status: getCheckAuth?.status,
     isFetched,
+    error,
     isLoading,
     isError
   }

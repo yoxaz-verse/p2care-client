@@ -52,7 +52,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
 
         return item.name.toLocaleLowerCase() === name.toLocaleLowerCase();
       });
-      setEnquiryType(enquiry[0]._id);
+      setEnquiryType(enquiry[0]?._id);
     }
   }, [getEnquiryType, isFetched]);
 

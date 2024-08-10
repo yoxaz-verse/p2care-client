@@ -29,7 +29,7 @@ function Details() {
   const { data: getDoctors, isLoading: isLoadingDoctors } = useQuery({
     queryKey: ["getDoctors", id],
     queryFn: () => {
-      return getData(`/ doctor / get - all - doctors / ${id}`, {});
+      return getData(`/doctor/get-all-doctors / ${id}`, {});
     }
   })
 
