@@ -1,5 +1,5 @@
 "use client";
-import isAuth from "@/app/isAuth";
+import useAuth from "@/app/isAuth";
 import { AuthLayout } from "@/components/layouts/auth";
 import { otp, logo } from "@/Content/assets";
 import { postData } from "@/core/apiHandler";
@@ -12,13 +12,13 @@ import { useState } from "react";
 import OtpInput from "react-otp-input";
 import { toast } from "sonner";
 
-export default function () {
+export default function OTP() {
   const [otpinput, setOtp] = useState<any>();
   const [phoneOtp, setPhoneOtp] = useState<any>();
   const width = isMobile() ? "20px" : isTablet() ? "40px" : "60px";
   const height = isMobile() ? "20px" : isTablet() ? "40px" : "60px";
   const router = useRouter();
-  const { data } = isAuth();
+  const { data } = useAuth();
   const otpMutation = useMutation({
     mutationKey: ["otp"],
     mutationFn: (data: any) => {

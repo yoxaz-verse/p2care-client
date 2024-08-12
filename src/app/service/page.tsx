@@ -8,10 +8,9 @@ import { Spacer, Spinner } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "next/navigation";
 import React from "react";
-import isAuth from "../isAuth";
+
 
 function List() {
-
   const { data: getService, isLoading } = useQuery({
     queryKey: ["getServices"],
     queryFn: () => {

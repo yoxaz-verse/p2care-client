@@ -75,7 +75,7 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className={`hidden sm:${data === undefined ? "hidden" : "flex"}`} justify="center">
+      <NavbarContent className={`hidden sm: flex ${data === undefined ? "hidden" : "flex"}`} justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={`${item}-${index}`}

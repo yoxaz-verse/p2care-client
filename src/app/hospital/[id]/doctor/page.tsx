@@ -2,7 +2,7 @@
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import HospitalCard2 from "@/components/Cards/HospitalCard2";
 import { Button, Input, Pagination, Spinner } from "@nextui-org/react";
-import React from "react";
+import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { BsFillFilterCircleFill } from "react-icons/bs";
 import { getData } from "@/core/apiHandler";
@@ -19,6 +19,7 @@ function DoctorList() {
       return getData(`/hospital-doctor/get-doctors/${id}`, {});
     }
   })
+  const [page, setPage] = useState<any>(0);
   const { data: getHospitals, isLoading } = useQuery({
     queryKey: ["getHospitals"],
     queryFn: () => {
@@ -51,12 +52,15 @@ function DoctorList() {
           return <DoctorListCard
             key={index}
             data={d}
-            redirect={navigationRoutes.doctor + d._id}
+            redirect={navigationRoutes.hospital + `/${id}/doctor/` + d._id}
           />
 
         })}
 
-        <Pagination className="justify-self-center" total={5} initialPage={1} />
+        <Pagination
+          className="justify-self-center"
+          total={getDoctors?.data?.data?.totalCount}
+          initialPage={page} />
       </section>
     )
   );

@@ -11,7 +11,7 @@ function DocHospital() {
     <>
       <Card>
         <CardBody className="flex flex-row gap-4 w-full">
-          <img
+          <Image
             src={apolloDoc}
             className="w-[40px] md:w-[80px] rounded-full h-[40px] md:h-[80px]"
             alt="apolloDoc"
@@ -27,7 +27,7 @@ function DocHospital() {
   );
 }
 
-const HospitalCard = ({ data }: any) => {
+const HospitalCard = ({ data, redirect }: { data: any, redirect: any }) => {
   console.log(data);
   const router = useRouter();
   return (
@@ -74,7 +74,7 @@ const HospitalCard = ({ data }: any) => {
           <div className="flex flex-row items-center gap-2">
             <h3 className="text-sm md:text-md cursor-pointer">Know More</h3>
             <button
-              onClick={() => router.push(`/hospital/${data._id}`)}
+              onClick={() => router.push(redirect)}
               className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold"
             >
               Consult Now

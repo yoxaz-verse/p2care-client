@@ -14,14 +14,14 @@ import React, { useState } from "react";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import { useParams, useRouter } from "next/navigation";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import isAuth from "@/app/isAuth";
+import useAuth from "@/app/isAuth";
 import { getData } from "@/core/apiHandler";
 import { useQuery } from "@tanstack/react-query";
 
 function Booking() {
   const router = useRouter();
   const [index, setIndex] = useState<number>(1);
-  const { data, isLoading: isLoadingPatient } = isAuth();
+  const { data, isLoading: isLoadingPatient } = useAuth();
   console.log(data?.data);
   const { id } = useParams();
   const { data: getDoctor, isLoading, isError, error } = useQuery({
@@ -39,7 +39,7 @@ function Booking() {
   const { data: getSlots, isLoading: isLoadingSlot } = useQuery({
     queryKey: ["getSlots"],
     queryFn: () => {
-      return getData(`/doctor-slot/get-slots/${id}`, {});
+      return getData(`/doctor-slot/user/slots/${id}`, {});
     }
   })
   console.log(getSlots?.data.data.data)

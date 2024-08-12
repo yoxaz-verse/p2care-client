@@ -11,6 +11,7 @@ import { useParams, usePathname } from "next/navigation";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getData, postData } from "@/core/apiHandler";
 import { toast } from "sonner";
+import useAuth from "@/app/isAuth";
 
 interface EnquireModalProps {
   onOpenChange: (isOpen: boolean) => void;
@@ -39,17 +40,11 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
   console.log(params);
   const name = params.split("/")[1];
   console.log(name);
-
+  const { data, isError, isLoading } = useAuth();
   useEffect(() => {
     if (isFetched) {
-      // find the enquiry type id by filtering the data with name
-      console.log(getEnquiryType?.data?.data);
-      console.log(name);
 
       const enquiry = getEnquiryType?.data?.data?.filter((item: any) => {
-        console.log(item.name);
-        console.log(name);
-
         return item.name.toLocaleLowerCase() === name.toLocaleLowerCase();
       });
       setEnquiryType(enquiry[0]?._id);
@@ -103,6 +98,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
             <Input
               className="bg-white rounded-none"
               required
+              value={data?.data?.name || ""}
               placeholder="Full Name"
             />
             <Input

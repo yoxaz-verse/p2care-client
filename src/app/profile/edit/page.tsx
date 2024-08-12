@@ -1,5 +1,5 @@
 "use client";
-import isAuth from "@/app/isAuth";
+import useAuth from "@/app/isAuth";
 import { editIcon, emailIcon, personIcon, phoneIcon } from "@/Content/assets";
 import { patchData } from "@/core/apiHandler";
 import {
@@ -15,7 +15,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 function EditProfile() {
-  const { data, isLoading } = isAuth();
+  const { data, isLoading } = useAuth();
   const router = useRouter();
   const EditProfile = useMutation({
     mutationKey: ["editprofile"],

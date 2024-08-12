@@ -30,13 +30,13 @@ import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
 import Testimonial from "@/components/Cards/Testimonal";
 import EnquireModal from "@/components/Enquire";
-import isAuth from "./isAuth";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
+import useAuth from "./isAuth";
 
 export default function Home() {
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
-  const { data } = isAuth();
+  const { data } = useAuth();
   const { data: getTopDoctors, isLoading } = useQuery({
     queryKey: ["getTopDoctors"],
     queryFn: () => {
