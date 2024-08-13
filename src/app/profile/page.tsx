@@ -15,6 +15,8 @@ import Image from "next/image";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import useAuth from "../isAuth";
+import { useQuery } from "@tanstack/react-query";
+import { getData } from "@/core/apiHandler";
 
 function Profile() {
   const { data, isError, isLoading } = useAuth();
@@ -28,6 +30,13 @@ function Profile() {
       router.push("/");
     }
   }, [data, isError, router]);
+  const { data: getAppointment, isLoading: isLoadingAppointment } = useQuery({
+    queryKey: ["getAppointment", data?.data?._id],
+    queryFn: () => {
+      return getData(`/appointment/patient/${data?.data?._id}`, {});
+    }
+  })
+  console.log(getAppointment?.data.data);
   return (
     isLoading ? <div className="flex flex-col h-[80vh] items-center justify-center">
       <Spinner />
@@ -68,32 +77,45 @@ function Profile() {
           <Tabs aria-label="Options">
             <Tab key="Upcoming" title="Upcoming">
               <Card className="grid grid-cols-justify-self-end">
-                <CardBody>
-                  <Image
-                    alt="no appointment"
-                    src={noappoints}
-                    width={1000}
-                    height={1000}
-                    className="w-[400px] self-center"
-                  />
-                </CardBody>
+                {getAppointment?.data.data.data.filter((d: any) => new Date(d.date) > new Date()).length > 0 ? (
+                  getAppointment?.data.data.data.filter((d: any) => new Date(d.date) > new Date()).map((appointment: any, index: any) => (
+                    <DoctorProfile data={appointment.doctor} key={index} title="Upcoming" />
+                  ))
+                ) : (
+                  <CardBody>
+                    <Image
+                      alt="no appointment"
+                      src={noappoints}
+                      width={1000}
+                      height={1000}
+                      className="w-[400px] self-center"
+                    />
+                  </CardBody>
+                )}
               </Card>
             </Tab>
             <Tab key="Completed" title="Completed">
               <Card className="flex flex-col gap-2">
-                <DoctorProfile title="Completed" />
-                <DoctorProfile title="Completed" />
-              </Card>
-            </Tab>
-            <Tab key="Cancelled" title="Cancelled">
-              <Card>
-                <DoctorProfile title="Cancelled" />
-                <DoctorProfile title="Cancelled" />
+                {getAppointment?.data.data.data.filter((d: any) => new Date(d.date) < new Date()).length > 0 ? (
+                  getAppointment?.data.data.data.filter((d: any) => new Date(d.date) < new Date()).map((appointment: any, index: any) => (
+                    <DoctorProfile data={appointment.doctor} key={index} title="Completed" />
+                  ))
+                ) : (
+                  <CardBody>
+                    <Image
+                      alt="no appointment"
+                      src={noappoints}
+                      width={1000}
+                      height={1000}
+                      className="w-[400px] self-center"
+                    />
+                  </CardBody>
+                )}
               </Card>
             </Tab>
           </Tabs>
         </div>
-      </section>
+      </section >
     )
   );
 }

@@ -1,6 +1,5 @@
 "use client";
 import HospitalCard from "@/components/Cards/HospitalCard";
-import HospitalCard2 from "@/components/Cards/HospitalCard2";
 import { getData } from "@/core/apiHandler";
 import { hospitalRoutes } from "@/core/apiRoutes";
 import { navigationRoutes } from "@/core/navigationRoutes";
