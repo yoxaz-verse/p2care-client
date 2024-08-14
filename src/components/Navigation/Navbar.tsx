@@ -23,8 +23,12 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import EnquireModal from "../Enquire";
 import isAuth from "@/app/isAuth";
-import { useMutation } from "@tanstack/react-query";
+import { QueryCache, QueryClient, useMutation } from "@tanstack/react-query";
 import { postData } from "@/core/apiHandler";
+import { isMobile } from "@/Utils/screenSize";
+import { toast } from "sonner";
+import useAuth from "@/app/isAuth";
+import { queryClient } from "@/app/providers";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -50,8 +54,27 @@ export default function Header() {
       setName(window.location.href.split("/")[1]);
     }
   }, []);
-  const { data, status, error } = isAuth();
+  const { data, status, error } = useAuth();
+  const logout = useMutation({
+    mutationFn: () => {
+      return postData("/patient/logout", {});
+    },
+    onSuccess: () => {
+      toast.success("Logout success", {
+        position: "top-right",
+        className: "bg-green-300"
+      });
+      queryClient.invalidateQueries({ queryKey: ["checkAuth"] });
+      router.push("/siginin");
+    },
+    onError: () => {
+      toast.success("Logout failed", {
+        position: "top-right",
+        className: "bg-red-300"
+      })
 
+    }
+  })
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
@@ -75,7 +98,7 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className={`hidden sm: flex ${data === undefined ? "hidden" : "flex"}`} justify="center">
+      <NavbarContent className={`${data === undefined || isMobile() ? "hidden" : "flex"}`} justify="center">
         {menuItems.map((item, index) => (
           <NavbarItem
             key={`${item}-${index}`}
@@ -92,7 +115,6 @@ export default function Header() {
         <NavbarItem className="hidden lg:flex">
           <Button
             color="primary"
-            href="#"
             onClick={onOpen}
             variant="bordered"
             className="rounded-full px-6"
@@ -143,7 +165,7 @@ export default function Header() {
             >
               <DropdownSection aria-label="Profile & Actions" showDivider>
                 <DropdownItem key="myprofile" onClick={() => router.push("/profile")}>My Profile</DropdownItem>
-                <DropdownItem key="logout" color="warning">Log Out</DropdownItem>
+                <DropdownItem key="logout" onClick={() => logout.mutate()} color="warning">Log Out</DropdownItem>
               </DropdownSection>
             </DropdownMenu>
           </Dropdown>

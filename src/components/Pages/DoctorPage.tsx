@@ -26,6 +26,7 @@ function DoctorDetailsComponent({ id }: any) {
     <section>
       <Spacer y={2} />
       <DoctorListCard
+        bookNow={true}
         data={getDoctor?.data?.data}
         redirect={`${navigationRoutes.doctor}/${id}/booking`}
       />

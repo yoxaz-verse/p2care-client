@@ -135,6 +135,7 @@ function Booking() {
     <section>
       <DoctorListCard
         data={getDoctor?.data?.data}
+        consultNow={false}
         redirect={`${navigationRoutes.doctor}/${id}/booking`}
       />
       <Spacer y={5} />
