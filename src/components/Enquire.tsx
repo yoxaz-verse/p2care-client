@@ -52,9 +52,11 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
 
   useEffect(() => {
     if (isFetched) {
+      let val = params.split("/")[1] !== "" ? params.split("/")[1].toLowerCase() : "others";
       const enquiry = getEnquiryType?.data?.data?.find((item: any) =>
-        item.name.toLowerCase().includes(params.split("/")[1].toLowerCase())
+        item.name.toLowerCase().includes(val)
       );
+      console.log("enquiry", enquiry);
       setEnquiryType(enquiry?._id || "");
     }
 

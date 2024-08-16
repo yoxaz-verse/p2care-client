@@ -30,7 +30,7 @@ export default function OTP() {
         position: "top-right",
         className: "bg-green-300 text-white",
       });
-      router.push("/signin");
+      router.push("/");
     },
     onError: (error: any) => {
       toast.error(error.response.data.message, {
@@ -47,7 +47,7 @@ export default function OTP() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    otpMutation.mutate({ emailOtp: otpinput, phoneOtp: phoneOtp });
+    otpMutation.mutate({ id: data?.data?._id, emailOtp: otpinput, phoneOtp: phoneOtp });
   };
   return (
     <AuthLayout src={otp}>

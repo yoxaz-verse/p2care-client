@@ -2,7 +2,6 @@
 
 import {
   content,
-  Doctors,
   HeaderHeading,
   CausesArr,
   BlogContent,
@@ -33,8 +32,28 @@ import EnquireModal from "@/components/Enquire";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
 import useAuth from "./isAuth";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 export default function Home() {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 2
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 2
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 1
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1
+    }
+  };
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { data } = useAuth();
   const { data: getTopDoctors, isLoading } = useQuery({
@@ -67,7 +86,7 @@ export default function Home() {
       <Banner onOpen={onOpen} />
       <EnquireModal isOpen={isOpen} onOpenChange={onOpenChange} />
       <Spacer y={10} />
-      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-2 gap-4 w-full">
+      <section className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 w-full">
         {content.map((c: ICategoryCardProps, index: number) => {
           return (
             <CategoryCard
@@ -92,11 +111,12 @@ export default function Home() {
         />
         <Spacer y={5} />
         <div className="grid lg:hidden w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {Doctors.slice(0, 2).map((d: DoctorCardProps, index: number) => {
+          {getTopDoctors?.data.data.slice(0, 2).map((d: any, index: number) => {
             return (
               <DoctorCard
                 key={index}
                 name={d.name}
+                id={d._id}
                 image={d.image}
                 type={d.type}
               />
@@ -108,6 +128,7 @@ export default function Home() {
             return (
               <DoctorCard
                 key={d._id}
+                id={d._id}
                 name={d?.name}
                 image={d?.image?.path}
                 type={d?.department?.name}
@@ -214,12 +235,21 @@ export default function Home() {
         </div>
       </section>
       <Spacer y={10} />
-      <section className="flex flex-col p-[1rem] gap-2 items-center">
+      {/*
+      <section className="flex flex-col  gap-2 items-center">
         <h1 className="text-center text-[27px] lg:text-[54px] font-bold">Testimonials</h1>
         <div className="flex flex-row gap-2">
-          <Testimonial />
+          <Carousel responsive={responsive}>
+
+            <div>Item 1</div>
+            <div>Item 2</div>
+            <div>Item 3</div>
+            <div>Item 4</div>
+          </Carousel>
+
         </div>
       </section>
+      */}
       <section className="flex flex-col">
         <HomeHeader link={HeaderHeading[3].link} header={HeaderHeading[3].header} />
         <Spacer y={10} />

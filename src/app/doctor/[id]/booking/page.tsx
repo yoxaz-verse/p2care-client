@@ -11,7 +11,7 @@ import {
   Spinner,
   DatePicker,
 } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import { useParams, useRouter } from "next/navigation";
 import { navigationRoutes } from "@/core/navigationRoutes";
@@ -26,6 +26,11 @@ function Booking() {
   const [index, setIndex] = useState<number>(1);
   const [formData, setformData] = useState<any>({});
   const { data, isLoading: isLoadingPatient } = useAuth();
+  useEffect(() => {
+    if (!data) {
+      router.push("/siginin");
+    }
+  }, [data]);
   const [customDate, setcustomDate] = useState<any>();
   const { id } = useParams();
   const { data: getDoctor, isLoading, isError, error } = useQuery({

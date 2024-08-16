@@ -53,28 +53,6 @@ export const content: ICategoryCardProps[] = [
 
 export const Services = [];
 
-export const Doctors: DoctorCardProps[] = [
-  {
-    name: "Jim Carry",
-    type: "Orthodontist",
-    image: mainDoctos,
-  },
-  {
-    name: "Wade Warren",
-    type: "Endodontist.",
-    image: mainDoctos1,
-  },
-  {
-    name: "Jenny Wilson",
-    type: "Periodontist.",
-    image: mainDoctos2,
-  },
-  {
-    name: "Jacob Jones",
-    type: "Pediatric Dentist",
-    image: mainDoctos3,
-  },
-];
 
 export const CausesArr: any[] = [
   {
