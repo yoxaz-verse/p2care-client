@@ -6,7 +6,7 @@ import { Image, Button, Input } from "@nextui-org/react";
 import { useState } from "react";
 
 
-export default function() {
+export default function RetypePassword() {
   const [password, setPassword] = useState<any>();
   const [currpassword, setcurrPassword] = useState<any>();
   return (

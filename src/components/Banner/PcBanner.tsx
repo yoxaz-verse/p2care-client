@@ -36,7 +36,7 @@ export default function PcBanner({ onOpen }: any) {
           alt="P2Care Logo"
           width={1000}
           height={1000}
-          className={`max-w-max h-[500px] -top-[100px] -left-[150px] absolute  ${isMobile() || isTablet() ? "left-0" : ""
+          className={`max-w-max h-[500px] -top-[100px] -left-[180px] absolute  ${isMobile() || isTablet() ? "left-0" : ""
             }
           transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
             }`}

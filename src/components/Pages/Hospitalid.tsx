@@ -3,7 +3,6 @@ import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import HospitalCard2 from "@/components/Cards/HospitalCard2";
 import { getData } from "@/core/apiHandler";
 import { hospitalRoutes } from "@/core/apiRoutes";
-import { navigationRoutes } from "@/core/navigationRoutes";
 import {
   Chip,
   Divider,
@@ -56,10 +55,9 @@ interface Tags {
   count: number,
   id: any
 }
-function Details() {
+function HospitalDetailscomponent({ id }: any) {
   const router = useRouter();
   const [tags, setTags] = useState<Tags[]>([]);
-  const { id } = useParams();
   const { data: getHospitals, isLoading } = useQuery({
     queryKey: ["getHospitals"],
     queryFn: () => {
@@ -154,7 +152,7 @@ function Details() {
           <Spacer y={2} />
           <div className="flex flex-wrap gap-5 w-full">
             {tags?.map((t: Tags, index: any) => {
-              return <Tag onPress={() => router.push(`/hospital/${id}/department/${t.id}`)} key={index} number={t.count} name={t.name} />;
+              return <Tag onPress={() => router.push(`/department/${t.id}`)} key={index} number={t.count} name={t.name} />;
             })}
           </div>
         </div>
@@ -171,7 +169,7 @@ function Details() {
             </h3>
           </div>
           {getDoctors?.data.data.map((d: any, index: any) => {
-            return <DoctorListCard redirect={`${navigationRoutes.hospital}/${id}/doctor/${d._id}`} data={d} key={index} />
+            return <DoctorListCard data={d} key={index} />
           })}
         </div>
         <div className="flex flex-col rounded-xl shadow-xl gap-2 p-[1rem]">
@@ -193,4 +191,4 @@ function Details() {
   );
 }
 
-export default Details;
+export default HospitalDetailscomponent;

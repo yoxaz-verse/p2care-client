@@ -22,7 +22,7 @@ function Details() {
       return getData(`/service/get-all/${id}`, {});
     }
   })
-  console.log(getService?.data.data);
+    ;
   return (
     <section>
       {isLoading ? <div className="flex flex-col-reverse justify-center items-center h-[80vh]">
@@ -48,7 +48,7 @@ function Details() {
           <Spacer y={3} />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {getService?.data.data.doctors.map((d: any, index: any) => (
-              <DoctorDetailCard data={d} key={index} />
+              <DoctorDetailCard redirect={`${navigationRoutes.service}/${id}/doctor/${d._id}`} data={d} key={index} />
             ))}
           </div>
           <Spacer y={3} />
@@ -56,7 +56,10 @@ function Details() {
           <Spacer y={3} />
           <div className="grid grid-cols-1  gap-5">
             {getService?.data?.data?.hospitals?.map((d: any, index: any) => (
-              <HospitalCard data={d} key={index} />
+              <HospitalCard
+                data={d}
+                key={index}
+                redirect={`${navigationRoutes.service}/${id}/${d._id}`} />
             ))}
           </div>
           <div className="flex flex-col">
@@ -70,7 +73,7 @@ function Details() {
                   key={index}
                   title={d?.name}
                   icon={d?.image.path}
-                  redirect={navigationRoutes?.department + d._id} />
+                  redirect={`${navigationRoutes?.service}/${id}/department/${d._id}`} />
               ))}
             </div>
           </div>

@@ -1,11 +1,17 @@
-import { apolloDoc, apolloLogo } from "@/Content/assets";
-import { Button, Card } from "@nextui-org/react";
+"use client";
+import { Card } from "@nextui-org/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-function DoctorDetailCard({ data }: any) {
-  console.log(data);
+interface DoctorProps {
+  data: any;
+  redirect?: any;
+}
+
+function DoctorDetailCard({ data, redirect }: DoctorProps) {
+  const router = useRouter();
   return (
     <Card className="flex  h-[145px]  md:h-[200px] lg:h-[300px] w-full m-0 p-4 flex-col justify-between md:p-5 w-full hover:cursor-pointer hover:bg-primary-100">
       <div className="flex gap-2">
@@ -36,6 +42,7 @@ function DoctorDetailCard({ data }: any) {
         <h1 className="text-sm md:text-[10px] text-[#3C4959]">Know More</h1>
         <button
           color="primary"
+          onClick={() => router.push(redirect)}
           className="text-sm px-2 py-1  p-0 md:p-1 lg:p-2 rounded-full font-bold text-white bg-primary md:text-[10px] lg:text-md"
         >
           Consult Now

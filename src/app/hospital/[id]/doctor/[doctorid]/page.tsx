@@ -3,13 +3,10 @@ import DoctorDetailsComponent from "@/components/Pages/DoctorPage";
 import { useParams } from "next/navigation";
 import React from "react";
 
-
 function DoctorDetails() {
-  const { id } = useParams();
+  const { doctorid: id } = useParams();
   return (
-    <>
-      <DoctorDetailsComponent id={id} />
-    </>
+    <DoctorDetailsComponent id={id} />
   );
 }
 

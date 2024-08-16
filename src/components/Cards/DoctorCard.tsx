@@ -5,17 +5,20 @@ import {
   CardFooter,
   Image,
 } from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 export interface DoctorCardProps {
   name: string;
   type: string;
   image: string;
+  id: any;
 }
 
-export default function DoctorCard({ name, type, image }: DoctorCardProps) {
+export default function DoctorCard({ name, type, image, id }: DoctorCardProps) {
+  const router = useRouter();
   return (
     <>
-      <Card className="w-full h-[170px] lg:h-[400px]">
+      <Card isPressable onPress={() => router.push(`/doctor/${id}`)} className="w-full h-[170px] lg:h-[400px]">
         <Image
           removeWrapper
           alt="Card background"

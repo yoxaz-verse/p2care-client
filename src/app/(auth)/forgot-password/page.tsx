@@ -4,9 +4,9 @@ import { otp, logo, forgotpass } from "@/Content/assets";
 import { isMobile, isTablet } from "@/Utils/screenSize";
 import { Image, Button, Input } from "@nextui-org/react";
 import { useState } from "react";
-import OtpInput from "react-otp-input";
 
-export default function() {
+
+export default function ForgotPass() {
   const width = isMobile() ? "20px" : (isTablet() ? "40px" : "60px");
   const height = isMobile() ? "20px" : (isTablet() ? "40px" : "60px");
   const [email, setEmail] = useState<any>();

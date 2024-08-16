@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import {
   Modal,
@@ -5,12 +6,15 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Input,
+  Textarea,
+  Button,
 } from "@nextui-org/react";
-import { Input, Textarea, Button } from "@nextui-org/react";
-import { useParams, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getData, postData } from "@/core/apiHandler";
 import { toast } from "sonner";
+import useAuth from "@/app/isAuth";
 
 interface EnquireModalProps {
   onOpenChange: (isOpen: boolean) => void;
@@ -27,40 +31,49 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
     message: "",
     email: "",
     phone: "",
+    enquiryType: "",
+    id: "",
   });
-  const [enquiryType, setEnquiryType] = useState<any>("");
+  const [enquiryType, setEnquiryType] = useState<string>("");
   const { data: getEnquiryType, isFetched } = useQuery({
     queryKey: ["get-queryType"],
-    queryFn: () => {
-      return getData("/enquiry-type/user", {});
-    },
+    queryFn: () => getData("/enquiry-type/user", {}),
   });
+
   const params = usePathname();
-  console.log(params);
-  const name = params.split("/")[1];
-  console.log(name);
+  const lastSegment = params.split("/").pop(); // Get the last segment of the URL
+
+  function isValidId(id: string): boolean {
+    const idPattern = /^[a-fA-F0-9]{24}$/;
+    return idPattern.test(id);
+  }
+
+  const { data, isError, isLoading } = useAuth();
 
   useEffect(() => {
     if (isFetched) {
-      // find the enquiry type id by filtering the data with name
-      console.log(getEnquiryType?.data?.data);
-      console.log(name);
-
-      const enquiry = getEnquiryType?.data?.data?.filter((item: any) => {
-        console.log(item.name);
-        console.log(name);
-
-        return item.name.toLocaleLowerCase() === name.toLocaleLowerCase();
-      });
-      // setEnquiryType(enquiry[0]._id);
+      let val =
+        params.split("/")[1] !== ""
+          ? params.split("/")[1].toLowerCase()
+          : "others";
+      const enquiry = getEnquiryType?.data?.data?.find((item: any) =>
+        item.name.toLowerCase().includes(val)
+      );
+      console.log("enquiry", enquiry);
+      setEnquiryType(enquiry?._id || "");
     }
-  }, [getEnquiryType, isFetched]);
+
+    if (data?.data?.name) {
+      setFormData((prev: any) => ({
+        ...prev,
+        name: data.data.name,
+      }));
+    }
+  }, [getEnquiryType, isFetched, params, data?.data?.name]);
 
   const addData = useMutation({
-    mutationKey: ["addenuiry"],
-    mutationFn: (data: any) => {
-      return postData(`/enquiry/user`, {}, formData);
-    },
+    mutationKey: ["add-enquiry"],
+    mutationFn: (data: any) => postData(`/enquiry/user`, {}, data),
     onSuccess: (data: any) => {
       console.log(data);
       toast.success("Enquiry Sent!", {
@@ -76,52 +89,82 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
       });
     },
   });
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const inputs = document.getElementsByTagName("input");
-    const message = document.getElementsByTagName("textarea");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
     setFormData((prev: any) => ({
       ...prev,
-      name: inputs[0].value,
-      phone: inputs[1].value,
-      message: message[0].value,
-      email: inputs[2].value,
-      enquiryType: enquiryType,
+      [name]: value,
     }));
-
-    addData.mutate(formData);
   };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const phone = form.phone.value;
+    const message = form.message.value;
+    const email = form.email.value;
+
+    const updatedFormData = {
+      ...formData,
+      phone,
+      message,
+      email,
+      enquiryType,
+      id: isValidId(lastSegment || "") ? lastSegment : "",
+    };
+
+    setFormData(updatedFormData);
+    addData.mutate(updatedFormData);
+  };
+
   return (
     <Modal isOpen={isOpen} onClose={() => onOpenChange(false)}>
       <ModalContent>
         <ModalHeader>Enquire Us</ModalHeader>
         <ModalBody>
-          <form
-            onSubmit={(e) => handleSubmit(e)}
-            className="flex flex-col gap-4"
-          >
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <Input
               className="bg-white rounded-none"
               required
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder="Full Name"
+              disabled={!!data?.data?.name} // Disable if data.data.name is present
             />
             <Input
               className="bg-white rounded-none"
               required
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
               placeholder="Phone"
               type="number"
             />
             <Textarea
               className="bg-white rounded-none"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder="Message"
               rows={4}
               required
             />
-            <Input className="bg-white rounded-none" placeholder="Email" />
+            <Input
+              className="bg-white rounded-none"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+            />
             <Button
               color="primary"
               radius="full"
-              className="p-[1rem] "
+              className="p-[1rem]"
               type="submit"
             >
               Submit

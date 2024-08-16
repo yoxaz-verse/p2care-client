@@ -9,35 +9,71 @@ import {
   Tabs,
   Tab,
   Spinner,
+  DatePicker,
 } from "@nextui-org/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import { useParams, useRouter } from "next/navigation";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import isAuth from "@/app/isAuth";
-import { getData } from "@/core/apiHandler";
-import { useQuery } from "@tanstack/react-query";
+import useAuth from "@/app/isAuth";
+import { getData, postData } from "@/core/apiHandler";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getLocalTimeZone, today, CalendarDate } from "@internationalized/date";
+import { toast } from "sonner";
 
 function Booking() {
   const router = useRouter();
   const [index, setIndex] = useState<number>(1);
-  const { data, isLoading: isLoadingPatient } = isAuth();
-  console.log(data);
+  const [formData, setformData] = useState<any>({});
+  const { data, isLoading: isLoadingPatient } = useAuth();
+  useEffect(() => {
+    if (!data) {
+      router.push("/siginin");
+    }
+  }, [data]);
+  const [customDate, setcustomDate] = useState<any>();
   const { id } = useParams();
   const { data: getDoctor, isLoading, isError, error } = useQuery({
     queryKey: ["getDoctors", id],
     queryFn: () => getData(`/doctor/get-all/${id}`, {}),
     enabled: !!id,
   });
+  const appointment = useMutation({
+    mutationKey: ["appointment"],
+    mutationFn: (data: any) => {
+      return postData("/appointment/user", {}, data);
+    },
+    onSuccess: (data: any) => {
+      toast.success("Appointment Added", {
+        position: "top-right",
+        className: "bg-green-300"
+      })
+      router.push("/profile");
+    },
+    onError: (error: any) => {
+      console.log(error);
+      toast.error("Appointment addition cancel!", {
+        position: "top-right",
+        className: "bg-red-300"
+      })
 
+    }
+  })
   const { data: getGender, isLoading: isLoadingGender } = useQuery({
     queryKey: ["getGender"],
     queryFn: () => {
       return getData("/gender/all", {});
     }
   })
-  console.log(getGender?.data.data.data)
-  if (isLoading || isLoadingGender || isLoadingPatient) {
+  const { data: getSlots, isLoading: isLoadingSlot } = useQuery({
+    queryKey: ["getSlots"],
+    queryFn: () => {
+      return getData(`/doctor-slot/user/slots/${id}`, { date: formData.date });
+    },
+    enabled: !!formData.date
+  })
+
+  if (isLoading || isLoadingGender || isLoadingPatient || isLoadingSlot) {
     return (
       <div className="flex flex-col items-center justify-center">
         <Spinner />
@@ -45,10 +81,66 @@ function Booking() {
       </div>
     )
   }
+  const handleChange = (e: any, value: any) => {
+    console.log(e, value, index);
+    if (value === "date" && e === "today") {
+
+      setformData((prev: any) => ({
+        ...prev,
+        [value]: new Date()
+      }));
+      console.log(formData);
+      return;
+    }
+    if (e === "tomorrow" && value === "date") {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const newValue = tomorrow;
+      setformData((prev: any) => ({
+        ...prev,
+        [value]: newValue
+      }));
+      console.log(formData);
+      return;
+    }
+    if (index === 3 && value === "date") {
+      const dateString = e.toString();
+      const dateObject = new Date(dateString);
+      setformData((prev: any) => ({
+        ...prev,
+        [value]: dateObject
+      }));
+      return;
+    }
+    if (value === "doctorSlotId") {
+      setformData((prev: any) => ({
+        ...prev,
+        [value]: e._id,
+        startTime: e.slotTime
+      }));
+      return;
+    } else {
+      setformData((prev: any) => ({
+        ...prev,
+        [value]: e
+      }));
+    }
+  }
+  const handleSubmit = () => {
+    const item = {
+      ...formData,
+      fullName: data?.data?.name,
+      doctorId: id,
+      price: getDoctor?.data?.data?.price
+    }
+    console.log(item);
+    appointment.mutate(item);
+  }
   return (
     <section>
       <DoctorListCard
         data={getDoctor?.data?.data}
+        consultNow={false}
         redirect={`${navigationRoutes.doctor}/${id}/booking`}
       />
       <Spacer y={5} />
@@ -63,21 +155,24 @@ function Booking() {
           <Input
             variant="bordered"
             type="text"
+            value={data?.data?.name}
             radius="none"
             className="w-full hover:outline-none h-full"
             placeholder="Full Name"
+            disabled
             labelPlacement="outside"
             label="Full Name"
           />
           <RadioGroup
             label="Gender"
             orientation="horizontal"
+            onChange={(e) => handleChange(e.target.value, "genderId")}
             className="flex gap-0 justify-between w-full"
           >
             {getGender?.data.data.data.map((d: any, index: any) => {
               return <Radio
-                key={d.name}
-                value={d?.name}
+                key={d._id}
+                value={d?._id}
                 description={d?.name}
                 className=" border-gray-300 p-3"
               />
@@ -86,6 +181,7 @@ function Booking() {
           <Input
             variant="bordered"
             type="number"
+            onValueChange={(e) => handleChange(e, "age")}
             radius="none"
             className="w-full hover:outline-none"
             placeholder="Age"
@@ -102,27 +198,56 @@ function Booking() {
         <h3 className="text-gray font-semibold text-[12px] lg:[24px]">Day</h3>
         <div className="flex flex-row justify-between gap-5">
           <Button
-            onPress={() => setIndex(1)}
+            onPress={() => {
+              setIndex(1);
+              handleChange("today", "date");
+            }}
             variant="ghost"
-            className={`w-full border-${index === 1 ? 4 : 2} p-5 lg:p-7`}
+            className={`w-full border-${index === 1 ? 4 : 2}  p-5 lg:p-7`}
           >
-            Today <br /> 5 slots
+            Today
           </Button>
           <Button
-            onPress={() => setIndex(2)}
+            onPress={() => {
+              setIndex(2);
+              handleChange("tomorrow", "date");
+            }}
             variant="ghost"
             className={`w-full border-${index === 2 ? 4 : 2} p-5 lg:p-7`}
           >
-            Tommorow <br /> 5 slots
+            Tommorow
           </Button>
           <Button
-            onPress={() => setIndex(3)}
+            onPress={() => {
+              setIndex(3);
+              setcustomDate(true);
+            }}
             variant="ghost"
             className={`w-full border-${index === 3 ? 4 : 2} p-5 lg:p-7`}
           >
-            Custom <br /> 5 slots
+            Custom
           </Button>
         </div>
+        {customDate && index == 3 && (
+          <DatePicker
+            className="w-1/4"
+            label="Appointment Date"
+            minValue={today(getLocalTimeZone()).subtract({
+              days: 0
+            })}
+            onChange={(e) => handleChange(e, "date")}
+            defaultValue={
+              formData.DOB
+                ? new CalendarDate(
+                  Number(formData.DOB.split('T')[0].split('-')[0]),
+                  Number(formData.DOB.split('T')[0].split('-')[1]),
+                  Number(formData.DOB.split('T')[0].split('-')[2])
+                ) : today(getLocalTimeZone())
+            }
+            showMonthAndYearPickers
+          />
+
+        )}
       </div>
       <Spacer y={5} />
       <div className="flex flex-col w-full gap-5">
@@ -133,44 +258,65 @@ function Booking() {
           <Tabs aria-label="Options">
             <Tab key="morning" title="Morning">
               <div className="grid grid-cols-3 lg:grid-cols-6 gap-5 ">
-                {Array.from({ length: 3 }, (_, index) => (
-                  <Button
-                    key={index}
-                    className="w-full"
-                    variant="ghost"
-                    color="secondary"
-                  >
-                    {9 + index}:00 AM
-                  </Button>
-                ))}
+                {getSlots?.data?.data
+                  .filter((d: any) => d.session === "morning")
+                  .map((d: any, index: any) => {
+                    const date = new Date(d.slotTime);
+                    const formattedDate = date.toLocaleTimeString()
+                    return (
+                      <Button
+                        key={d._id}
+                        onClick={() => handleChange(d, "doctorSlotId")}
+                        className={`w-full ${formData.doctorSlotId === d._id ? "bg-green-300" : ""}`}
+                        variant={formData.doctorSlotId === d._id ? "solid" : "ghost"}
+                        color="secondary"
+                      >
+                        {formattedDate}
+                      </Button>
+                    )
+                  })}
               </div>
             </Tab>
             <Tab key="afternoon" title="Afternoon">
               <div className="grid grid-cols-3 lg:grid-cols-6 gap-5 ">
-                {Array.from({ length: 3 }, (_, index) => (
-                  <Button
-                    key={index}
-                    className="w-full"
-                    variant="ghost"
-                    color="secondary"
-                  >
-                    {1 + index}:00 PM
-                  </Button>
-                ))}
+                {getSlots?.data?.data
+                  .filter((d: any) => d.session === "afternoon")
+                  .map((d: any, index: any) => {
+                    const date = new Date(d.slotTime);
+                    const formattedDate = date.toLocaleTimeString()
+                    return (
+                      <Button
+                        key={d._id}
+                        onClick={() => handleChange(d, "doctorSlotId")}
+                        className={`w-full ${formData.doctorSlotId === d._id ? "bg-green-300" : ""}`}
+                        variant={formData.doctorSlotId === d._id ? "solid" : "ghost"}
+                        color="secondary"
+                      >
+                        {formattedDate}
+                      </Button>
+                    )
+                  })}
               </div>
             </Tab>
             <Tab key="evening" title="Evening">
               <div className="grid grid-cols-3 lg:grid-cols-6 gap-5 ">
-                {Array.from({ length: 3 }, (_, index) => (
-                  <Button
-                    key={index}
-                    className="w-full"
-                    variant="ghost"
-                    color="secondary"
-                  >
-                    {4 + index}:00 PM
-                  </Button>
-                ))}
+                {getSlots?.data?.data
+                  .filter((d: any) => d.session === "evening")
+                  .map((d: any, index: any) => {
+                    const date = new Date(d.slotTime);
+                    const formattedDate = date.toLocaleTimeString()
+                    return (
+                      <Button
+                        key={d._id}
+                        onClick={() => handleChange(d, "doctorSlotId")}
+                        className={`w-full ${formData.doctorSlotId === d._id ? "bg-green-300" : ""}`}
+                        variant={formData.doctorSlotId === d._id ? "solid" : "ghost"}
+                        color="secondary"
+                      >
+                        {formattedDate}
+                      </Button>
+                    )
+                  })}
               </div>
             </Tab>
           </Tabs>
@@ -181,12 +327,12 @@ function Booking() {
         color="primary"
         className="w-full"
         onPress={() => {
-          router.push(navigationRoutes.profile);
+          handleSubmit();
         }}
       >
         Book
       </Button>
-    </section>
+    </section >
   );
 }
 

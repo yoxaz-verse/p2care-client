@@ -8,17 +8,23 @@ import { Spacer } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-function List() {
+interface DepartmentListProps {
+  redirect: string;
+  hospitalId?: any;
+  title: string
+}
+
+function DepartmentList({ redirect, title, hospitalId }: DepartmentListProps) {
   const { data: getDepartment, isLoading } = useQuery({
     queryKey: ["getDepartment"],
     queryFn: () => {
-      return getData("/department/get-all", {});
+      return getData(`/department/get-all/${hospitalId}`, {});
     }
   })
-  console.log(getDepartment?.data?.data?.data);
+
   return (
     <section>
-      <PageHeading heading="Departments" />
+      <PageHeading heading={title} />
       <Spacer y={5} />
       <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5">
         {getDepartment?.data?.data?.data.map((d: any, index: any) => (
@@ -26,7 +32,7 @@ function List() {
             key={index}
             title={d?.name}
             icon={d?.image?.path}
-            redirect={navigationRoutes.department + d._id}
+            redirect={redirect + d._id}
           />
         ))}
       </div>
@@ -34,4 +40,4 @@ function List() {
   );
 }
 
-export default List;
+export default DepartmentList;

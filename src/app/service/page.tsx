@@ -1,17 +1,14 @@
 "use client";
 import ServiceCard from "@/components/Cards/ServiceCard";
 import PageHeading from "@/components/Text/PageHeading";
-import { serviceDigitalXRay } from "@/Content/assets";
 import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Spacer, Spinner } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
 import React from "react";
-import isAuth from "../isAuth";
+
 
 function List() {
-
   const { data: getService, isLoading } = useQuery({
     queryKey: ["getServices"],
     queryFn: () => {

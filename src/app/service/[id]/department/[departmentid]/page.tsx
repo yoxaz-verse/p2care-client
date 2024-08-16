@@ -15,7 +15,7 @@ import { useParams } from "next/navigation";
 import React from "react";
 
 function Details() {
-  const { id } = useParams();
+  const { departmentid: id } = useParams();
   const { data: getDepartment, isLoading } = useQuery({
     queryKey: ["getDepartment", id],
     queryFn: () => {
@@ -68,7 +68,7 @@ function Details() {
               return <DoctorDetailCard
                 key={index}
                 data={d}
-                redirect={navigationRoutes.department + `${id}/doctor/` + "/" + d._id}
+                redirect={navigationRoutes.doctor + "/doctor" + d._id}
               />
             })}
           </div>
@@ -80,16 +80,8 @@ function Details() {
             </h3>
           </div>
           {getHospitals?.data?.data?.map((data: any, index: any) => (
-            <HospitalCard
-              data={data}
-              key={index}
-              redirect={`${navigationRoutes.department}/${data._id}`} />
-
+            <HospitalCard data={data} key={index} redirect={`${navigationRoutes.service}/department/${data._id}`} />
           ))}
-          <Spacer y={3} />
-          <div className="grid grid-cols-1  gap-5">
-
-          </div>
         </section>
       </>
     )

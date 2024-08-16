@@ -14,7 +14,7 @@ export default function DoctorPage() {
       return getData("/doctor/user/all/", {});
     }
   })
-  console.log(getDoctors?.data.data.data);
+
   return (
     <>
       <div className="flex flex-col">
