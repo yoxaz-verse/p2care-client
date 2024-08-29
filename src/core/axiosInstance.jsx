@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const baseUrlExport = "http://localhost:5000/api/v1/web/";
+export const baseUrlExport = "http://77.37.44.168:5000/api/v1/web/";
 
 const instance = axios.create({
   baseURL: baseUrlExport,
