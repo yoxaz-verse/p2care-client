@@ -169,7 +169,7 @@ function HospitalDetailscomponent({ id }: any) {
             </h3>
           </div>
           {getDoctors?.data.data.map((d: any, index: any) => {
-            return <DoctorListCard data={d} key={index} />
+            return <DoctorListCard data={d} key={index} redirect={`/doctor/${d._id}`} />
           })}
         </div>
         <div className="flex flex-col rounded-xl shadow-xl gap-2 p-[1rem]">
