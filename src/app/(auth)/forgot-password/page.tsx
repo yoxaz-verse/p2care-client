@@ -1,8 +1,10 @@
 "use client";
 import { AuthLayout } from "@/components/layouts/auth";
 import { otp, logo, forgotpass } from "@/Content/assets";
+import { postData } from "@/core/apiHandler";
 import { isMobile, isTablet } from "@/Utils/screenSize";
 import { Image, Button, Input } from "@nextui-org/react";
+import { useMutation } from "@tanstack/react-query";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -10,6 +12,12 @@ export default function ForgotPass() {
   const width = isMobile() ? "20px" : isTablet() ? "40px" : "60px";
   const height = isMobile() ? "20px" : isTablet() ? "40px" : "60px";
   const [email, setEmail] = useState<any>();
+  const forgotpassMutate = useMutation({
+    mutationKey: ["forgotpass"],
+    mutationFn: (data: any) => {
+      return postData("/patient/forgot-password", {}, data)
+    }
+  });
   return (
     <AuthLayout src={forgotpass}>
       <div className="flex flex-col justify-center gap-[2rem] items-center">

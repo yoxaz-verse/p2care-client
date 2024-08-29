@@ -30,7 +30,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data);
-      localStorage.setItem("clientToken", data.accessToken);
+      localStorage.setItem("currentUser", data?.data?.data?.accessToken);
       toast.success("Registered Succesfully", {
         position: "top-right",
         className: "bg-green-300",
@@ -60,6 +60,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data.data.data);
+      localStorage.setItem("currentUser", data?.data?.data?.accessToken);
       toast.success("Logged in Succesfully", {
         position: "top-right",
         className: "bg-green-300",
@@ -84,7 +85,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data.data.data);
-
+      localStorage.setItem("currentUser", data?.data?.data?.accessToken);
       toast.success("Logged in Succesfully", {
         position: "top-right",
         className: "bg-green-500",
@@ -154,8 +155,8 @@ export default function SignIn() {
               title={
                 <h3
                   className={` ${isSelected === "Login"
-                      ? "text-blue-500 decoration-blue-300"
-                      : "text-gray-500 decoration-gray-300"
+                    ? "text-blue-500 decoration-blue-300"
+                    : "text-gray-500 decoration-gray-300"
                     } font-bold text-[24px]`}
                 >
                   Login
@@ -204,8 +205,8 @@ export default function SignIn() {
               title={
                 <h3
                   className={` ${isSelected === "Signin"
-                      ? "text-blue-500 decoration-blue-300"
-                      : "text-gray-500 decoration-gray-300"
+                    ? "text-blue-500 decoration-blue-300"
+                    : "text-gray-500 decoration-gray-300"
                     } font-bold decoration-blue-400 text-[24px]`}
                 >
                   Signup
