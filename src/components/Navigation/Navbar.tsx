@@ -44,11 +44,16 @@ export default function Header() {
   const router = useRouter();
   const path: any = usePathname();
   const [visible, setVisible] = useState(true);
-  // useEffect(() => {
-  //   if (path === "/forgot-password" || path === "/forgot-password/retype" || path === "/otp" || path === "/siginin") {
-  //     setVisible(false);
-  //   }
-  // }, [path]);
+  useEffect(() => {
+    if (
+      path === "/forgot-password" ||
+      path === "/forgot-password/retype" ||
+      path === "/otp" ||
+      path === "/siginin"
+    ) {
+      setVisible(false);
+    }
+  }, [path]);
   useEffect(() => {
     if (path.includes(name)) {
       setName(window.location.href.split("/")[1]);
@@ -62,7 +67,7 @@ export default function Header() {
     onSuccess: () => {
       toast.success("Logout success", {
         position: "top-right",
-        className: "bg-green-300"
+        className: "bg-green-300",
       });
       queryClient.invalidateQueries({ queryKey: ["checkAuth"] });
       router.push("/siginin");
@@ -70,12 +75,12 @@ export default function Header() {
     onError: () => {
       toast.success("Logout failed", {
         position: "top-right",
-        className: "bg-red-300"
-      })
+        className: "bg-red-300",
+      });
+    },
+  });
 
-    }
-  })
-  console.log(data);
+
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Navbar
@@ -98,7 +103,10 @@ export default function Header() {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className={`${data === undefined || isMobile() ? "hidden" : "flex"}`} justify="center">
+      <NavbarContent
+        className={`${data === undefined || isMobile() ? "hidden" : "flex"}`}
+        justify="center"
+      >
         {menuItems.map((item, index) => (
           <NavbarItem
             key={`${item}-${index}`}
@@ -123,53 +131,66 @@ export default function Header() {
           </Button>
           <EnquireModal onOpenChange={onOpenChange} isOpen={isOpen} />
         </NavbarItem>
-        {data ? <>
-          <Dropdown
-            showArrow
-            radius="sm"
-            classNames={{
-              base: "before:bg-default-200", // change arrow background
-              content: "p-0 border-small border-divider bg-background",
-            }}
-          >
-            <DropdownTrigger>
-              <User
-                name={data?.data?.name}
-                className="cursor-pointer"
-                description={data?.data?.email || data?.data?.phone}
-                classNames={{
-                  name: "text-default-600",
-                  description: "text-default-500",
-                }}
-                avatarProps={{
-                  size: "sm",
-                }}
-              />
-            </DropdownTrigger>
-            <DropdownMenu
-              aria-label="Custom item styles"
-              className="p-3"
-              itemClasses={{
-                base: [
-                  "rounded-md",
-                  "text-default-500",
-                  "transition-opacity",
-                  "data-[hover=true]:text-white",
-                  "data-[hover=true]:bg-primary",
-                  "dark:data-[hover=true]:bg-default-50",
-                  "data-[selectable=true]:focus:bg-default-50",
-                  "data-[pressed=true]:opacity-70",
-                  "data-[focus-visible=true]:ring-red-500",
-                ],
+        {data ? (
+          <>
+            <Dropdown
+              showArrow
+              radius="sm"
+              classNames={{
+                base: "before:bg-default-200", // change arrow background
+                content: "p-0 border-small border-divider bg-background",
               }}
             >
-              <DropdownSection aria-label="Profile & Actions" showDivider>
-                <DropdownItem key="myprofile" onClick={() => router.push("/profile")}>My Profile</DropdownItem>
-                <DropdownItem key="logout" onClick={() => logout.mutate()} color="warning">Log Out</DropdownItem>
-              </DropdownSection>
-            </DropdownMenu>
-          </Dropdown>
-        </> : (
+              <DropdownTrigger>
+                <User
+                  name={data?.data?.name}
+                  className="cursor-pointer"
+                  description={data?.data?.email || data?.data?.phone}
+                  classNames={{
+                    name: "text-default-600",
+                    description: "text-default-500",
+                  }}
+                  avatarProps={{
+                    size: "sm",
+                  }}
+                />
+              </DropdownTrigger>
+              <DropdownMenu
+                aria-label="Custom item styles"
+                className="p-3"
+                itemClasses={{
+                  base: [
+                    "rounded-md",
+                    "text-default-500",
+                    "transition-opacity",
+                    "data-[hover=true]:text-white",
+                    "data-[hover=true]:bg-primary",
+                    "dark:data-[hover=true]:bg-default-50",
+                    "data-[selectable=true]:focus:bg-default-50",
+                    "data-[pressed=true]:opacity-70",
+                    "data-[focus-visible=true]:ring-red-500",
+                  ],
+                }}
+              >
+                <DropdownSection aria-label="Profile & Actions" showDivider>
+                  <DropdownItem
+                    key="myprofile"
+                    onClick={() => router.push("/profile")}
+                  >
+                    My Profile
+                  </DropdownItem>
+                  <DropdownItem
+                    key="logout"
+                    onClick={() => logout.mutate()}
+                    color="warning"
+                  >
+                    Log Out
+                  </DropdownItem>
+                </DropdownSection>
+              </DropdownMenu>
+            </Dropdown>
+          </>
+        ) : (
           <NavbarItem>
             <Button
               as={Link}

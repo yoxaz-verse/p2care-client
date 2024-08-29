@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const baseUrlExport = "http://localhost:5000/api/v1/web/";
 
 const instance = axios.create({
@@ -15,12 +14,15 @@ const instance = axios.create({
   },
 });
 
+
 /* Add an interceptor to set the Authorization header before each request */
+
 instance.interceptors.request.use(
   (config) => {
-    const currentUser = localStorage.getItem("currentUserToken");
-    const token = currentUser;
-    // token = localStorage.getItem(currentUser as string)
+    // const currentUser = localStorage.getItem("currentUserToken");
+    // const token = currentUser;
+    const token = localStorage.getItem("clientToken");
+
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
@@ -33,4 +35,3 @@ instance.interceptors.request.use(
 );
 
 export default instance;
-

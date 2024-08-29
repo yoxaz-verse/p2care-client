@@ -17,6 +17,7 @@ import { postData } from "@/core/apiHandler";
 import { authRoutes } from "@/core/apiRoutes";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignIn() {
   const [isSelected, setisSelected] = useState("Signin");
@@ -29,6 +30,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data);
+      localStorage.setItem("clientToken", data.accessToken);
       toast.success("Registered Succesfully", {
         position: "top-right",
         className: "bg-green-300",
@@ -185,7 +187,9 @@ export default function SignIn() {
                     >
                       Log in with email
                     </Button>
-                    <p className="self-end text-md">Forgot Password</p>
+                    <Link href={"/forgot-password"}>
+                      <p className="self-end text-md">Forgot Password</p>
+                    </Link>
                     <Spacer y={2} />
                     <p>
                       By clicking continue, you agree to our Terms of Service
