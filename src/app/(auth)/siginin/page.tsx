@@ -30,6 +30,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data);
+      localStorage.setItem("clientToken", data.accessToken);
       toast.success("Registered Succesfully", {
         position: "top-right",
         className: "bg-green-300",

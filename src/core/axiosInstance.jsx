@@ -17,9 +17,10 @@ const instance = axios.create({
 // Add an interceptor to set the Authorization header before each request
 instance.interceptors.request.use(
   (config) => {
-    const currentUser = localStorage.getItem("currentUserToken");
-    const token = currentUser;
-    // token = localStorage.getItem(currentUser as string)
+    // const currentUser = localStorage.getItem("currentUserToken");
+    // const token = currentUser;
+    const token = localStorage.getItem("clientToken");
+
     if (token) {
       config.headers["Authorization"] = `Bearer ${token}`;
     }
