@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 export const baseUrlExport = "http://localhost:5000/api/v1/web/";
 
 const instance = axios.create({
@@ -14,7 +13,7 @@ const instance = axios.create({
     // You can add more default headers here if needed
   },
 });
-/*
+
 // Add an interceptor to set the Authorization header before each request
 instance.interceptors.request.use(
   (config) => {
@@ -31,6 +30,5 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-*/
-export default instance;
 
+export default instance;
