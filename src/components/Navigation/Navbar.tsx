@@ -75,7 +75,7 @@ export default function Header() {
 
     }
   })
-
+  console.log(data);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Navbar

@@ -14,8 +14,8 @@ const instance = axios.create({
     // You can add more default headers here if needed
   },
 });
-/*
-// Add an interceptor to set the Authorization header before each request
+
+/* Add an interceptor to set the Authorization header before each request */
 instance.interceptors.request.use(
   (config) => {
     const currentUser = localStorage.getItem("currentUserToken");
@@ -31,6 +31,6 @@ instance.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-*/
+
 export default instance;
 

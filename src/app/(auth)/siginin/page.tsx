@@ -82,6 +82,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data.data.data);
+
       toast.success("Logged in Succesfully", {
         position: "top-right",
         className: "bg-green-500",
@@ -150,11 +151,10 @@ export default function SignIn() {
               key="Login"
               title={
                 <h3
-                  className={` ${
-                    isSelected === "Login"
+                  className={` ${isSelected === "Login"
                       ? "text-blue-500 decoration-blue-300"
                       : "text-gray-500 decoration-gray-300"
-                  } font-bold text-[24px]`}
+                    } font-bold text-[24px]`}
                 >
                   Login
                 </h3>
@@ -199,11 +199,10 @@ export default function SignIn() {
               key="Signin"
               title={
                 <h3
-                  className={` ${
-                    isSelected === "Signin"
+                  className={` ${isSelected === "Signin"
                       ? "text-blue-500 decoration-blue-300"
                       : "text-gray-500 decoration-gray-300"
-                  } font-bold decoration-blue-400 text-[24px]`}
+                    } font-bold decoration-blue-400 text-[24px]`}
                 >
                   Signup
                 </h3>
