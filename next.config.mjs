@@ -5,7 +5,7 @@ export const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "p2care.s3.ap-south-1.amazonaws.com",
+        hostname: "p2care-web.s3.ap-southeast-1.amazonaws.com",
         port: "",
         pathname: "/**",
       },
