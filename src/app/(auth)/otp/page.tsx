@@ -47,7 +47,11 @@ export default function OTP() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    otpMutation.mutate({ id: data?.data?._id, emailOtp: otpinput, phoneOtp: phoneOtp });
+    otpMutation.mutate({
+      id: data?.data?._id,
+      emailOtp: otpinput,
+      phoneOtp: phoneOtp,
+    });
   };
   return (
     <AuthLayout src={otp}>

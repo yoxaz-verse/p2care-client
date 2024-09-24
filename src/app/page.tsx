@@ -10,7 +10,19 @@ import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
 } from "@/components/Cards/categoryCard";
-import { Spacer, Image, useDisclosure, Modal, ModalContent, ModalFooter, ModalHeader, ModalBody, Button, Input, Textarea } from "@nextui-org/react";
+import {
+  Spacer,
+  Image,
+  useDisclosure,
+  Modal,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalBody,
+  Button,
+  Input,
+  Textarea,
+} from "@nextui-org/react";
 import {
   bannerSales,
   apollo,
@@ -32,54 +44,54 @@ import EnquireModal from "@/components/Enquire";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
 import useAuth from "./isAuth";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
-      items: 2
+      items: 2,
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 2
+      items: 2,
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
-      items: 1
+      items: 1,
     },
     mobile: {
       breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
+      items: 1,
+    },
   };
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { data } = useAuth();
+  const router = useRouter();
   const { data: getTopDoctors, isLoading } = useQuery({
     queryKey: ["getTopDoctors"],
     queryFn: () => {
       return getData("/doctor/top/client", {});
-    }
-  })
+    },
+  });
   const { data: getTopServices, isLoading: isLoadingServices } = useQuery({
     queryKey: ["getTopDoctors"],
     queryFn: () => {
       return getData("/service/top/client", {});
-    }
-  })
+    },
+  });
   const { data: getTopHospital, isLoading: isLoadingHospital } = useQuery({
     queryKey: ["getTopHospital"],
     queryFn: () => {
       return getData("/hospital/top/client", {});
-    }
-  })
+    },
+  });
   const { data: getDepartment, isLoading: isLoadingDepartment } = useQuery({
     queryKey: ["getDepartment"],
     queryFn: () => {
       return getData("/department/get-all/", {});
-    }
-  })
+    },
+  });
 
   return (
     <main className="">
@@ -148,32 +160,28 @@ export default function Home() {
         />
         <Spacer y={5} />
         <div className="grid lg:hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
-          {getTopServices?.data?.data?.map(
-            (d: any, index: number) => {
-              return (
-                <DepartmentCard
-                  key={index}
-                  title={d?.name}
-                  icon={d?.image?.path}
-                  redirect={navigationRoutes.department + d._id}
-                />
-              );
-            }
-          )}
+          {getTopServices?.data?.data?.map((d: any, index: number) => {
+            return (
+              <DepartmentCard
+                key={index}
+                title={d?.name}
+                icon={d?.image?.path}
+                redirect={navigationRoutes.department + d._id}
+              />
+            );
+          })}
         </div>
         <div className="lg:grid hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
-          {getTopServices?.data?.data?.map(
-            (d: any, index: number) => {
-              return (
-                <DepartmentCard
-                  key={index}
-                  title={d?.name}
-                  icon={d?.image?.path}
-                  redirect={navigationRoutes.department + d._id}
-                />
-              );
-            }
-          )}
+          {getTopServices?.data?.data?.map((d: any, index: number) => {
+            return (
+              <DepartmentCard
+                key={index}
+                title={d?.name}
+                icon={d?.image?.path}
+                redirect={navigationRoutes.department + d._id}
+              />
+            );
+          })}
         </div>
       </section>
       <Spacer y={5} />
@@ -216,7 +224,10 @@ export default function Home() {
       <Spacer y={10} />
 
       <section className="flex flex-col gap-4  justify-around w-full">
-        <HomeHeader link={HeaderHeading[4].link} header={HeaderHeading[4].header} />
+        <HomeHeader
+          link={HeaderHeading[4].link}
+          header={HeaderHeading[4].header}
+        />
         <Spacer y={5} />
 
         <div className="flex flex-col  xl:flex-row gap-4 justify-around">
@@ -225,7 +236,10 @@ export default function Home() {
             {getDepartment?.data?.data?.data.map((d: any, index: any) => (
               <div
                 key={index}
-                className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl"
+                className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl cursor-pointer"
+                onClick={() => {
+                  router.push(navigationRoutes.department + d._id);
+                }}
               >
                 <Image src={d?.image?.path} />
                 <h1 className="text-[8px]">{d.name}</h1>
@@ -251,7 +265,10 @@ export default function Home() {
       </section>
       */}
       <section className="flex flex-col">
-        <HomeHeader link={HeaderHeading[3].link} header={HeaderHeading[3].header} />
+        <HomeHeader
+          link={HeaderHeading[3].link}
+          header={HeaderHeading[3].header}
+        />
         <Spacer y={10} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
           {BlogContent.map((b: BlogCardProps, index: number) => {
