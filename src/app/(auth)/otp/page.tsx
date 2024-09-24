@@ -5,7 +5,7 @@ import { otp, logo } from "@/Content/assets";
 import { postData } from "@/core/apiHandler";
 import { authRoutes } from "@/core/apiRoutes";
 import { isMobile, isTablet } from "@/Utils/screenSize";
-import { Image, Button } from "@nextui-org/react";
+import { Image, Button, Link } from "@nextui-org/react";
 import { useMutation } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -111,9 +111,11 @@ export default function OTP() {
             Submit
           </Button>
         </form>
-        <h3 className=" text-[10px] md:text-[15px] xl:text-[20px]   font-bold cursor-pointer">
-          Back
-        </h3>
+        <Link href="/siginin">
+          <h3 className=" text-[10px] md:text-[15px] xl:text-[20px]   font-bold cursor-pointer">
+            Back
+          </h3>
+        </Link>
       </div>
     </AuthLayout>
   );

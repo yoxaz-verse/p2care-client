@@ -17,6 +17,7 @@ import { postData } from "@/core/apiHandler";
 import { authRoutes } from "@/core/apiRoutes";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function SignIn() {
   const [isSelected, setisSelected] = useState("Signin");
@@ -29,6 +30,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data);
+      localStorage.setItem("currentUser", data?.data?.data?.accessToken);
       toast.success("Registered Succesfully", {
         position: "top-right",
         className: "bg-green-300",
@@ -58,6 +60,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data.data.data);
+      localStorage.setItem("currentUser", data?.data?.data?.accessToken);
       toast.success("Logged in Succesfully", {
         position: "top-right",
         className: "bg-green-300",
@@ -82,6 +85,7 @@ export default function SignIn() {
     },
     onSuccess: (data: any) => {
       console.log(data.data.data);
+      localStorage.setItem("currentUser", data?.data?.data?.accessToken);
       toast.success("Logged in Succesfully", {
         position: "top-right",
         className: "bg-green-500",
@@ -150,11 +154,10 @@ export default function SignIn() {
               key="Login"
               title={
                 <h3
-                  className={` ${
-                    isSelected === "Login"
-                      ? "text-blue-500 decoration-blue-300"
-                      : "text-gray-500 decoration-gray-300"
-                  } font-bold text-[24px]`}
+                  className={` ${isSelected === "Login"
+                    ? "text-blue-500 decoration-blue-300"
+                    : "text-gray-500 decoration-gray-300"
+                    } font-bold text-[24px]`}
                 >
                   Login
                 </h3>
@@ -185,7 +188,9 @@ export default function SignIn() {
                     >
                       Log in with email
                     </Button>
-                    <p className="self-end text-md">Forgot Password</p>
+                    <Link href={"/forgot-password"}>
+                      <p className="self-end text-md">Forgot Password</p>
+                    </Link>
                     <Spacer y={2} />
                     <p>
                       By clicking continue, you agree to our Terms of Service
@@ -199,11 +204,10 @@ export default function SignIn() {
               key="Signin"
               title={
                 <h3
-                  className={` ${
-                    isSelected === "Signin"
-                      ? "text-blue-500 decoration-blue-300"
-                      : "text-gray-500 decoration-gray-300"
-                  } font-bold decoration-blue-400 text-[24px]`}
+                  className={` ${isSelected === "Signin"
+                    ? "text-blue-500 decoration-blue-300"
+                    : "text-gray-500 decoration-gray-300"
+                    } font-bold decoration-blue-400 text-[24px]`}
                 >
                   Signup
                 </h3>

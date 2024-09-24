@@ -80,6 +80,7 @@ const EnquireModal: React.FC<EnquireModalProps> = ({
         position: "top-right",
         className: "bg-green-300",
       });
+      onOpenChange(false);
     },
     onError: (error: any) => {
       console.log(error);

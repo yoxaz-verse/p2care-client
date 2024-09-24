@@ -149,7 +149,7 @@ export default function Home() {
           })}
         </div>
         <Spacer y={5} />
-        <Image src={bannerSales} className="w-screen" />
+        <Image src={bannerSales} className="w-screen" alt="Banner" />
       </section>
       <Spacer y={5} />
       <section className="flex flex-col gap-4  justify-around w-full">
