@@ -44,8 +44,7 @@ import EnquireModal from "@/components/Enquire";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
 import useAuth from "./isAuth";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const responsive = {
@@ -68,6 +67,7 @@ export default function Home() {
   };
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { data } = useAuth();
+  const router = useRouter();
   const { data: getTopDoctors, isLoading } = useQuery({
     queryKey: ["getTopDoctors"],
     queryFn: () => {
@@ -236,7 +236,10 @@ export default function Home() {
             {getDepartment?.data?.data?.data.map((d: any, index: any) => (
               <div
                 key={index}
-                className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl"
+                className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl cursor-pointer"
+                onClick={() => {
+                  router.push(navigationRoutes.department + d._id);
+                }}
               >
                 <Image src={d?.image?.path} />
                 <h1 className="text-[8px]">{d.name}</h1>
