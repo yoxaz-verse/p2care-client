@@ -1,16 +1,19 @@
 import { Button, Card, CardBody } from "@nextui-org/react";
 import Image from "next/image";
+import Link from "next/link";
 
 export interface BlogCardProps {
   image: any;
   heading: any;
   description: any;
+  redirect: any;
 }
 
 export default function BlogCard({
   image,
   heading,
   description,
+  redirect,
 }: BlogCardProps) {
   return (
     <Card className="flex flex-col w-full justify-between h-[320px] lg:h-[585px]">
@@ -26,9 +29,12 @@ export default function BlogCard({
           {heading}
         </h3>
         <p className="text-[10px] lg:text-[16px]">{description}</p>
-        <button className="rounded-full self-end place-items-end bg-primary text-sm lg:text-md px-2 py-1 lg:px-4 lg:py-2 font-bold text-white">
-          Read More
-        </button>
+
+        <Link href={redirect}>
+          <button className="rounded-full self-end place-items-end bg-primary text-sm lg:text-md px-2 py-1 lg:px-4 lg:py-2 font-bold text-white">
+            Read More
+          </button>
+        </Link>
       </CardBody>
     </Card>
   );

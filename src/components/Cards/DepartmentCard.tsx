@@ -27,7 +27,7 @@ export default function DepartmentCard(props: DepartmentCardProps) {
           <Image
             src={props.icon}
             alt={props.title}
-            className="rounded-full w-[50px] h-[50px] lg:w-[75px] lg:h-[75px]"
+            className="rounded-full w-full h-full lg:w-full lg:h-full"
             width={1000}
             height={1000}
           />
@@ -35,9 +35,11 @@ export default function DepartmentCard(props: DepartmentCardProps) {
       </CardBody>
       <CardFooter className="flex flex-col gap-2">
         <h4
-          className={`font-[600] text-[${props.title && props.title.length > 27 ? 11 : 15
-            }px] lg:text-[${props.title && props.title.length > 27 ? 16 : 20
-            }px] text-center`}
+          className={`font-[600] text-[${
+            props.title && props.title.length > 27 ? 11 : 15
+          }px] lg:text-[${
+            props.title && props.title.length > 27 ? 16 : 20
+          }px] text-center`}
         >
           {props.title}
         </h4>

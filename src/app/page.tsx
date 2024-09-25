@@ -268,7 +268,7 @@ export default function Home() {
         />
         <Spacer y={10} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {BlogContent.map((b: BlogCardProps, index: number) => {
+          {/* {BlogContent.map((b: BlogCardProps, index: number) => {
             return (
               <BlogCard
                 key={index}
@@ -277,7 +277,7 @@ export default function Home() {
                 image={b.image}
               />
             );
-          })}
+          })} */}
         </div>
       </section>
     </main>
