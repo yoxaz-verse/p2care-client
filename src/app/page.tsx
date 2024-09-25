@@ -4,7 +4,6 @@ import {
   content,
   HeaderHeading,
   CausesArr,
-  BlogContent,
 } from "@/Content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
