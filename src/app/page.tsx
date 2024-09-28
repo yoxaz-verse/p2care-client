@@ -4,7 +4,6 @@ import {
   content,
   HeaderHeading,
   CausesArr,
-  BlogContent,
 } from "@/Content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
@@ -264,14 +263,14 @@ export default function Home() {
         </div>
       </section>
       */}
-      <section className="flex flex-col">
+      {/* <section className="flex flex-col">
         <HomeHeader
           link={HeaderHeading[3].link}
           header={HeaderHeading[3].header}
         />
         <Spacer y={10} />
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {/* {BlogContent.map((b: BlogCardProps, index: number) => {
+          {BlogContent.map((b: BlogCardProps, index: number) => {
             return (
               <BlogCard
                 key={index}
@@ -280,9 +279,9 @@ export default function Home() {
                 image={b.image}
               />
             );
-          })} */}
+          })}
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

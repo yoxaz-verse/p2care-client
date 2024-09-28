@@ -4,7 +4,6 @@ import BlogCard from "@/components/Cards/BlogCard";
 import PageHeading from "@/components/Text/PageHeading";
 import { Spacer } from "@nextui-org/react";
 import React from "react";
-import { BlogContentPage } from "@/Content/Home/home-page-content";
 import { BlogCardProps } from "@/components/Cards/BlogCard";
 import { getData } from "@/core/apiHandler";
 import { useQuery } from "@tanstack/react-query";
