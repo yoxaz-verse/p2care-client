@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const baseUrlExport = "https://backend.p2care.com/api/v1/web";
+export const serverUrl = "https://backend.p2care.com/api/v1/web";
+const baseUrlExport = "http://localhost:5000/api/v1/web";
 
 const instance = axios.create({
   baseURL: baseUrlExport,
@@ -13,7 +14,6 @@ const instance = axios.create({
     // You can add more default headers here if needed
   },
 });
-
 
 /* Add an interceptor to set the Authorization header before each request */
 

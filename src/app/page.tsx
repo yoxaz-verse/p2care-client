@@ -230,22 +230,22 @@ export default function Home() {
         />
         <Spacer y={5} />
 
-        <div className="flex flex-col  xl:flex-row gap-4 justify-around">
-          <Image src={doctors} className="h-full rounded-xl object-cover" />
-          <div className="w-full xl:w-1/2 grid grid-rows-6 gap-[1rem] grid-cols-4 md:grid-cols-4">
-            {getDepartment?.data?.data?.data.map((d: any, index: any) => (
-              <div
-                key={index}
-                className="flex flex-col p-[1rem] h-50 justify-center items-center shadow-xl h-full rounded-xl cursor-pointer"
-                onClick={() => {
-                  router.push(navigationRoutes.department + d._id);
-                }}
-              >
-                <Image src={d?.image?.path} />
-                <h1 className="text-[8px]">{d.name}</h1>
-              </div>
-            ))}
-          </div>
+        {/* <div className="flex flex-col  xl:flex-row gap-4 justify-around"> */}
+        {/* <Image src={doctors} className="h-full rounded-xl object-cover" /> */}
+        <div className="w-full  grid gap-[1rem] grid-cols-4 md:grid-cols-6">
+          {getDepartment?.data?.data?.data.map((d: any, index: any) => (
+            <div
+              key={index}
+              className="flex flex-col p-5 justify-center items-center shadow-xl h-full rounded-xl cursor-pointer"
+              onClick={() => {
+                router.push(navigationRoutes.department + d._id);
+              }}
+            >
+              <h1 className="text-[16px]">{d.name}</h1>
+              <Image src={d?.image?.path} className="w-[60px] h-[60px]" />
+            </div>
+          ))}
+          {/* </div> */}
         </div>
       </section>
       <Spacer y={10} />
