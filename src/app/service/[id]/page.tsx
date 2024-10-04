@@ -20,15 +20,16 @@ function Details() {
     queryKey: ["getServices", id],
     queryFn: () => {
       return getData(`/service/get-all/${id}`, {});
-    }
-  })
-    ;
+    },
+  });
   return (
     <section>
-      {isLoading ? <div className="flex flex-col-reverse justify-center items-center h-[80vh]">
-        <h3>Loading service details...</h3>
-        <Spinner title="Loadung Service Details..." />
-      </div> : (
+      {isLoading ? (
+        <div className="flex flex-col-reverse justify-center items-center h-[80vh]">
+          <h3>Loading service details...</h3>
+          <Spinner title="Loadung Service Details..." />
+        </div>
+      ) : (
         <>
           <Image
             src={getService?.data?.data?.image?.path || serviceXRay}
@@ -39,16 +40,34 @@ function Details() {
             height={1000}
           />
           <Spacer y={3} />
-          <TitleHeading heading={getService?.data?.data?.title || "Service"} />
+          <div className="flex gap-5  text-center justify-between">
+            <TitleHeading
+              heading={getService?.data?.data?.title || "Service"}
+            />
+            <div>
+              <h2 className="text-[24px]">
+                Offer Price : {getService?.data?.data?.offerPrice}
+              </h2>
+              <h3 className="text-md ">
+                Price : {getService?.data?.data?.price}
+              </h3>
+            </div>
+          </div>
           <Spacer y={3} />
-          <DescriptionParagraph content={getService?.data?.data?.description || lorem150} />
+          <DescriptionParagraph
+            content={getService?.data?.data?.description || lorem150}
+          />
           <Spacer y={3} />
 
           <TitleHeading heading="Doctors" />
           <Spacer y={3} />
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
             {getService?.data.data.doctors.map((d: any, index: any) => (
-              <DoctorDetailCard redirect={`${navigationRoutes.service}/${id}/doctor/${d._id}`} data={d} key={index} />
+              <DoctorDetailCard
+                redirect={`${navigationRoutes.service}/${id}/doctor/${d._id}`}
+                data={d}
+                key={index}
+              />
             ))}
           </div>
           <Spacer y={3} />
@@ -59,7 +78,8 @@ function Details() {
               <HospitalCard
                 data={d}
                 key={index}
-                redirect={`${navigationRoutes.service}/${id}/${d._id}`} />
+                redirect={`${navigationRoutes.service}/${id}/${d._id}`}
+              />
             ))}
           </div>
           <div className="flex flex-col">
@@ -73,7 +93,8 @@ function Details() {
                   key={index}
                   title={d?.name}
                   icon={d?.image.path}
-                  redirect={`${navigationRoutes?.service}/${id}/department/${d._id}`} />
+                  redirect={`${navigationRoutes?.service}/${id}/department/${d._id}`}
+                />
               ))}
             </div>
           </div>

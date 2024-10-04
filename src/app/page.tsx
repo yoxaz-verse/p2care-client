@@ -74,11 +74,13 @@ export default function Home() {
     },
   });
   const { data: getTopServices, isLoading: isLoadingServices } = useQuery({
-    queryKey: ["getTopDoctors"],
+    queryKey: ["getTopServices"],
     queryFn: () => {
       return getData("/service/top/client", {});
     },
   });
+  console.log(getTopServices);
+
   const { data: getTopHospital, isLoading: isLoadingHospital } = useQuery({
     queryKey: ["getTopHospital"],
     queryFn: () => {
@@ -163,9 +165,9 @@ export default function Home() {
             return (
               <DepartmentCard
                 key={index}
-                title={d?.name}
+                title={d?.title}
                 icon={d?.image?.path}
-                redirect={navigationRoutes.department + d._id}
+                redirect={navigationRoutes.service + d._id}
               />
             );
           })}
@@ -175,9 +177,9 @@ export default function Home() {
             return (
               <DepartmentCard
                 key={index}
-                title={d?.name}
+                title={d?.title}
                 icon={d?.image?.path}
-                redirect={navigationRoutes.department + d._id}
+                redirect={navigationRoutes.service + d._id}
               />
             );
           })}
