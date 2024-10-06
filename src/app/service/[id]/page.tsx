@@ -85,7 +85,7 @@ function Details() {
           <div className="flex flex-col">
             <div className="flex flex-row justify-between items-center py-[2rem]">
               <TitleHeading heading="Departments" />
-              <h1 className="text-blue-600 font-bold underline">View All</h1>
+              {/* <h1 className="text-blue-600 font-bold underline">View All</h1> */}
             </div>
             <div className="grid grid-cols-3 lg:grid-cols-6 gap-5">
               {/* {getService?.data?.data?.departments.map((d: any, index: any) => (

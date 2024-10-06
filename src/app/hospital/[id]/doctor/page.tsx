@@ -35,7 +35,7 @@ function DoctorList() {
         <HospitalCard2 data={getHospitals?.data.data} />
         <div className="flex flex-row w-full justify-between">
           <h3 className="text-blue-500 font-bold text-[36px]">Doctors</h3>
-          <div className="flex flex-row w-full md:w-1/3 gap-4">
+          {/* <div className="flex flex-row w-full md:w-1/3 gap-4">
             <Input
               className="rounded-xl bg-white"
               placeholder="Search by Speciality etc"
@@ -46,7 +46,7 @@ function DoctorList() {
             <Button isIconOnly className="bg-white rounded-full">
               <BsFillFilterCircleFill size={30} className="fill-blue-500" />
             </Button>
-          </div>
+          </div> */}
         </div>
         {getDoctors?.data.data.map((d: any, index: any) => {
           return <DoctorListCard

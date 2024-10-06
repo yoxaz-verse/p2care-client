@@ -39,7 +39,7 @@ function List() {
   ) : (
     <>
       <div className="flex flex-col-reverse md:flex-row w-full gap-4 p-[.5rem] md:p-[1rem] justify-between">
-        <Select
+        {/* <Select
           startContent={<FaMapMarkerAlt size={20} />}
           onChange={(e) => setCity(e.target.value)}
           className="w-full md:max-w-xs bg-white"
@@ -53,8 +53,8 @@ function List() {
               {animal.name}
             </SelectItem>
           ))}
-        </Select>
-        <div className="flex flex-row w-full md:w-2/3 gap-4">
+        </Select> */}
+        {/* <div className="flex flex-row w-full md:w-2/3 gap-4">
           <Input
             variant="bordered"
             className="border rounded-xl bg-white"
@@ -63,7 +63,7 @@ function List() {
           <Button className="bg-blue-500 rounded-full" isIconOnly>
             <FaSearch className="fill-white" />
           </Button>
-        </div>
+        </div> */}
       </div>
       <Spacer y={5} />
       <div className="grid grid-cols-1 gap-10">

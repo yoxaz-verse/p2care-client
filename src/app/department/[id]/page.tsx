@@ -69,9 +69,9 @@ function Details() {
         <Spacer y={3} />
         <div className="flex flex-row justify-between items-center">
           <TitleHeading heading="Doctors" />
-          <h3 className="text-sm md:text-md underline text-blue-400 font-bold">
+          {/* <h3 className="text-sm md:text-md underline text-blue-400 font-bold">
             View All
-          </h3>
+          </h3> */}
         </div>
         <Spacer y={3} />
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
@@ -90,9 +90,9 @@ function Details() {
         <Spacer y={3} />
         <div className="flex flex-row justify-between items-center">
           <TitleHeading heading="Hospitals" />
-          <h3 className="text-sm md:text-md underline text-blue-400 font-bold">
+          {/* <h3 className="text-sm md:text-md underline text-blue-400 font-bold">
             View All
-          </h3>
+          </h3> */}
         </div>
         {getHospitals?.data?.data?.map((data: any, index: any) => (
           <HospitalCard

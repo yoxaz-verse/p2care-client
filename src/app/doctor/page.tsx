@@ -12,17 +12,15 @@ export default function DoctorPage() {
     queryKey: ["getDoctors"],
     queryFn: () => {
       return getData("/doctor/user/all/", {});
-    }
-  })
+    },
+  });
 
   return (
     <>
       <div className="flex flex-col">
         <div className="flex flex-col xl:flex-row justify-between  w-full p-[2rem]">
-          <h3 className="text-lg font-bold text-[#3F8EFC]">
-            Doctors Near You
-          </h3>
-          <div className="flex flex-row w-full xl:w-2/3  gap-4">
+          <h3 className="text-lg font-bold text-[#3F8EFC]">Doctors Near You</h3>
+          {/* <div className="flex flex-row w-full xl:w-2/3  gap-4">
             <Input
               className="rounded-xl border-gray-400"
               placeholder="Search By Doctor Name, Speciality etc"
@@ -33,7 +31,7 @@ export default function DoctorPage() {
             <Button className="rounded-full bg-white" isIconOnly>
               <IoFilterCircleOutline size={40} className="text-blue-500" />
             </Button>
-          </div>
+          </div> */}
         </div>
         <Divider orientation="horizontal" />
         <Spacer y={2} />
