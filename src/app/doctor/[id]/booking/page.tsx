@@ -30,10 +30,15 @@ function Booking() {
     if (!data) {
       router.push("/siginin");
     }
-  }, [data]);
+  }, [data, router]);
   const [customDate, setcustomDate] = useState<any>();
   const { id } = useParams();
-  const { data: getDoctor, isLoading, isError, error } = useQuery({
+  const {
+    data: getDoctor,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
     queryKey: ["getDoctors", id],
     queryFn: () => getData(`/doctor/get-all/${id}`, {}),
     enabled: !!id,
@@ -46,32 +51,31 @@ function Booking() {
     onSuccess: (data: any) => {
       toast.success("Appointment Added", {
         position: "top-right",
-        className: "bg-green-300"
-      })
+        className: "bg-green-300",
+      });
       router.push("/profile");
     },
     onError: (error: any) => {
       console.log(error);
       toast.error("Appointment addition cancel!", {
         position: "top-right",
-        className: "bg-red-300"
-      })
-
-    }
-  })
+        className: "bg-red-300",
+      });
+    },
+  });
   const { data: getGender, isLoading: isLoadingGender } = useQuery({
     queryKey: ["getGender"],
     queryFn: () => {
       return getData("/gender/all", {});
-    }
-  })
+    },
+  });
   const { data: getSlots, isLoading: isLoadingSlot } = useQuery({
     queryKey: ["getSlots"],
     queryFn: () => {
       return getData(`/doctor-slot/user/slots/${id}`, { date: formData.date });
     },
-    enabled: !!formData.date
-  })
+    enabled: !!formData.date,
+  });
 
   if (isLoading || isLoadingGender || isLoadingPatient || isLoadingSlot) {
     return (
@@ -79,15 +83,14 @@ function Booking() {
         <Spinner />
         <h3>Loading Details..</h3>
       </div>
-    )
+    );
   }
   const handleChange = (e: any, value: any) => {
     console.log(e, value, index);
     if (value === "date" && e === "today") {
-
       setformData((prev: any) => ({
         ...prev,
-        [value]: new Date()
+        [value]: new Date(),
       }));
       console.log(formData);
       return;
@@ -98,7 +101,7 @@ function Booking() {
       const newValue = tomorrow;
       setformData((prev: any) => ({
         ...prev,
-        [value]: newValue
+        [value]: newValue,
       }));
       console.log(formData);
       return;
@@ -108,7 +111,7 @@ function Booking() {
       const dateObject = new Date(dateString);
       setformData((prev: any) => ({
         ...prev,
-        [value]: dateObject
+        [value]: dateObject,
       }));
       return;
     }
@@ -116,26 +119,26 @@ function Booking() {
       setformData((prev: any) => ({
         ...prev,
         [value]: e._id,
-        startTime: e.slotTime
+        startTime: e.slotTime,
       }));
       return;
     } else {
       setformData((prev: any) => ({
         ...prev,
-        [value]: e
+        [value]: e,
       }));
     }
-  }
+  };
   const handleSubmit = () => {
     const item = {
       ...formData,
       fullName: data?.data?.name,
       doctorId: id,
-      price: getDoctor?.data?.data?.price
-    }
+      price: getDoctor?.data?.data?.price,
+    };
     console.log(item);
     appointment.mutate(item);
-  }
+  };
   return (
     <section>
       <DoctorListCard
@@ -170,12 +173,14 @@ function Booking() {
             className="flex gap-0 justify-between w-full"
           >
             {getGender?.data.data.data.map((d: any, index: any) => {
-              return <Radio
-                key={d._id}
-                value={d?._id}
-                description={d?.name}
-                className=" border-gray-300 p-3"
-              />
+              return (
+                <Radio
+                  key={d._id}
+                  value={d?._id}
+                  description={d?.name}
+                  className=" border-gray-300 p-3"
+                />
+              );
             })}
           </RadioGroup>
           <Input
@@ -233,20 +238,20 @@ function Booking() {
             className="w-1/4"
             label="Appointment Date"
             minValue={today(getLocalTimeZone()).subtract({
-              days: 0
+              days: 0,
             })}
             onChange={(e) => handleChange(e, "date")}
             defaultValue={
               formData.DOB
                 ? new CalendarDate(
-                  Number(formData.DOB.split('T')[0].split('-')[0]),
-                  Number(formData.DOB.split('T')[0].split('-')[1]),
-                  Number(formData.DOB.split('T')[0].split('-')[2])
-                ) : today(getLocalTimeZone())
+                    Number(formData.DOB.split("T")[0].split("-")[0]),
+                    Number(formData.DOB.split("T")[0].split("-")[1]),
+                    Number(formData.DOB.split("T")[0].split("-")[2])
+                  )
+                : today(getLocalTimeZone())
             }
             showMonthAndYearPickers
           />
-
         )}
       </div>
       <Spacer y={5} />
@@ -262,18 +267,22 @@ function Booking() {
                   .filter((d: any) => d.session === "morning")
                   .map((d: any, index: any) => {
                     const date = new Date(d.slotTime);
-                    const formattedDate = date.toLocaleTimeString()
+                    const formattedDate = date.toLocaleTimeString();
                     return (
                       <Button
                         key={d._id}
                         onClick={() => handleChange(d, "doctorSlotId")}
-                        className={`w-full ${formData.doctorSlotId === d._id ? "bg-green-300" : ""}`}
-                        variant={formData.doctorSlotId === d._id ? "solid" : "ghost"}
+                        className={`w-full ${
+                          formData.doctorSlotId === d._id ? "bg-green-300" : ""
+                        }`}
+                        variant={
+                          formData.doctorSlotId === d._id ? "solid" : "ghost"
+                        }
                         color="secondary"
                       >
                         {formattedDate}
                       </Button>
-                    )
+                    );
                   })}
               </div>
             </Tab>
@@ -283,18 +292,22 @@ function Booking() {
                   .filter((d: any) => d.session === "afternoon")
                   .map((d: any, index: any) => {
                     const date = new Date(d.slotTime);
-                    const formattedDate = date.toLocaleTimeString()
+                    const formattedDate = date.toLocaleTimeString();
                     return (
                       <Button
                         key={d._id}
                         onClick={() => handleChange(d, "doctorSlotId")}
-                        className={`w-full ${formData.doctorSlotId === d._id ? "bg-green-300" : ""}`}
-                        variant={formData.doctorSlotId === d._id ? "solid" : "ghost"}
+                        className={`w-full ${
+                          formData.doctorSlotId === d._id ? "bg-green-300" : ""
+                        }`}
+                        variant={
+                          formData.doctorSlotId === d._id ? "solid" : "ghost"
+                        }
                         color="secondary"
                       >
                         {formattedDate}
                       </Button>
-                    )
+                    );
                   })}
               </div>
             </Tab>
@@ -304,18 +317,22 @@ function Booking() {
                   .filter((d: any) => d.session === "evening")
                   .map((d: any, index: any) => {
                     const date = new Date(d.slotTime);
-                    const formattedDate = date.toLocaleTimeString()
+                    const formattedDate = date.toLocaleTimeString();
                     return (
                       <Button
                         key={d._id}
                         onClick={() => handleChange(d, "doctorSlotId")}
-                        className={`w-full ${formData.doctorSlotId === d._id ? "bg-green-300" : ""}`}
-                        variant={formData.doctorSlotId === d._id ? "solid" : "ghost"}
+                        className={`w-full ${
+                          formData.doctorSlotId === d._id ? "bg-green-300" : ""
+                        }`}
+                        variant={
+                          formData.doctorSlotId === d._id ? "solid" : "ghost"
+                        }
                         color="secondary"
                       >
                         {formattedDate}
                       </Button>
-                    )
+                    );
                   })}
               </div>
             </Tab>
@@ -332,7 +349,7 @@ function Booking() {
       >
         Book
       </Button>
-    </section >
+    </section>
   );
 }
 

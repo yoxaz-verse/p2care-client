@@ -58,7 +58,7 @@ export default function Header() {
     if (path.includes(name)) {
       setName(window.location.href.split("/")[1]);
     }
-  }, []);
+  }, [name, path]);
   const { data, status, error } = useAuth();
   const logout = useMutation({
     mutationFn: () => {
@@ -80,14 +80,14 @@ export default function Header() {
     },
   });
 
-
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   return (
     <Navbar
       onMenuOpenChange={setIsMenuOpen}
       maxWidth="full"
-      className={`max-w-[95vw] ${visible ? "block" : "hidden"
-        } bg-white 2xl:max-w-[1440px] mx-auto`}
+      className={`max-w-[95vw] ${
+        visible ? "block" : "hidden"
+      } bg-white 2xl:max-w-[1440px] mx-auto`}
       isBordered
     >
       <NavbarContent>

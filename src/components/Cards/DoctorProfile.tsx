@@ -3,13 +3,15 @@ import { maleDoctorCard } from "@/Content/assets";
 import { Button, Card, CardBody, Chip, Image } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-
 interface DoctorProfileProps {
   title: any;
   data: any;
 }
 
-export const DoctorProfile: React.FC<DoctorProfileProps> = ({ title, data }) => {
+export const DoctorProfile: React.FC<DoctorProfileProps> = ({
+  title,
+  data,
+}) => {
   console.log(data);
   return (
     <>
@@ -19,6 +21,7 @@ export const DoctorProfile: React.FC<DoctorProfileProps> = ({ title, data }) => 
             <Image
               src={data?.image?.path || maleDoctorCard}
               className="w-[57px] h-[57px]  md:w-[120px] md:h-[120px] lg:w-[160px] lg:h-[160px] rounded-full"
+              alt={data?.name}
             />
             <div className="flex flex-col h-full  justify-around">
               <div className="flex  w-full items-center gap-[1rem] flex-row">
@@ -40,14 +43,13 @@ export const DoctorProfile: React.FC<DoctorProfileProps> = ({ title, data }) => 
                     data.achievements.map((d: string, index: number) => (
                       <span key={index}>
                         {d}
-                        {index < data.achievements.length - 1 ? ', ' : ''}
+                        {index < data.achievements.length - 1 ? ", " : ""}
                       </span>
                     ))
                   ) : (
                     <span></span>
                   )}
                 </p>
-
               </div>
               <div className="flex  items-center flex-row gap-2 md:gap-4">
                 <FaMapMarkerAlt className="fill-gray-500" />

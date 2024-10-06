@@ -144,7 +144,7 @@ export default function SignIn() {
     <div className="p-5">
       <AuthLayout src={isSelected === "Signin" ? signin : register}>
         <div className="flex flex-col gap-4 items-center justify-center">
-          <Image src={logo} />
+          <Image src={logo} alt="p2care" />
           <Tabs
             defaultSelectedKey="Signin"
             aria-label="Options"
@@ -154,10 +154,11 @@ export default function SignIn() {
               key="Login"
               title={
                 <h3
-                  className={` ${isSelected === "Login"
-                    ? "text-blue-500 decoration-blue-300"
-                    : "text-gray-500 decoration-gray-300"
-                    } font-bold text-[24px]`}
+                  className={` ${
+                    isSelected === "Login"
+                      ? "text-blue-500 decoration-blue-300"
+                      : "text-gray-500 decoration-gray-300"
+                  } font-bold text-[24px]`}
                 >
                   Login
                 </h3>
@@ -204,10 +205,11 @@ export default function SignIn() {
               key="Signin"
               title={
                 <h3
-                  className={` ${isSelected === "Signin"
-                    ? "text-blue-500 decoration-blue-300"
-                    : "text-gray-500 decoration-gray-300"
-                    } font-bold decoration-blue-400 text-[24px]`}
+                  className={` ${
+                    isSelected === "Signin"
+                      ? "text-blue-500 decoration-blue-300"
+                      : "text-gray-500 decoration-gray-300"
+                  } font-bold decoration-blue-400 text-[24px]`}
                 >
                   Signup
                 </h3>

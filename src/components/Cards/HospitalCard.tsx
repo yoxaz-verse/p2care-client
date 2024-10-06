@@ -27,7 +27,7 @@ function DocHospital() {
   );
 }
 
-const HospitalCard = ({ data, redirect }: { data: any, redirect: any }) => {
+const HospitalCard = ({ data, redirect }: { data: any; redirect: any }) => {
   console.log(data);
   const router = useRouter();
   return (
@@ -44,23 +44,25 @@ const HospitalCard = ({ data, redirect }: { data: any, redirect: any }) => {
               {data?.name}
             </h3>
             <div className="flex flex-row w-full gap-4">
-
               <div className="flex flex-row font-bold text-sm md:text-[12px] lg:text-md  items-center text-blue-500">
                 <HiLocationMarker className="fill-blue-500" />
                 <h3>{data?.city?.name}</h3>
+                <h3>Pincode: {data?.pincode}</h3>
               </div>
             </div>
             <div className="flex flex-row gap-2 justify-between">
               <h3 className="text-sm md:text-md">
-                <span className="font-extrabold">₹ {data?.consultingFee?.min} - ₹{data?.consultingFee?.max}</span>{" "}
+                <span className="font-extrabold">
+                  ₹{data?.consultingFee?.min} - ₹{data?.consultingFee?.max}
+                </span>{" "}
                 Consultation Fees
               </h3>
             </div>
             <div className="flex flex-row w-full text-sm md:text-md flex-wrap font-bold text-md gap-2 md:gap-4">
-              <h3>10 Specialities</h3>
+              <h3>{data?.noOfBeds} Beds</h3>
               <div className="flex flex-row gap-2 items-center">
                 <div className="w-1 md:w-2 h-1 md:h-2 bg-black rounded-full" />
-                <p>10 Doctors</p>
+                <p>{data?.noOfAmbulances} Ambulances</p>
               </div>
             </div>
             <Spacer y={2} />
@@ -68,11 +70,12 @@ const HospitalCard = ({ data, redirect }: { data: any, redirect: any }) => {
         </div>
         <div className="flex flex-row justify-between w-full">
           <div className="flex gap-2 md:gap-4 text-sm md:text-[15px]  lg:text-[20px] font-bold  items-center flex-row">
-            <CiClock2 />
-            <h3>MON-SUN 9:00AM-9:00PM</h3>
+            {/* <CiClock2 /> */}
+            {/* <h3>MON-SUN 9:00AM-9:00PM</h3> */}
+            {/* <p>{data?.visitingTime[0].min} Ambulances</p> */}
           </div>
           <div className="flex flex-row items-center gap-2">
-            <h3 className="text-sm md:text-md cursor-pointer">Know More</h3>
+            <h3 className="text-sm md:text-md cursor-pointer">To know more</h3>
             <button
               onClick={() => router.push(redirect)}
               className="bg-blue-500 text-sm md:text-md rounded-full px-[10px] py-[5px] text-white font-bold"

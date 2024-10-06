@@ -56,7 +56,7 @@ export default function OTP() {
   return (
     <AuthLayout src={otp}>
       <div className="flex flex-col h-[80%] justify-center gap-5 items-center">
-        <Image src={logo} />
+        <Image src={logo} alt="p2care" />
         <h3 className="text-center">
           We have sent Otp to your email. Please enter it here
         </h3>

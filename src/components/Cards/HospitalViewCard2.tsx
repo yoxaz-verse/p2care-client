@@ -26,7 +26,7 @@ function HospitalViewCard2({ data }: any) {
         </div>
 
         <Button
-          onClick={() => router.push(data._id)}
+          onPress={() => router.push(`/hospital/${data._id}`)}
           className="  max-h-max lg:w-[200px] p-0 px-5 lg:px-10 text-[10px] lg:text-[18px] rounded-[30px]  bg-white  text-black self-center"
           endContent={
             <Image

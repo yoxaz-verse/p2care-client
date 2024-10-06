@@ -18,7 +18,7 @@ function HospitalCard2({ data }: any) {
           alt="hospital"
           width={1000}
           height={1000}
-          className="w-[80px] h-[80px] lg:w-[220px] lg:h-[220px] rounded-full"
+          className="w-[80px] h-[80px] lg:w-[220px] lg:h-[220px] rounded"
         />
         <div className="grid grid-rows-1 md:grid-rows-2 w-full">
           <h2 className="font-[700] text-[18px] lg:text-[44px] ">
@@ -44,7 +44,7 @@ function HospitalCard2({ data }: any) {
           </div>
         </div>
       </CardBody>
-    </Card >
+    </Card>
   );
 }
 
