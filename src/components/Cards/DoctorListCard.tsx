@@ -11,13 +11,17 @@ interface DoctorListCard {
   consultNow?: boolean;
   bookNow?: boolean;
 }
-export const DoctorListCard: React.FC<DoctorListCard> = ({ data, redirect, consultNow = true, bookNow = false }) => {
-
+export const DoctorListCard: React.FC<DoctorListCard> = ({
+  data,
+  redirect,
+  consultNow = true,
+  bookNow = false,
+}) => {
   console.log(data.experience);
   const router = useRouter();
   return (
     <>
-      <Card className="w-full h-[130px] md:h-[175px] lg:h-[280px]">
+      <Card className="w-full min-h-[170px] md:min-h-[175px] lg:min-h-[280px]">
         <CardBody className="flex flex-col justify-between">
           <div className="flex justify-center items-center gap-5 w-full ">
             <Image
@@ -45,13 +49,12 @@ export const DoctorListCard: React.FC<DoctorListCard> = ({ data, redirect, consu
               {/* level 2 */}
               <div className="flex justify-between w-full  items-center ">
                 <div className="flex gap-10">
-
-                  <p className="text-[10px] font-[700] md:text-[16px] lg:text-[24px] text-primary">
+                  <p className="text-[10px] font-[500] md:text-[16px] lg:text-[24px] text-primary">
                     {data.achievements.length > 0 ? (
                       data.achievements.map((d: string, index: number) => (
                         <span key={index}>
                           {d}
-                          {index < data.achievements.length - 1 ? ', ' : ''}
+                          {index < data.achievements.length - 1 ? ", " : ""}
                         </span>
                       ))
                     ) : (
@@ -59,9 +62,9 @@ export const DoctorListCard: React.FC<DoctorListCard> = ({ data, redirect, consu
                     )}
                   </p>
                 </div>
-                <h5 className="font-[600] line-through text-[12px] md:text-[16px] lg:text-[32px] text-danger">
-                  ₹ {data.price}
-                </h5>
+                {/* <h5 className="font-[600] line-through text-[12px] md:text-[16px] lg:text-[32px] text-danger">
+                  ₹{data.price}
+                </h5> */}
               </div>
               {/* level 3 */}
               <div className="flex justify-between w-full items-center  ">
@@ -72,19 +75,19 @@ export const DoctorListCard: React.FC<DoctorListCard> = ({ data, redirect, consu
                     {data?.address}
                   </p>
                 </div>
-                <p className="font-[700] text-[8px] lg:text-[16px] self-center text-grey">
+                {/* <p className="font-[700] text-[8px] lg:text-[16px] self-center text-grey">
                   Consultation fee at clinic
-                </p>
+                </p> */}
               </div>
               {/* level 4 */}
               <div className="hidden lg:flex justify-between w-full items-center ">
-                <div className="bg-secondary p-2 rounded-xl text-[8px] lg:text-[20px]  text-white">
+                <div className="bg-secondary p-2 rounded-md text-[8px] lg:text-[20px]  text-white">
                   {data.experience} Years of Experience
                 </div>
                 <div className="flex gap-5">
-                  <p className="text-[8px] lg:text-[20px] text-grey self-center">
+                  {/* <p className="text-[8px] lg:text-[20px] text-grey self-center">
                     know more
-                  </p>
+                  </p> */}
                   {consultNow && (
                     <Button
                       onPress={() => router.push(redirect)}
@@ -98,14 +101,14 @@ export const DoctorListCard: React.FC<DoctorListCard> = ({ data, redirect, consu
             </div>
           </div>
           <div className="lg:hidden flex justify-between w-full items-center ">
-            <h3 className="bg-secondary p-1 lg:p-3 rounded-xl text-[8px] md:text-[12px] lg:text-[20px]  text-white">
+            <h3 className="bg-secondary p-1 lg:p-3 rounded-md text-[8px] md:text-[12px] lg:text-[20px]  text-white">
               {data?.experience} Years of Experience
             </h3>
             <div className="flex gap-5">
-              <p className="text-[8px] md:text-[12px] lg:text-[20px] text-grey self-center">
+              {/* <p className="text-[8px] md:text-[12px] lg:text-[20px] text-grey self-center">
                 know more
-              </p>
-              {consultNow &&
+              </p> */}
+              {consultNow && (
                 <Card
                   isPressable
                   onPress={() => router.push(redirect)}
@@ -113,7 +116,7 @@ export const DoctorListCard: React.FC<DoctorListCard> = ({ data, redirect, consu
                 >
                   {bookNow ? "Book Now" : "Consult Now"}
                 </Card>
-              }
+              )}
             </div>
           </div>
         </CardBody>

@@ -44,11 +44,11 @@ function Details() {
             <TitleHeading
               heading={getService?.data?.data?.title || "Service"}
             />
-            <div>
+            <div className="text-end">
               <h2 className="text-[24px]">
                 Offer Price : {getService?.data?.data?.offerPrice}
               </h2>
-              <h3 className="text-md ">
+              <h3 className="text-md line-through ">
                 Price : {getService?.data?.data?.price}
               </h3>
             </div>
@@ -83,19 +83,19 @@ function Details() {
             ))}
           </div>
           <div className="flex flex-col">
-            <div className="flex flex-row justify-between items-center p-[2rem]">
-              <h1 className="text-3xl font-bold text-blue-500">Departments</h1>
+            <div className="flex flex-row justify-between items-center py-[2rem]">
+              <TitleHeading heading="Departments" />
               <h1 className="text-blue-600 font-bold underline">View All</h1>
             </div>
             <div className="grid grid-cols-3 lg:grid-cols-6 gap-5">
-              {getService?.data?.data?.departments.map((d: any, index: any) => (
+              {/* {getService?.data?.data?.departments.map((d: any, index: any) => (
                 <DepartmentCard
                   key={index}
                   title={d?.name}
                   icon={d?.image.path}
                   redirect={`${navigationRoutes?.service}/${id}/department/${d._id}`}
                 />
-              ))}
+              ))} */}
             </div>
           </div>
         </>

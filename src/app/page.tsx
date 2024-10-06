@@ -123,30 +123,27 @@ export default function Home() {
           subHeading={HeaderHeading[0].subHeading}
         />
         <Spacer y={5} />
-        <div className="grid lg:hidden w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
-          {getTopDoctors?.data.data.slice(0, 2).map((d: any, index: number) => {
-            return (
-              <DoctorCard
-                key={index}
-                name={d.name}
-                id={d._id}
-                image={d.image}
-                type={d.type}
-              />
-            );
-          })}
-        </div>
-        <div className=" hidden lg:grid w-full gap-4 grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        <div className="  flex w-full gap-4  overflow-hidden py-5">
           {getTopDoctors?.data.data.map((d: any, index: number) => {
-            return (
-              <DoctorCard
-                key={d._id}
-                id={d._id}
-                name={d?.name}
-                image={d?.image?.path}
-                type={d?.department?.name}
-              />
-            );
+            console.log(d?.image.path);
+
+            if (d.image.path) {
+              return (
+                <div
+                  key={d._id}
+                  className="min-w-[200px] lg:min-w-[400px] w-full"
+                >
+                  <DoctorCard
+                    id={d._id}
+                    name={d?.name}
+                    image={d?.image.path}
+                    type={d?.department?.name}
+                  />
+                </div>
+              );
+            } else {
+              return null;
+            }
           })}
         </div>
         <Spacer y={5} />
@@ -160,27 +157,20 @@ export default function Home() {
           subHeading={HeaderHeading[1].subHeading}
         />
         <Spacer y={5} />
-        <div className="grid lg:hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+
+        <div className="  flex w-full gap-4  overflow-hidden py-5">
           {getTopServices?.data?.data?.map((d: any, index: number) => {
             return (
-              <DepartmentCard
+              <div
                 key={index}
-                title={d?.title}
-                icon={d?.image?.path}
-                redirect={navigationRoutes.service + d._id}
-              />
-            );
-          })}
-        </div>
-        <div className="lg:grid hidden w-full gap-4 grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
-          {getTopServices?.data?.data?.map((d: any, index: number) => {
-            return (
-              <DepartmentCard
-                key={index}
-                title={d?.title}
-                icon={d?.image?.path}
-                redirect={navigationRoutes.service + d._id}
-              />
+                className="min-w-[200px] lg:min-w-[400px]  w-full "
+              >
+                <DepartmentCard
+                  title={d?.title}
+                  icon={d?.image?.path}
+                  redirect={navigationRoutes.service + d._id}
+                />
+              </div>
             );
           })}
         </div>
@@ -221,7 +211,7 @@ export default function Home() {
       </section>
       <Spacer y={10} />
 
-      <Image src={bannerSales} className="w-screen" />
+      <Image src={bannerSales} className="w-screen" alt="" />
       <Spacer y={10} />
 
       <section className="flex flex-col gap-4  justify-around w-full">
@@ -233,7 +223,7 @@ export default function Home() {
 
         {/* <div className="flex flex-col  xl:flex-row gap-4 justify-around"> */}
         {/* <Image src={doctors} className="h-full rounded-xl object-cover" /> */}
-        <div className="w-full  grid gap-[1rem] grid-cols-4 md:grid-cols-6">
+        <div className="w-full  grid gap-[1rem] grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
           {getDepartment?.data?.data?.data.map((d: any, index: any) => (
             <div
               key={index}
@@ -243,7 +233,11 @@ export default function Home() {
               }}
             >
               <h1 className="text-[16px]">{d.name}</h1>
-              <Image src={d?.image?.path} className="w-[60px] h-[60px]" />
+              <Image
+                src={d?.image?.path}
+                className="w-[60px] h-[60px]"
+                alt=""
+              />
             </div>
           ))}
           {/* </div> */}

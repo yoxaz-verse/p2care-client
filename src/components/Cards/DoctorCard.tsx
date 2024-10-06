@@ -1,3 +1,4 @@
+"use client";
 import {
   Card,
   CardBody,
@@ -16,13 +17,24 @@ export interface DoctorCardProps {
 
 export default function DoctorCard({ name, type, image, id }: DoctorCardProps) {
   const router = useRouter();
+
   return (
     <>
-      <Card isPressable onPress={() => router.push(`/doctor/${id}`)} className="w-full h-[170px] lg:h-[400px]">
+      <Card
+        isPressable
+        onPress={() => router.push(`/doctor/${id}`)}
+        className="w-full h-[170px] lg:h-[400px]"
+      >
+        {/* <Image
+          // removeWrapper
+          alt={name}
+          className=" w-full h-full object-cover"
+          src={"assets/images/hospitals/hospital1.jpeg"}
+        /> */}
         <Image
-          removeWrapper
-          alt="Card background"
-          className="z-0 w-full h-full object-cover"
+          // removeWrapper
+          alt={name}
+          className=" w-full h-full object-cover"
           src={image}
         />
         <CardFooter
