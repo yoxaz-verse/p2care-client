@@ -17,19 +17,39 @@ import { FaMapMarkerAlt, FaSearch } from "react-icons/fa";
 
 function List() {
   const [city, setCity] = useState<any>("");
+  const [searchTerm, setSearchTerm] = useState(""); // State for the search input
+
   const { data: getHospitals, isLoading } = useQuery({
     queryKey: ["getHospitals"],
     queryFn: () => {
       return getData(`${hospitalRoutes.hospital}`, { city });
     },
   });
-  console.log(getHospitals?.data.data);
+
   const { data: getCity, isLoading: isLoadingCity } = useQuery({
     queryKey: ["getCity"],
     queryFn: () => {
       return getData("/city/all", {});
     },
   });
+
+  // Handle input change for search
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(e.target.value);
+  };
+
+  // Filter hospitals based on search term
+  const filteredHospitals = getHospitals?.data?.data?.data.filter(
+    (hospital: any) => {
+      const searchLower = searchTerm.toLowerCase();
+      return (
+        hospital.name.toLowerCase().includes(searchLower) ||
+        hospital.city?.name?.toLowerCase().includes(searchLower) ||
+        hospital.district?.name?.toLowerCase().includes(searchLower) ||
+        hospital.description?.toLowerCase().includes(searchLower)
+      );
+    }
+  );
 
   return isLoading || isLoadingCity ? (
     <div className="flex flex-col h-[80vh] items-center justify-center">
@@ -39,37 +59,28 @@ function List() {
   ) : (
     <>
       <div className="flex flex-col-reverse md:flex-row w-full gap-4 p-[.5rem] md:p-[1rem] justify-between">
-        {/* <Select
-          startContent={<FaMapMarkerAlt size={20} />}
-          onChange={(e) => setCity(e.target.value)}
-          className="w-full md:max-w-xs bg-white"
-        >
-          {getCity?.data?.data.map((animal: any) => (
-            <SelectItem
-              className="font-bold text-xl"
-              startContent={<FaMapMarkerAlt size={20} />}
-              key={animal._id}
-            >
-              {animal.name}
-            </SelectItem>
-          ))}
-        </Select> */}
-        {/* <div className="flex flex-row w-full md:w-2/3 gap-4">
+        <div className="flex flex-row w-full md:w-2/3 gap-4">
           <Input
             variant="bordered"
             className="border rounded-xl bg-white"
-            placeholder="Search By Hospital Name, Speciality etc"
+            placeholder="Search By Hospital Name, City, District, etc"
+            value={searchTerm}
+            onChange={handleSearchChange}
           />
-          <Button className="bg-blue-500 rounded-full" isIconOnly>
+          {/* <Button className="bg-blue-500 rounded-full" isIconOnly>
             <FaSearch className="fill-white" />
-          </Button>
-        </div> */}
+          </Button> */}
+        </div>
       </div>
       <Spacer y={5} />
-      <div className="grid grid-cols-1 gap-10">
-        {getHospitals?.data?.data?.data.map((data: any, index: any) => (
-            <HospitalCard redirect={`${navigationRoutes.hospital}/${data._id}`} data={data} key={index} />
-          ))}
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        {filteredHospitals?.map((data: any, index: any) => (
+          <HospitalCard
+            redirect={`${navigationRoutes.hospital}/${data._id}`}
+            data={data}
+            key={index}
+          />
+        ))}
       </div>
     </>
   );

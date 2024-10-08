@@ -1,7 +1,12 @@
 "use client";
 import { bannerBackground, doctor } from "@/Content/assets";
 import { pointsLeft, pointsRight } from "@/Content/Home/banner";
-import { isDesktop, isLargeDesktop, isMobile, isTablet } from "@/Utils/screenSize";
+import {
+  isDesktop,
+  isLargeDesktop,
+  isMobile,
+  isTablet,
+} from "@/Utils/screenSize";
 import { Image } from "@nextui-org/react";
 import { animate, motion, useAnimate } from "framer-motion";
 import Points from "./points";
@@ -36,10 +41,12 @@ export default function PcBanner({ onOpen }: any) {
           alt="P2Care Logo"
           width={1000}
           height={1000}
-          className={`max-w-max h-[500px] -top-[100px] -left-[180px] absolute  ${isMobile() || isTablet() ? "left-0" : ""
-            }
-          transition delay-500 duration-1000 ease-in-out opacity-${isRendered ? 100 : 0
-            }`}
+          className={`max-w-max h-[500px] -top-[100px] -left-[180px] absolute  ${
+            isMobile() || isTablet() ? "left-0" : ""
+          }
+          transition delay-500 duration-1000 ease-in-out opacity-${
+            isRendered ? 100 : 0
+          }`}
         />
         <div className={`flex`}>
           <motion.div
@@ -52,21 +59,21 @@ export default function PcBanner({ onOpen }: any) {
               x: isMobile()
                 ? 0
                 : isTablet()
-                  ? 180
-                  : isDesktop()
-                    ? 300
-                    : isLargeDesktop()
-                      ? 450
-                      : 450,
+                ? 180
+                : isDesktop()
+                ? 300
+                : isLargeDesktop()
+                ? 450
+                : 450,
               y: isMobile()
                 ? 0
                 : isTablet()
-                  ? -50
-                  : isDesktop()
-                    ? -70
-                    : isLargeDesktop()
-                      ? -90
-                      : 0,
+                ? -50
+                : isDesktop()
+                ? -70
+                : isLargeDesktop()
+                ? -90
+                : 0,
             }}
             transition={{
               duration: 1,
@@ -81,12 +88,12 @@ export default function PcBanner({ onOpen }: any) {
                   x: isMobile()
                     ? 0
                     : isTablet()
-                      ? index * 10
-                      : isDesktop()
-                        ? index * 15
-                        : isLargeDesktop()
-                          ? index * 20
-                          : index * 20,
+                    ? index * 10
+                    : isDesktop()
+                    ? index * 15
+                    : isLargeDesktop()
+                    ? index * 20
+                    : index * 20,
                   opacity: [0, 1],
                 }}
                 transition={{
@@ -114,21 +121,21 @@ export default function PcBanner({ onOpen }: any) {
               x: isMobile()
                 ? 0
                 : isTablet()
-                  ? -180
-                  : isDesktop()
-                    ? -300
-                    : isLargeDesktop()
-                      ? -450
-                      : -450,
+                ? -180
+                : isDesktop()
+                ? -300
+                : isLargeDesktop()
+                ? -450
+                : -450,
               y: isMobile()
                 ? 0
                 : isTablet()
-                  ? -50
-                  : isDesktop()
-                    ? -70
-                    : isLargeDesktop()
-                      ? -90
-                      : 0,
+                ? -50
+                : isDesktop()
+                ? -70
+                : isLargeDesktop()
+                ? -90
+                : 0,
             }}
             transition={{
               duration: 1,
@@ -143,12 +150,12 @@ export default function PcBanner({ onOpen }: any) {
                   x: isMobile()
                     ? 0
                     : isTablet()
-                      ? index * -10
-                      : isDesktop()
-                        ? index * -15
-                        : isLargeDesktop()
-                          ? index * -20
-                          : index * -20,
+                    ? index * -10
+                    : isDesktop()
+                    ? index * -15
+                    : isLargeDesktop()
+                    ? index * -20
+                    : index * -20,
                   opacity: [0, 1],
                 }}
                 transition={{
@@ -167,10 +174,11 @@ export default function PcBanner({ onOpen }: any) {
           </motion.div>
         </div>
         <div
-          className={`flex flex-col justify-between lg:px-14 ${isMobile() || isTablet()
-            ? "flex-col items-end py-2"
-            : "w-full items-end justify-center"
-            } `}
+          className={`flex flex-col justify-between lg:px-14 ${
+            isMobile() || isTablet()
+              ? "flex-col items-end py-2"
+              : "w-full items-end justify-center"
+          } `}
         >
           <h4 className="flex flex-row text-white font-[500] max-w-64 text-[8px] md:text-[12px] lg:text-[16px]  font-bold">
             If you are seeking a user-friendly and innovative way to manage
@@ -181,7 +189,6 @@ export default function PcBanner({ onOpen }: any) {
           </div>
         </div>
       </section>
-
     </>
-  )
+  );
 }

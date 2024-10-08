@@ -1,44 +1,18 @@
 "use client";
 
-import {
-  content,
-  HeaderHeading,
-  CausesArr,
-} from "@/Content/Home/home-page-content";
+import { content, HeaderHeading } from "@/Content/Home/home-page-content";
 import Banner from "@/components/Banner/banner";
 import CategoryCard, {
   ICategoryCardProps,
 } from "@/components/Cards/categoryCard";
-import {
-  Spacer,
-  Image,
-  useDisclosure,
-  Modal,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalBody,
-  Button,
-  Input,
-  Textarea,
-} from "@nextui-org/react";
-import {
-  bannerSales,
-  apollo,
-  apollo2,
-  doctors,
-  department,
-} from "@/Content/assets";
+import { Spacer, Image, useDisclosure } from "@nextui-org/react";
+import { bannerSales } from "@/Content/assets";
 import DoctorCard, { DoctorCardProps } from "@/components/Cards/DoctorCard";
 import HomeHeader from "@/components/Header/HomeHeader";
-import BlogCard, { BlogCardProps } from "@/components/Cards/BlogCard";
-import DepartmentCard, {
-  DepartmentCardProps,
-} from "@/components/Cards/DepartmentCard";
+import DepartmentCard from "@/components/Cards/DepartmentCard";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import HospitalViewCard from "@/components/Cards/HospitalViewCard";
 import HospitalViewCard2 from "@/components/Cards/HospitalViewCard2";
-import Testimonial from "@/components/Cards/Testimonal";
 import EnquireModal from "@/components/Enquire";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
@@ -79,7 +53,6 @@ export default function Home() {
       return getData("/service/top/client", {});
     },
   });
-  console.log(getTopServices);
 
   const { data: getTopHospital, isLoading: isLoadingHospital } = useQuery({
     queryKey: ["getTopHospital"],
@@ -125,18 +98,16 @@ export default function Home() {
         <Spacer y={5} />
         <div className="  flex w-full gap-4  overflow-hidden py-5">
           {getTopDoctors?.data.data.map((d: any, index: number) => {
-            console.log(d?.image.path);
-
             if (d.image.path) {
               return (
                 <div
                   key={d._id}
-                  className="min-w-[200px] lg:min-w-[400px] w-full"
+                  className="min-w-[200px]  lg:min-w-[400px] w-full"
                 >
                   <DoctorCard
                     id={d._id}
                     name={d?.name}
-                    image={d?.image.path}
+                    image={d.image.path}
                     type={d?.department?.name}
                   />
                 </div>

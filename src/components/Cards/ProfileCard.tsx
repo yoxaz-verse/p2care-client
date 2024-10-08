@@ -14,7 +14,7 @@ function ProfileCard(props: ProfileCardProps) {
         <Image
           src={props.icon}
           alt="person icon"
-          className="w-[15px] h-[15px] lg:w-[30px] lg:h-[30px]"
+          className="w-[15px] h-max lg:w-[30px] lg:h-max"
           width={30}
           height={30}
         />

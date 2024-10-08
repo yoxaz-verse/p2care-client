@@ -6,6 +6,7 @@ import { hospitalRoutes } from "@/core/apiRoutes";
 import { navigationRoutes } from "@/core/navigationRoutes";
 import { Chip, Divider, Spacer, Spinner, Avatar } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -105,7 +106,7 @@ function Details() {
   ) : (
     <section className="flex flex-col gap-[2rem]">
       <HospitalCard2 data={getHospitals?.data.data} />
-      <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-xl w-full">
+      <div className="flex flex-col items-center justify-center bg-white rounded-xl shadow-sm w-full">
         <div className="flex flex-col p-[1rem] w-full">
           <h3 className="text-md md:text-lg  font-semibold">
             About {getHospitals?.data.data.name}
@@ -141,9 +142,19 @@ function Details() {
             <h4 className="text-[10px] md:text-md">09:00 AM</h4>
             <h4 className="text-[10px] md:text-md">Photos</h4>
             <div className="flex flex-row gap-2 w-full">
-              {getHospitals?.data.data.images.map((i: any, index: any) => {
-                return <Avatar src={i.path} key={index} />;
-              })}
+              {getHospitals?.data.data.images &&
+                getHospitals.data.data.images.map((i: any, index: any) => {
+                  return (
+                    <Image
+                      key={index}
+                      src={i.path}
+                      alt="hospital"
+                      width={1000}
+                      height={1000}
+                      className="h-max w-[150px] md:w-[200px] rounded"
+                    />
+                  );
+                })}
             </div>
           </div>
           <div className="flex text-[10px] md:text-md flex-col">

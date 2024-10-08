@@ -37,9 +37,9 @@ function AboutUs() {
         <Image
           src={hospitalDocAbout}
           alt="image"
-          width={10000}
-          height={10000}
-          className="w-[250px] lg:w-[600px] h-[300px] z-0 md:w-full md:h-[700px] absolute bottom-0 right-0 opacity-50 lg:opacity-100"
+          width={1000}
+          height={1000}
+          className="w-[250px] lg:w-[400px] h-max z-0 absolute   bottom-0 right-0 opacity-50 lg:opacity-100"
         />
       </div>
       <div className="flex flex-col">

@@ -17,13 +17,14 @@ export interface DoctorCardProps {
 
 export default function DoctorCard({ name, type, image, id }: DoctorCardProps) {
   const router = useRouter();
+  console.log(image);
 
   return (
     <>
       <Card
         isPressable
         onPress={() => router.push(`/doctor/${id}`)}
-        className="w-full h-[170px] lg:h-[400px]"
+        className="w-full h-[50px] lg:h-[50px]"
       >
         {/* <Image
           // removeWrapper

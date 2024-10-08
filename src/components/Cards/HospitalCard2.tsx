@@ -12,13 +12,13 @@ function HospitalCard2({ data }: any) {
   const router = useRouter();
   return (
     <Card>
-      <CardBody className="flex flex-row gap-10">
+      <CardBody className="flex flex-row items-center gap-10">
         <Image
           src={data?.image?.path || hospitalLogo}
           alt="hospital"
           width={1000}
           height={1000}
-          className="w-[80px] h-[80px] lg:w-[220px] lg:h-[220px] rounded"
+          className="h-max w-[150px] md:w-[200px] rounded"
         />
         <div className="grid grid-rows-1 md:grid-rows-2 w-full">
           <h2 className="font-[700] text-[18px] lg:text-[44px] ">
