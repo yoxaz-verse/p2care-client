@@ -117,7 +117,8 @@ export default function Footer() {
         </div>
         <Divider />
         <h3 className="p-[1rem] text-center w-full">
-          © Copyright {new Date().getUTCFullYear()}, All Rights Reserved{" "}
+          © Copyright {new Date().getUTCFullYear()} - Yoxaz Verse, All Rights
+          Reserved{" "}
         </h3>
       </div>
     </>

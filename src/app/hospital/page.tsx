@@ -26,32 +26,32 @@ function List() {
     },
   });
 
-  const { data: getCity, isLoading: isLoadingCity } = useQuery({
-    queryKey: ["getCity"],
-    queryFn: () => {
-      return getData("/city/all", {});
-    },
-  });
+  // const { data: getCity, isLoading: isLoadingCity } = useQuery({
+  //   queryKey: ["getCity"],
+  //   queryFn: () => {
+  //     return getData("/city/all", {});
+  //   },
+  // });
 
   // Handle input change for search
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
   };
 
-  // Filter hospitals based on search term
-  const filteredHospitals = getHospitals?.data?.data?.data.filter(
-    (hospital: any) => {
-      const searchLower = searchTerm.toLowerCase();
-      return (
-        hospital.name.toLowerCase().includes(searchLower) ||
-        hospital.city?.name?.toLowerCase().includes(searchLower) ||
-        hospital.district?.name?.toLowerCase().includes(searchLower) ||
-        hospital.description?.toLowerCase().includes(searchLower)
-      );
-    }
-  );
+  // Filter hospitals based on search term if data is available
+  const hospitalsData = getHospitals?.data?.data.data || []; // Extract hospitals data or set to an empty array
 
-  return isLoading || isLoadingCity ? (
+  const filteredHospitals = hospitalsData.filter((hospital: any) => {
+    const searchLower = searchTerm.toLowerCase();
+    return (
+      hospital.name.toLowerCase().includes(searchLower) ||
+      hospital.city?.name?.toLowerCase().includes(searchLower) ||
+      hospital.district?.name?.toLowerCase().includes(searchLower) ||
+      hospital.description?.toLowerCase().includes(searchLower)
+    );
+  });
+
+  return isLoading ? (
     <div className="flex flex-col h-[80vh] items-center justify-center">
       <Spinner />
       <h3>Loading Hospital Details..</h3>
@@ -74,13 +74,17 @@ function List() {
       </div>
       <Spacer y={5} />
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-5">
-        {filteredHospitals?.map((data: any, index: any) => (
-          <HospitalCard
-            redirect={`${navigationRoutes.hospital}/${data._id}`}
-            data={data}
-            key={index}
-          />
-        ))}
+        {filteredHospitals.length > 0 ? (
+          filteredHospitals.map((data: any, index: any) => (
+            <HospitalCard
+              redirect={`${navigationRoutes.hospital}/${data._id}`}
+              data={data}
+              key={index}
+            />
+          ))
+        ) : (
+          <p>No hospitals found matching your criteria.</p>
+        )}
       </div>
     </>
   );

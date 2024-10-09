@@ -198,7 +198,7 @@ export default function Home() {
           {getDepartment?.data?.data?.data.map((d: any, index: any) => (
             <div
               key={index}
-              className="flex flex-col p-5 justify-center items-center shadow-xl h-full rounded-xl cursor-pointer"
+              className="flex flex-col p-5 justify-center items-center shadow-xl h-max rounded-xl cursor-pointer"
               onClick={() => {
                 router.push(navigationRoutes.department + d._id);
               }}
