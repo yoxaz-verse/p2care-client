@@ -51,23 +51,23 @@ export default function Footer() {
           </Button>
         </div>
         <EnquireModal onOpenChange={onOpenChange} isOpen={isOpen} />
-        <div className="flex flex-col md:flex-row justify-around gap-[1rem] w-full p-[.1rem] xl:p-[2rem]">
+        <div className="flex flex-col md:flex-row justify-between gap-[1rem] w-full p-[.1rem] xl:p-[2rem]">
           <div className="flex gap-2 md:gap-4 flex-col">
             <Image
               src={logo}
-              width={200}
-              className="w-1/4 md:w-1/2"
-              height={200}
+              width={1000}
+              className="w-1/4 md:w-1/4"
+              height={1000}
               alt="logo"
             />
-            <h3 className="text-[10px] md:text-md">
+            <h3 className="text-[10px] md:text-md max-w-[350px]">
               Clarity gives you the blocks and components you need to create a
               truly professional website.
             </h3>
-            <div className="flex text-lg items-center w-full justify-center lg:text-[50px] flex-row gap-4">
-              <FaFacebook className="fill-blue-400" />
+            <div className="flex text-lg items-start w-full justify-center lg:text-[50px]  gap-4">
+              {/* <FaFacebook className="fill-blue-400" />
               <CiInstagram />
-              <FaGithub />
+              <FaGithub /> */}
             </div>
           </div>
           <div className="flex p-[.2rem] md:p-[.8rem] text-[12px] lg:text-md flex-row w-full md:w-1/2 justify-around">

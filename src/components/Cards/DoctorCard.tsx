@@ -24,7 +24,7 @@ export default function DoctorCard({ name, type, image, id }: DoctorCardProps) {
       <Card
         isPressable
         onPress={() => router.push(`/doctor/${id}`)}
-        className="w-full h-[50px] lg:h-[50px]"
+        className="w-full h-[300px] lg:h-[300px]"
       >
         {/* <Image
           // removeWrapper

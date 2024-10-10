@@ -2,7 +2,7 @@
 import { DoctorListCard } from "@/components/Cards/DoctorListCard";
 import { getData } from "@/core/apiHandler";
 import { navigationRoutes } from "@/core/navigationRoutes";
-import { Spacer, Spinner } from "@nextui-org/react";
+import { Chip, Spacer, Spinner } from "@nextui-org/react";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -37,58 +37,86 @@ function DoctorDetailsComponent({ id }: any) {
         redirect={`${navigationRoutes.doctor}/${id}/booking`}
       />
       <div className="gap-2 flex flex-col">
-        <h3 className="font-bold text-md md:text-lg text-start">Information</h3>
+        <h3 className="font-bold text-md md:text-xl text-start">Information</h3>
         <p className="text-md w-full lg:w-1/2 text-[#3C4959]">
-          {getDoctor?.data?.data?.description || "No description available"}
+          {getDoctor?.data?.data?.description || ""}
         </p>
-      </div>
-
-      <Spacer y={2} />
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
-        <div className="min-h-[100px] md:min-h-[200px]">
-          <h3 className="font-bold text-md md:text-lg">Contact Details</h3>
-          <div className="flex flex-col text-md text-gray gap-2">
-            <h3>Phone: {getDoctor?.data?.data?.phone || "N/A"}</h3>
-            <h3>Email: {getDoctor?.data?.data?.email || "N/A"}</h3>
-            <div className="flex gap-2 items-center">
-              <FaMapMarkerAlt className="text-grey w-4 h-4" />
-              <p className="text-[12px] font-[600] lg:text-[16px] text-grey">
-                {getDoctor?.data?.data?.address || "No address available"}
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="min-h-[100px] md:min-h-[200px]">
-          <h3 className="font-bold text-md lg:text-lg">Visiting Time</h3>
-          <div className="flex flex-col text-gray text-md gap-2">
-            {getDoctor?.data?.data?.visitingTime?.length > 0 ? (
-              getDoctor?.data?.data?.visitingTime.map(
+        <div className=" text-gray text-md gap-2">
+          <div className="flex flex-wrap gap-3 my-5">
+            {getDoctor?.data?.data?.qualifications?.length > 0 ? (
+              getDoctor?.data?.data?.qualifications.map(
                 (v: any, index: number) => (
-                  <h3 key={index}>
-                    {v.from} - {v.to}
-                  </h3>
+                  <Chip key={index} variant="flat" color="primary">
+                    {v}
+                  </Chip>
                 )
               )
             ) : (
-              <p>No visiting times available</p>
+              <p></p>
             )}
-            <Spacer y={2} />
-            <h3>
-              {getDoctor?.data?.data?.availableDays?.length > 0
-                ? getDoctor?.data.data.availableDays.map(
-                    (d: any, index: number) => (
-                      <span key={index}>
-                        {d}
-                        {index < getDoctor?.data?.data?.availableDays.length - 1
-                          ? ", "
-                          : ""}
-                      </span>
-                    )
+          </div>
+          <div className="flex flex-wrap gap-3 my-5">
+            {getDoctor?.data?.data?.achievements?.length > 0 ? (
+              getDoctor?.data?.data?.achievements.map(
+                (v: any, index: number) => (
+                  <Chip key={index} variant="bordered" color="warning">
+                    {v}
+                  </Chip>
+                )
+              )
+            ) : (
+              <p></p>
+            )}
+          </div>
+        </div>
+
+        <Spacer y={2} />
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3">
+          <div className="min-h-[100px] md:min-h-[200px]">
+            <h3 className="font-bold text-md md:text-lg">Contact Details</h3>
+            <div className="flex flex-col text-md text-gray gap-2">
+              <h3>Phone: {getDoctor?.data?.data?.phone || "N/A"}</h3>
+              <h3>Email: {getDoctor?.data?.data?.email || "N/A"}</h3>
+              <div className="flex gap-2 items-center">
+                <FaMapMarkerAlt className="text-grey w-4 h-4" />
+                <p className="text-[12px] font-[600] lg:text-[16px] text-grey">
+                  {getDoctor?.data?.data?.address || "No address available"}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="min-h-[100px] md:min-h-[200px]">
+            <h3 className="font-bold text-md lg:text-lg">Visiting Time</h3>
+
+            <div className="flex flex-wrap gap-3 my-5">
+              {getDoctor?.data?.data?.visitingTime?.length > 0 ? (
+                getDoctor?.data?.data?.visitingTime.map(
+                  (v: any, index: number) => (
+                    <Chip key={index} variant="faded" color="primary">
+                      {v.from} - {v.to}
+                    </Chip>
                   )
-                : "No available days"}
-            </h3>
+                )
+              ) : (
+                <p>No visiting times available</p>
+              )}
+            </div>
+            <Spacer y={2} />
+            <div className="flex flex-wrap gap-2 my-5">
+              {getDoctor?.data?.data?.availableDays?.length > 0 ? (
+                getDoctor?.data.data.availableDays.map(
+                  (d: any, index: number) => (
+                    <Chip key={index} variant="dot" color="primary">
+                      {d}
+                    </Chip>
+                  )
+                )
+              ) : (
+                <Chip color="default">No available days</Chip>
+              )}
+            </div>
           </div>
         </div>
       </div>
