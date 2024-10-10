@@ -8,6 +8,7 @@ import { FaGithub } from "react-icons/fa";
 import { useParams, useRouter } from "next/navigation";
 import EnquireModal from "../Enquire";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export default function Footer() {
   const router = useRouter();
@@ -62,7 +63,7 @@ export default function Footer() {
             />
             <h3 className="text-[10px] md:text-md max-w-[350px]">
               Clarity gives you the blocks and components you need to create a
-              truly professional website.
+              truly professional website. 
             </h3>
             <div className="flex text-lg items-start w-full justify-center lg:text-[50px]  gap-4">
               {/* <FaFacebook className="fill-blue-400" />
@@ -117,7 +118,12 @@ export default function Footer() {
         </div>
         <Divider />
         <h3 className="p-[1rem] text-center w-full">
-          © Copyright {new Date().getUTCFullYear()} - Yoxaz Verse, All Rights
+          © Copyright {new Date().getUTCFullYear()} - 
+          <Link href={"https://www.yoxaz.com"}>
+          Yoxaz Verse
+          </Link>
+          
+          , All Rights
           Reserved{" "}
         </h3>
       </div>
