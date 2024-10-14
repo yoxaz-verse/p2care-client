@@ -96,13 +96,13 @@ export default function Home() {
           subHeading={HeaderHeading[0].subHeading}
         />
         <Spacer y={5} />
-        <div className="  flex w-full gap-4  overflow-hidden py-5">
+        <div className="  flex w-full gap-4  h-max overflow-auto md:overflow-hidden py-5">
           {getTopDoctors?.data.data.map((d: any, index: number) => {
             if (d.image.path) {
               return (
                 <div
                   key={d._id}
-                  className="min-w-[200px]  lg:min-w-[400px] w-full"
+                  className="min-w-[300px]   lg:min-w-[400px] w-full"
                 >
                   <DoctorCard
                     id={d._id}
@@ -129,7 +129,7 @@ export default function Home() {
         />
         <Spacer y={5} />
 
-        <div className="  flex w-full gap-4  overflow-hidden py-5">
+        <div className="  flex w-full gap-4  h-max overflow-auto md:overflow-hidden py-5">
           {getTopServices?.data?.data?.map((d: any, index: number) => {
             return (
               <div
@@ -194,22 +194,16 @@ export default function Home() {
 
         {/* <div className="flex flex-col  xl:flex-row gap-4 justify-around"> */}
         {/* <Image src={doctors} className="h-full rounded-xl object-cover" /> */}
-        <div className="w-full  grid gap-[1rem] grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="w-full  grid gap-[1rem] grid-cols-2  md:grid-cols-3  lg:grid-cols-5">
           {getDepartment?.data?.data?.data.map((d: any, index: any) => (
-            <div
-              key={index}
-              className="flex flex-col p-5 justify-center items-center shadow-xl h-max rounded-xl cursor-pointer"
-              onClick={() => {
-                router.push(navigationRoutes.department + d._id);
-              }}
-            >
-              <h1 className="text-[16px]">{d.name}</h1>
-              <Image
-                src={d?.image?.path}
-                className="w-[60px] h-[60px]"
-                alt=""
+            <>
+              <DepartmentCard
+                key={index}
+                title={d?.name}
+                icon={d?.image?.path}
+                redirect={navigationRoutes.department + d._id}
               />
-            </div>
+            </>
           ))}
           {/* </div> */}
         </div>

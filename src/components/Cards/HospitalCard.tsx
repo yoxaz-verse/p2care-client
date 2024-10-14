@@ -44,9 +44,10 @@ const HospitalCard = ({ data, redirect }: { data: any; redirect: any }) => {
               {data?.name}
             </h3>
             <div className="flex flex-row w-full gap-4">
-              <div className="flex flex-row font-bold text-sm md:text-[12px] lg:text-md  items-center text-blue-500">
+              <div className="flex flex-wrap gap-1 font-bold text-sm md:text-[12px] lg:text-md  items-center text-blue-500">
                 <HiLocationMarker className="fill-blue-500" />
-                <h3>{data?.city?.name}</h3>
+                <h3>{data?.city?.name} </h3>
+                <br />
                 <h3>Pincode: {data?.pincode}</h3>
               </div>
             </div>

@@ -43,7 +43,7 @@ export const DoctorListCard: React.FC<DoctorListCard> = ({
                   </p>
                 </div>
                 <h3 className="font-[700] text-[18px] md:text-[30px]  text-#011632 lg:text-[48px]">
-                  ₹ {data.price}
+                  ₹{data.price}
                 </h3>
               </div>
               {/* level 2 */}

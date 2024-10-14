@@ -8,6 +8,15 @@ import React from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 function DoctorDetailsComponent({ id }: any) {
+  // Utility function to convert 24-hour time format to 12-hour format with AM/PM
+  const convertTo12Hour = (time: string) => {
+    const [hours, minutes] = time.split(":");
+    const hour = parseInt(hours, 10);
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const adjustedHour = hour % 12 || 12;
+    return `${adjustedHour}:${minutes} ${ampm}`;
+  };
+
   const {
     data: getDoctor,
     isLoading,
@@ -95,7 +104,7 @@ function DoctorDetailsComponent({ id }: any) {
                 getDoctor?.data?.data?.visitingTime.map(
                   (v: any, index: number) => (
                     <Chip key={index} variant="faded" color="primary">
-                      {v.from} - {v.to}
+                      {convertTo12Hour(v.from)} - {convertTo12Hour(v.to)}
                     </Chip>
                   )
                 )
@@ -104,6 +113,7 @@ function DoctorDetailsComponent({ id }: any) {
               )}
             </div>
             <Spacer y={2} />
+            <h3 className="font-bold text-md lg:text-lg">Available Days</h3>
             <div className="flex flex-wrap gap-2 my-5">
               {getDoctor?.data?.data?.availableDays?.length > 0 ? (
                 getDoctor?.data.data.availableDays.map(

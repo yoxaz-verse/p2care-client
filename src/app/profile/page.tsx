@@ -110,7 +110,7 @@ function Profile() {
           </Tab>
           <Tab key="Completed" title="Completed">
             <Card className="flex flex-col gap-2">
-              {getAppointment?.data.data.data.filter(
+              {getAppointment?.data?.data.data.filter(
                 (d: any) => new Date(d.date) < new Date()
               ).length > 0 ? (
                 getAppointment?.data.data.data

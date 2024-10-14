@@ -267,7 +267,15 @@ function Booking() {
                   .filter((d: any) => d.session === "morning")
                   .map((d: any, index: any) => {
                     const date = new Date(d.slotTime);
-                    const formattedDate = date.toLocaleTimeString();
+                    // Format the time without seconds and with AM/PM
+                    const formattedDate = date
+                      .toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })
+                      .replace(/\s+/g, ""); // Remove any spaces
+
                     return (
                       <Button
                         key={d._id}
@@ -292,7 +300,15 @@ function Booking() {
                   .filter((d: any) => d.session === "afternoon")
                   .map((d: any, index: any) => {
                     const date = new Date(d.slotTime);
-                    const formattedDate = date.toLocaleTimeString();
+                    // Format the time without seconds and with AM/PM
+                    const formattedDate = date
+                      .toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })
+                      .replace(/\s+/g, ""); // Remove any spaces
+
                     return (
                       <Button
                         key={d._id}
@@ -317,7 +333,15 @@ function Booking() {
                   .filter((d: any) => d.session === "evening")
                   .map((d: any, index: any) => {
                     const date = new Date(d.slotTime);
-                    const formattedDate = date.toLocaleTimeString();
+                    // Format the time without seconds and with AM/PM
+                    const formattedDate = date
+                      .toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: true,
+                      })
+                      .replace(/\s+/g, ""); // Remove any spaces
+
                     return (
                       <Button
                         key={d._id}

@@ -134,13 +134,24 @@ function Details() {
               </span>
             </p>
           </div>
-          <div className="flex flex-col">
-            <h3 className="text-[14px] md:text-[24px]  font-semibold">
+          <div className=" ">
+            <h3 className="flex  text-[14px] md:text-[24px] gap-2 font-semibold">
               Timings
             </h3>
-            <h3 className="text-[10px] md:text-md">Mon - Sun</h3>
-            <h4 className="text-[10px] md:text-md">09:00 AM</h4>
-            <h4 className="text-[10px] md:text-md">Photos</h4>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {getHospitals?.data?.data?.availableDays?.length > 0 ? (
+                getHospitals?.data.data.availableDays.map(
+                  (d: any, index: number) => (
+                    <Chip key={index} variant="dot" color="primary">
+                      {d}
+                    </Chip>
+                  )
+                )
+              ) : (
+                <Chip color="default">No available days</Chip>
+              )}
+            </div>
+            {/* <h4 className="text-[10px] md:text-md">Photos</h4> */}
             <div className="flex flex-row gap-2 w-full">
               {getHospitals?.data.data.images &&
                 getHospitals.data.data.images.map((i: any, index: any) => {
@@ -166,14 +177,19 @@ function Details() {
                 <h3 className="flex flex-row gap-2">
                   {getHospitals?.data?.data?.modesOfPayment.map(
                     (d: any, index: any) => {
-                      return <h3 key={index}>{d} | </h3>;
+                      return (
+                        <Chip key={index} variant="flat" color="primary">
+                          {d}
+                        </Chip>
+                      );
                     }
                   )}
                 </h3>
               </>
             )}
-
+            <Spacer y={4} />
             <h3>Number of Beds - {getHospitals?.data?.data?.noOfBeds}</h3>
+            <Spacer y={2} />
             <h3>
               Number of Ambulances - {getHospitals?.data?.data?.noOfAmbulances}
             </h3>
@@ -202,28 +218,30 @@ function Details() {
           </div>
         </div>
       )}
-      <div className="flex flex-col gap-4   rounded-xl w-full">
-        <div className="flex flex-row w-full py-[1rem] justify-between items-center">
-          <h3 className="text-md md:text-lg font-semibold">
-            Doctors in {getHospitals?.data?.data?.name}
-          </h3>
-          <h3
-            onClick={() => router.push(`/hospital/${id}/doctor`)}
-            className="text-primary cursor-pointer text-[12px] md:text-[20px]  decoration-solid "
-          >
-            View All
-          </h3>
+      {getDoctors && (
+        <div className="flex flex-col gap-4   rounded-xl w-full">
+          <div className="flex flex-row w-full py-[1rem] justify-between items-center">
+            <h3 className="text-md md:text-lg font-semibold">
+              Doctors in {getHospitals?.data?.data?.name}
+            </h3>
+            <h3
+              onClick={() => router.push(`/hospital/${id}/doctor`)}
+              className="text-primary cursor-pointer text-[12px] md:text-[20px]  decoration-solid "
+            >
+              View All
+            </h3>
+          </div>
+          {getDoctors.data.data.map((d: any, index: any) => {
+            return (
+              <DoctorListCard
+                redirect={`${navigationRoutes.hospital}/${id}/doctor/${d._id}`}
+                data={d}
+                key={index}
+              />
+            );
+          })}
         </div>
-        {getDoctors?.data.data.map((d: any, index: any) => {
-          return (
-            <DoctorListCard
-              redirect={`${navigationRoutes.hospital}/${id}/doctor/${d._id}`}
-              data={d}
-              key={index}
-            />
-          );
-        })}
-      </div>
+      )}
       <div className="flex flex-col rounded-xl shadow-xl gap-2 p-[1rem]">
         <h3 className="text-[24px]  font-semibold">
           Common Questions and Answers

@@ -58,33 +58,42 @@ function Details() {
             content={getService?.data?.data?.description || lorem150}
           />
           <Spacer y={3} />
-
-          <TitleHeading heading="Doctors" />
+          {getService?.data.data.doctors.length > 0 && (
+            <>
+              {" "}
+              <TitleHeading heading="Doctors" />
+              <Spacer y={3} />
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+                {getService?.data.data.doctors.map((d: any, index: any) => (
+                  <DoctorDetailCard
+                    redirect={`${navigationRoutes.service}/${id}/doctor/${d._id}`}
+                    data={d}
+                    key={index}
+                  />
+                ))}
+              </div>
+            </>
+          )}
           <Spacer y={3} />
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {getService?.data.data.doctors.map((d: any, index: any) => (
-              <DoctorDetailCard
-                redirect={`${navigationRoutes.service}/${id}/doctor/${d._id}`}
-                data={d}
-                key={index}
-              />
-            ))}
-          </div>
-          <Spacer y={3} />
-          <TitleHeading heading="Hopitals" />
-          <Spacer y={3} />
-          <div className="grid grid-cols-1  gap-5">
-            {getService?.data?.data?.hospitals?.map((d: any, index: any) => (
-              <HospitalCard
-                data={d}
-                key={index}
-                redirect={`${navigationRoutes.service}/${id}/${d._id}`}
-              />
-            ))}
-          </div>
+          {getService?.data?.data?.hospitals.length > 0 && (
+            <>
+              {" "}
+              <TitleHeading heading="Hospitals" />
+              <Spacer y={3} />
+              <div className="grid grid-cols-1  gap-5">
+                {getService?.data?.data?.hospitals.map((d: any, index: any) => (
+                  <HospitalCard
+                    data={d}
+                    key={index}
+                    redirect={`${navigationRoutes.service}/${id}/${d._id}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
           <div className="flex flex-col">
             <div className="flex flex-row justify-between items-center py-[2rem]">
-              <TitleHeading heading="Departments" />
+              {/* <TitleHeading heading="Departments" /> */}
               {/* <h1 className="text-blue-600 font-bold underline">View All</h1> */}
             </div>
             <div className="grid grid-cols-3 lg:grid-cols-6 gap-5">
