@@ -83,7 +83,13 @@ function Details() {
     },
   });
   console.log(getDoctors?.data.data);
-
+  const convertTo12Hour = (time: string) => {
+    const [hours, minutes] = time.split(":");
+    const hour = parseInt(hours, 10);
+    const ampm = hour >= 12 ? "PM" : "AM";
+    const adjustedHour = hour % 12 || 12;
+    return `${adjustedHour}:${minutes} ${ampm}`;
+  };
   useEffect(() => {
     if (!isLoadingDepartment && countDepartment?.data?.data) {
       const newTags = countDepartment.data.data.map((d: any) => {
@@ -136,14 +142,28 @@ function Details() {
           </div>
           <div className=" ">
             <h3 className="flex  text-[14px] md:text-[24px] gap-2 font-semibold">
-              Timings
+              Timings & Days
             </h3>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {getHospitals?.data?.data?.visitingTime?.length > 0 ? (
+                getHospitals?.data.data.visitingTime.map(
+                  (v: any, index: number) => (
+                    <Chip key={index} variant="faded" color="primary">
+                      {convertTo12Hour(v.from)} - {convertTo12Hour(v.to)}
+                    </Chip>
+                  )
+                )
+              ) : (
+                <Chip color="default">No available days</Chip>
+              )}
+            </div>
+
             <div className="mt-2 flex flex-wrap gap-2">
               {getHospitals?.data?.data?.availableDays?.length > 0 ? (
                 getHospitals?.data.data.availableDays.map(
-                  (d: any, index: number) => (
+                  (v: any, index: number) => (
                     <Chip key={index} variant="dot" color="primary">
-                      {d}
+                      {v}
                     </Chip>
                   )
                 )
