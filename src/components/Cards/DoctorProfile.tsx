@@ -26,7 +26,7 @@ export const DoctorProfile: React.FC<DoctorProfileProps> = ({
               />
               <div className="flex flex-col h-full  justify-around">
                 <div className="flex  w-full items-center gap-[1rem] flex-row">
-                  <h3 className="text-sm md:text-md lg:text-lg font-extrabold">
+                  <h3 className="text-md md:text-md lg:text-lg font-extrabold">
                     {data?.name}
                   </h3>
                   <div className="flex flex-row gap-2 lg:gap-4 items-center">
@@ -39,7 +39,7 @@ export const DoctorProfile: React.FC<DoctorProfileProps> = ({
                 <div className="flex flex-row gap-2 md:gap-4 items-center">
                   <div className="w-2 h-2 bg-blue-500 rounded-full" />
 
-                  <p className="text-[10px] font-[700] md:text-[16px] lg:text-[24px] text-primary">
+                  <p className="text-[10px] font-[400] md:text-[16px] lg:text-[24px] text-primary">
                     {data?.achievements.length > 0 ? (
                       data.achievements.map((d: string, index: number) => (
                         <span key={index}>

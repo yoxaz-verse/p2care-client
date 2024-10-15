@@ -17,6 +17,7 @@ import { useRouter } from "next/navigation";
 import useAuth from "../isAuth";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
+import Link from "next/link";
 
 function Profile() {
   const { data, isError, isLoading } = useAuth();
@@ -45,7 +46,13 @@ function Profile() {
   ) : (
     <section className="grid grid-col-1 lg:grid-cols-2 gap-5">
       <div className="flex flex-col justify-around gap-5 h-full pe-5 border-r-1">
-        <p className="text-lg font-bold">Profile</p>
+        <div className="flex gap-5">
+          <Link href="/">
+            <p className="text-lg font-bold">Home</p>
+          </Link>
+          <p className="text-lg font-bold"> {">"} </p>
+          <p className="text-lg font-bold">Profile</p>
+        </div>
         <div className="flex relative justify-between items-center p-5 ">
           <div className=" z-10 top-0 left-0 w-full h-[60px] lg:h-[80px] bg-primary rounded-sm"></div>
           {/* <Avatar
@@ -82,7 +89,7 @@ function Profile() {
       <div className="flex flex-col gap-5">
         <Tabs aria-label="Options">
           <Tab key="Upcoming" title="Upcoming">
-            <Card className="grid grid-cols-justify-self-end">
+            <Card className="grid grid-cols-justify-self-end my-2">
               {getAppointment?.data.data.data.filter(
                 (d: any) => new Date(d.date) > new Date()
               ).length > 0 ? (
@@ -109,7 +116,7 @@ function Profile() {
             </Card>
           </Tab>
           <Tab key="Completed" title="Completed">
-            <Card className="flex flex-col gap-2">
+            <Card className="flex flex-col gap-2 my-2">
               {getAppointment?.data?.data.data.filter(
                 (d: any) => new Date(d.date) < new Date()
               ).length > 0 ? (

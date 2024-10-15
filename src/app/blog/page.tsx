@@ -21,7 +21,7 @@ function List() {
     <section>
       <PageHeading heading="Blogs" />
       <Spacer y={5} />
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 XL:grid-cols-4 gap-5">
         {BlogContentPage &&
           BlogContentPage?.data.data.data.map((b: any, index: number) => {
             return (
@@ -29,7 +29,7 @@ function List() {
                 key={index}
                 heading={b.title}
                 description={b.description}
-                image={b.image.path}
+                image={b.image?.path}
                 redirect={`/blog/${b._id}`}
               />
             );
