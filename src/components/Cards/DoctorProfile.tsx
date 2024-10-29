@@ -1,4 +1,3 @@
-"use client";
 import { maleDoctorCard } from "@/Content/assets";
 import { Button, Card, CardBody, Chip, Image } from "@nextui-org/react";
 import { FaMapMarkerAlt } from "react-icons/fa";

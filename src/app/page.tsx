@@ -17,7 +17,6 @@ import EnquireModal from "@/components/Enquire";
 import { useQuery } from "@tanstack/react-query";
 import { getData } from "@/core/apiHandler";
 import useAuth from "./isAuth";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
   const responsive = {
@@ -40,7 +39,6 @@ export default function Home() {
   };
   const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const { data } = useAuth();
-  const router = useRouter();
   const { data: getTopDoctors, isLoading } = useQuery({
     queryKey: ["getTopDoctors"],
     queryFn: () => {
@@ -109,7 +107,7 @@ export default function Home() {
                     name={d?.name}
                     image={d.image.path}
                     type={d?.department?.name}
-                  />
+                  />              
                 </div>
               );
             } else {

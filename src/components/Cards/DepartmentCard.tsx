@@ -1,4 +1,3 @@
-"use client";
 import { Card, CardBody, CardFooter } from "@nextui-org/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -24,13 +23,15 @@ export default function DepartmentCard(props: DepartmentCardProps) {
     >
       <CardBody className="flex justify-center items-center">
         <div className="w-[70px] h-[70px] lg:w-[150px] lg:h-[150px] bg-secondary-200 flex justify-center items-center rounded-full">
-          <Image
-            src={props.icon}
-            alt={props.title}
-            className="rounded-full w-full h-full lg:w-full lg:h-full"
-            width={1000}
-            height={1000}
-          />
+          {props.icon && (
+            <Image
+              src={props.icon}
+              alt={props.title}
+              className="rounded-full w-full h-full lg:w-full lg:h-full"
+              width={1000}
+              height={1000}
+            />
+          )}
         </div>
       </CardBody>
       <CardFooter className="flex flex-col gap-2">
